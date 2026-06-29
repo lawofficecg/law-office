@@ -7,13 +7,11 @@
   <meta name="description" content="Frequently asked questions about habitability law, personal injury, fees, and consultations at the Law Office of Caroline Golian." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-logo">
         <img src="Carol_final_Logo.png" alt="Law Office of Caroline Golian" />
@@ -22,10 +20,10 @@
           <span class="logo-subtitle">Attorney at Law</span>
         </span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <ul class="site-nav">
+      <ul class="site-nav" id="site-nav" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="practice-areas.html">Practice Areas</a></li>
@@ -37,7 +35,6 @@
     </div>
   </header>
 
-  <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="container">
       <h1>Frequently asked questions</h1>
@@ -45,12 +42,12 @@
     </div>
   </section>
 
-  <!-- FAQ CONTENT -->
-  <section class="page-content">
-    <div class="container">
+  <section style="padding:var(--section-v) 24px;">
+    <div class="container" style="max-width:800px;">
+
       <div class="faq-list">
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             What is habitability law?
             <span class="faq-icon" aria-hidden="true"></span>
@@ -62,7 +59,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             My landlord won&rsquo;t fix the mold in my apartment. What can I do?
             <span class="faq-icon" aria-hidden="true"></span>
@@ -74,7 +71,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             How do I know if I have a personal injury case?
             <span class="faq-icon" aria-hidden="true"></span>
@@ -86,7 +83,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             How much does it cost to hire you?
             <span class="faq-icon" aria-hidden="true"></span>
@@ -98,7 +95,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             How long does a case take?
             <span class="faq-icon" aria-hidden="true"></span>
@@ -110,7 +107,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             Do you offer consultations in Spanish?
             <span class="faq-icon" aria-hidden="true"></span>
@@ -122,7 +119,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
             What areas do you serve?
             <span class="faq-icon" aria-hidden="true"></span>
@@ -136,23 +133,22 @@
 
       </div>
 
-      <!-- CTA -->
-      <div style="margin-top: 64px; padding: 40px; background: var(--green); border-radius: 3px; text-align: center;">
-        <h3 style="color: var(--white); margin-bottom: 12px;">Still have questions?</h3>
-        <p style="color: rgba(255,255,255,0.8); margin-bottom: 28px; font-size: 0.97rem;">The best way to get answers is to speak directly with Caroline. Consultations are free.</p>
+      <div class="cta-box reveal" style="margin-top:72px;">
+        <h3>Still have questions?</h3>
+        <p>The best way to get answers is to speak directly with Caroline. Consultations are free.</p>
         <a href="intake.html" class="btn btn-primary">Request a Free Consultation</a>
       </div>
+
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
           <p class="logo-name">Law Office of Caroline Golian</p>
           <p>Caroline Golian, Esq.</p>
-          <p style="margin-top:8px;">By appointment only<br/>Serving Southern California</p>
+          <p style="margin-top:10px;line-height:1.7">By appointment only<br>Serving Southern California</p>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
@@ -167,25 +163,26 @@
         </div>
         <div class="footer-col footer-contact">
           <h4>Contact</h4>
-          <p>&#128222; <a href="tel:[PHONE PLACEHOLDER]">[PHONE PLACEHOLDER]</a></p>
-          <p>&#9993; <a href="mailto:[EMAIL PLACEHOLDER]">[EMAIL PLACEHOLDER]</a></p>
+          <p><a href="tel:[PHONE PLACEHOLDER]">[PHONE PLACEHOLDER]</a></p>
+          <p><a href="mailto:[EMAIL PLACEHOLDER]">[EMAIL PLACEHOLDER]</a></p>
           <a href="https://linkedin.com/in/lawofficeofcarolinegolian" target="_blank" rel="noopener" class="footer-linkedin">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            LinkedIn
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            linkedin.com/in/lawofficeofcarolinegolian
           </a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Law Office of Caroline Golian. All rights reserved.</p>
+        <p>&copy; 2026 Law Office of Caroline Golian. All rights reserved.</p>
         <p>Southern California &mdash; Remote, by appointment only</p>
       </div>
       <p class="footer-disclaimer">The information on this website is for general informational purposes only and does not constitute legal advice. Viewing this website or contacting our office does not create an attorney-client relationship.</p>
     </div>
   </footer>
 
+  <script src="main.js" defer></script>
   <script>
     function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
+      const item   = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(el => {
         el.classList.remove('open');
@@ -197,6 +194,5 @@
       }
     }
   </script>
-
 </body>
 </html>
