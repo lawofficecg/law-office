@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="page-overlay"></div>
 
   <header class="site-header" id="site-header">
     <div class="header-inner">
@@ -45,6 +46,10 @@
   <section class="intake-section">
     <div class="container">
 
+      <div class="form-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Form completion">
+        <div class="form-progress-bar" id="form-progress-bar"></div>
+      </div>
+
       <div class="lang-toggle" role="group" aria-label="Language selection">
         <button class="lang-btn active" onclick="setLang('en')" id="lang-en">English</button>
         <button class="lang-btn" onclick="setLang('es')" id="lang-es">Espa&ntilde;ol</button>
@@ -62,28 +67,28 @@
         novalidate
       >
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-group float-group">
             <label for="full-name" id="label-name">Full Name</label>
-            <input type="text" id="full-name" name="full_name" placeholder="Jane Smith" required autocomplete="name" />
+            <input type="text" id="full-name" name="full_name" placeholder=" " required autocomplete="name" />
           </div>
-          <div class="form-group">
+          <div class="form-group float-group">
             <label for="phone" id="label-phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required autocomplete="tel" />
+            <input type="tel" id="phone" name="phone" placeholder=" " required autocomplete="tel" />
           </div>
         </div>
 
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-group float-group">
             <label for="email" id="label-email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            <input type="email" id="email" name="email" placeholder=" " required autocomplete="email" />
           </div>
-          <div class="form-group">
+          <div class="form-group float-group">
             <label for="best-time" id="label-besttime">Best Time to Reach You</label>
-            <input type="text" id="best-time" name="best_time" placeholder="e.g., Weekday mornings" />
+            <input type="text" id="best-time" name="best_time" placeholder=" " />
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group float-group">
           <label for="case-type" id="label-casetype">Case Type</label>
           <select id="case-type" name="case_type" required onchange="handleCaseType(this.value)">
             <option value="" id="opt-select">-- Select a case type --</option>
@@ -149,7 +154,10 @@
         </div>
 
         <div class="form-submit-area">
-          <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+          <button type="submit" class="btn btn-primary" id="submit-btn">
+            <span class="btn-spinner"></span>
+            <span class="btn-label" id="submit-btn-label">Submit</span>
+          </button>
           <p class="form-submit-note" id="submit-note">We'll be in touch if we think we can help.</p>
         </div>
       </form>
