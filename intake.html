@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intake Form | Law Office of Caroline Golian</title>
+  <meta name="description" content="Tell us about your case. Submit a free intake form and we'll review your situation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <img src="Carol_final_Logo.png" alt="Law Office of Caroline Golian" />
+        <span class="logo-text">
+          <span class="logo-name">Law Office of Caroline Golian</span>
+          <span class="logo-subtitle">Attorney at Law</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="site-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="practice-areas.html">Practice Areas</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="intake.html" class="nav-cta active">Free Consultation</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 id="page-heading">Tell us about your case</h1>
+      <p id="page-subheading">Please fill out the form below. We'll review your information and if we think this may be a strong case, someone from our office will reach out to you directly.</p>
+    </div>
+  </section>
+
+  <!-- INTAKE FORM -->
+  <section class="intake-section">
+    <div class="container">
+
+      <!-- Language Toggle -->
+      <div class="lang-toggle" role="group" aria-label="Language selection">
+        <button class="lang-btn active" onclick="setLang('en')" id="lang-en">English</button>
+        <button class="lang-btn" onclick="setLang('es')" id="lang-es">Espa&ntilde;ol</button>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer-box" id="disclaimer">
+        Submitting this form does not create an attorney-client relationship.
+      </div>
+
+      <form
+        action="mailto:intake@[DOMAIN PLACEHOLDER].com"
+        method="POST"
+        enctype="text/plain"
+        id="intake-form"
+        novalidate
+      >
+
+        <!-- Common Fields -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="full-name" id="label-name">Full Name</label>
+            <input type="text" id="full-name" name="full_name" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="phone" id="label-phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" id="label-email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="best-time" id="label-besttime">Best Time to Reach You</label>
+            <input type="text" id="best-time" name="best_time" placeholder="e.g., Weekday mornings" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="case-type" id="label-casetype">Case Type</label>
+          <select id="case-type" name="case_type" required onchange="handleCaseType(this.value)">
+            <option value="" id="opt-select">-- Select a case type --</option>
+            <option value="habitability" id="opt-hab">Mold / Habitability</option>
+            <option value="personal-injury" id="opt-pi">Personal Injury</option>
+          </select>
+        </div>
+
+        <!-- Habitability Conditional Fields -->
+        <div class="conditional-fields" id="habitability-fields">
+          <h4 style="font-family: var(--font-serif); color: var(--green); margin-bottom: 20px; font-size: 1rem;" id="hab-section-title">Additional Information &mdash; Habitability</h4>
+
+          <div class="form-group">
+            <label id="label-written-notice">Have you given written notice to your landlord about the issue?</label>
+            <select name="written_notice" id="written-notice">
+              <option value="">-- Select --</option>
+              <option value="yes" id="opt-yes1">Yes</option>
+              <option value="no" id="opt-no1">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="landlord-response" id="label-landlord-response">Did your landlord respond? If so, how?</label>
+            <textarea id="landlord-response" name="landlord_response" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="mold-test" id="label-mold-test">Have you had an air test or mold test done? If so, what were the results?</label>
+            <textarea id="mold-test" name="mold_test" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="symptoms" id="label-symptoms">Are you experiencing any symptoms? If so, please describe them.</label>
+            <textarea id="symptoms" name="symptoms" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="hab-description" id="label-hab-desc">Please describe your situation in your own words.</label>
+            <textarea id="hab-description" name="hab_description" rows="5"></textarea>
+          </div>
+        </div>
+
+        <!-- Personal Injury Conditional Fields -->
+        <div class="conditional-fields" id="pi-fields">
+          <h4 style="font-family: var(--font-serif); color: var(--green); margin-bottom: 20px; font-size: 1rem;" id="pi-section-title">Additional Information &mdash; Personal Injury</h4>
+
+          <div class="form-group">
+            <label for="what-happened" id="label-what-happened">Please describe what happened.</label>
+            <textarea id="what-happened" name="what_happened" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="incident-date" id="label-incident-date">When did the incident occur?</label>
+            <input type="date" id="incident-date" name="incident_date" />
+          </div>
+
+          <div class="form-group">
+            <label id="label-medical-treatment">Have you received medical treatment?</label>
+            <select name="medical_treatment" id="medical-treatment">
+              <option value="">-- Select --</option>
+              <option value="yes" id="opt-yes2">Yes</option>
+              <option value="no" id="opt-no2">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pi-description" id="label-pi-desc">Please describe your situation in your own words.</label>
+            <textarea id="pi-description" name="pi_description" rows="5"></textarea>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-submit-area">
+          <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+          <p class="form-submit-note" id="submit-note">We'll be in touch if we think we can help.</p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="logo-name">Law Office of Caroline Golian</p>
+          <p>Caroline Golian, Esq.</p>
+          <p style="margin-top:8px;">By appointment only<br/>Serving Southern California</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Caroline</a></li>
+            <li><a href="practice-areas.html">Practice Areas</a></li>
+            <li><a href="intake.html">Request a Consultation</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-contact">
+          <h4>Contact</h4>
+          <p>&#128222; <a href="tel:[PHONE PLACEHOLDER]">[PHONE PLACEHOLDER]</a></p>
+          <p>&#9993; <a href="mailto:[EMAIL PLACEHOLDER]">[EMAIL PLACEHOLDER]</a></p>
+          <a href="https://linkedin.com/in/lawofficeofcarolinegolian" target="_blank" rel="noopener" class="footer-linkedin">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Law Office of Caroline Golian. All rights reserved.</p>
+        <p>Southern California &mdash; Remote, by appointment only</p>
+      </div>
+      <p class="footer-disclaimer">The information on this website is for general informational purposes only and does not constitute legal advice. Viewing this website or contacting our office does not create an attorney-client relationship.</p>
+    </div>
+  </footer>
+
+  <script>
+    function handleCaseType(val) {
+      document.getElementById('habitability-fields').classList.toggle('visible', val === 'habitability');
+      document.getElementById('pi-fields').classList.toggle('visible', val === 'personal-injury');
+    }
+
+    const translations = {
+      en: {
+        heading: 'Tell us about your case',
+        subheading: "Please fill out the form below. We'll review your information and if we think this may be a strong case, someone from our office will reach out to you directly.",
+        disclaimer: 'Submitting this form does not create an attorney-client relationship.',
+        'label-name': 'Full Name',
+        'label-phone': 'Phone Number',
+        'label-email': 'Email Address',
+        'label-besttime': 'Best Time to Reach You',
+        'label-casetype': 'Case Type',
+        'opt-select': '-- Select a case type --',
+        'opt-hab': 'Mold / Habitability',
+        'opt-pi': 'Personal Injury',
+        'hab-section-title': 'Additional Information — Habitability',
+        'label-written-notice': 'Have you given written notice to your landlord about the issue?',
+        'opt-yes1': 'Yes', 'opt-no1': 'No',
+        'label-landlord-response': 'Did your landlord respond? If so, how?',
+        'label-mold-test': 'Have you had an air test or mold test done? If so, what were the results?',
+        'label-symptoms': 'Are you experiencing any symptoms? If so, please describe them.',
+        'label-hab-desc': 'Please describe your situation in your own words.',
+        'pi-section-title': 'Additional Information — Personal Injury',
+        'label-what-happened': 'Please describe what happened.',
+        'label-incident-date': 'When did the incident occur?',
+        'label-medical-treatment': 'Have you received medical treatment?',
+        'opt-yes2': 'Yes', 'opt-no2': 'No',
+        'label-pi-desc': 'Please describe your situation in your own words.',
+        'submit-btn': 'Submit',
+        'submit-note': "We'll be in touch if we think we can help."
+      },
+      es: {
+        heading: 'Cuéntenos sobre su caso',
+        subheading: 'Por favor complete el formulario a continuación. Revisaremos su información y, si creemos que puede ser un caso sólido, alguien de nuestra oficina se comunicará con usted directamente.',
+        disclaimer: 'Enviar este formulario no crea una relación abogado-cliente.',
+        'label-name': 'Nombre completo',
+        'label-phone': 'Número de teléfono',
+        'label-email': 'Correo electrónico',
+        'label-besttime': 'Mejor hora para contactarle',
+        'label-casetype': 'Tipo de caso',
+        'opt-select': '-- Seleccione un tipo de caso --',
+        'opt-hab': 'Moho / Habitabilidad',
+        'opt-pi': 'Lesiones personales',
+        'hab-section-title': 'Información adicional — Habitabilidad',
+        'label-written-notice': '¿Ha enviado una notificación escrita a su arrendador sobre el problema?',
+        'opt-yes1': 'Sí', 'opt-no1': 'No',
+        'label-landlord-response': '¿Respondió su arrendador? ¿Cómo?',
+        'label-mold-test': '¿Se ha realizado una prueba de aire o moho? ¿Cuáles fueron los resultados?',
+        'label-symptoms': '¿Tiene algún síntoma? Por favor descríbalos.',
+        'label-hab-desc': 'Por favor describa su situación con sus propias palabras.',
+        'pi-section-title': 'Información adicional — Lesiones personales',
+        'label-what-happened': 'Por favor describa lo que ocurrió.',
+        'label-incident-date': '¿Cuándo ocurrió el incidente?',
+        'label-medical-treatment': '¿Ha recibido tratamiento médico?',
+        'opt-yes2': 'Sí', 'opt-no2': 'No',
+        'label-pi-desc': 'Por favor describa su situación con sus propias palabras.',
+        'submit-btn': 'Enviar',
+        'submit-note': 'Nos comunicaremos con usted si creemos que podemos ayudarle.'
+      }
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+      document.getElementById('page-heading').textContent = t.heading;
+      document.getElementById('page-subheading').textContent = t.subheading;
+      document.getElementById('disclaimer').textContent = t.disclaimer;
+
+      Object.keys(t).forEach(key => {
+        const el = document.getElementById(key);
+        if (el && el.tagName !== 'SELECT') {
+          if (el.tagName === 'BUTTON' || el.tagName === 'LABEL' || el.tagName === 'H4' || el.tagName === 'P') {
+            el.textContent = t[key];
+          }
+        }
+        if (el && el.tagName === 'OPTION') {
+          el.textContent = t[key];
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
