@@ -43,7 +43,7 @@
   <section class="page-hero" id="main-content">
     <div class="container">
       <h1 id="page-heading">Tell us about your case</h1>
-      <p id="page-subheading">Please fill out the form below. We'll review your information and if we think this may be a strong case, someone from our office will reach out to you directly.</p>
+      <p id="page-subheading">Fill out the form below and we'll review your situation. All consultations are free and there is no obligation to proceed.</p>
     </div>
   </section>
 
@@ -72,19 +72,19 @@
       >
         <div class="form-row">
           <div class="form-group float-group">
-            <label for="full-name" id="label-name">Full Name</label>
-            <input type="text" id="full-name" name="full_name" placeholder=" " required autocomplete="name" />
+            <label for="full-name" id="label-name">Full Name <span class="required-star" aria-hidden="true">*</span></label>
+            <input type="text" id="full-name" name="full_name" placeholder=" " required aria-required="true" autocomplete="name" />
           </div>
           <div class="form-group float-group">
-            <label for="phone" id="label-phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder=" " required autocomplete="tel" />
+            <label for="phone" id="label-phone">Phone Number <span class="required-star" aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder=" " required aria-required="true" autocomplete="tel" />
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group float-group">
-            <label for="email" id="label-email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder=" " required autocomplete="email" />
+            <label for="email" id="label-email">Email Address <span class="required-star" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" placeholder=" " required aria-required="true" autocomplete="email" />
           </div>
           <div class="form-group float-group">
             <label for="best-time" id="label-besttime">Best Time to Reach You</label>
@@ -93,8 +93,8 @@
         </div>
 
         <div class="form-group float-group">
-          <label for="case-type" id="label-casetype">Case Type</label>
-          <select id="case-type" name="case_type" required onchange="handleCaseType(this.value)">
+          <label for="case-type" id="label-casetype">Case Type <span class="required-star" aria-hidden="true">*</span></label>
+          <select id="case-type" name="case_type" required aria-required="true" onchange="handleCaseType(this.value)">
             <option value="" id="opt-select">-- Select a case type --</option>
             <option value="habitability" id="opt-hab">Mold / Habitability</option>
             <option value="personal-injury" id="opt-pi">Personal Injury</option>
@@ -171,12 +171,18 @@
           </label>
         </div>
 
+        <!-- Honeypot: hidden from real users, traps bots -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Leave this blank</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
         <div class="form-submit-area">
           <button type="submit" class="btn btn-primary" id="submit-btn">
             <span class="btn-spinner"></span>
             <span class="btn-label" id="submit-btn-label">Submit</span>
           </button>
-          <p class="form-submit-note" id="submit-note">We'll be in touch if we think we can help.</p>
+          <p class="form-submit-note" id="submit-note">We'll review your information and be in touch soon.</p>
         </div>
       </form>
     </div>
@@ -188,6 +194,7 @@
         <div class="footer-brand">
           <p class="logo-name">Law Office of Caroline Golian</p>
           <p>Caroline Golian, Esq.</p>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,.4);margin-top:4px;">Cal. State Bar No. [STATE BAR # PLACEHOLDER]</p>
           <p style="margin-top:10px;line-height:1.7">Serving Southern California</p>
         </div>
         <div class="footer-col">
@@ -234,7 +241,7 @@
     const translations = {
       en: {
         heading: 'Tell us about your case',
-        subheading: "Please fill out the form below. We'll review your information and if we think this may be a strong case, someone from our office will reach out to you directly.",
+        subheading: "Fill out the form below and we'll review your situation. All consultations are free and there is no obligation to proceed.",
         disclaimer: 'Submitting this form does not create an attorney-client relationship.',
         'label-name': 'Full Name', 'label-phone': 'Phone Number',
         'label-email': 'Email Address', 'label-besttime': 'Best Time to Reach You',
@@ -254,13 +261,13 @@
         'opt-yes2': 'Yes', 'opt-no2': 'No',
         'label-pi-desc': 'Please describe your situation in your own words.',
         'submit-btn': 'Submit',
-        'submit-note': "We'll be in touch if we think we can help.",
+        'submit-note': "We'll review your information and be in touch soon.",
         'consent-legal-text': 'I understand that submitting this form does not create an attorney-client relationship, and that the Law Office of Caroline Golian will use the information I provide solely to evaluate my potential case. I have read the Privacy Policy and Terms of Use.',
         'consent-sms-text': 'I consent to receive text messages from the Law Office of Caroline Golian regarding my inquiry. Message and data rates may apply. Reply STOP to opt out.'
       },
       es: {
         heading: 'Cuéntenos sobre su caso',
-        subheading: 'Por favor complete el formulario a continuación. Revisaremos su información y, si creemos que puede ser un caso sólido, alguien de nuestra oficina se comunicará con usted directamente.',
+        subheading: 'Complete el formulario a continuación y revisaremos su situación. Todas las consultas son gratuitas y sin ninguna obligación de continuar.',
         disclaimer: 'Enviar este formulario no crea una relación abogado-cliente.',
         'label-name': 'Nombre completo', 'label-phone': 'Número de teléfono',
         'label-email': 'Correo electrónico', 'label-besttime': 'Mejor hora para contactarle',
@@ -280,7 +287,7 @@
         'opt-yes2': 'Sí', 'opt-no2': 'No',
         'label-pi-desc': 'Por favor describa su situación con sus propias palabras.',
         'submit-btn': 'Enviar',
-        'submit-note': 'Nos comunicaremos con usted si creemos que podemos ayudarle.',
+        'submit-note': 'Revisaremos su información y nos pondremos en contacto pronto.',
         'consent-legal-text': 'Entiendo que enviar este formulario no crea una relación abogado-cliente, y que el Despacho Jurídico de Caroline Golian utilizará la información que proporcione únicamente para evaluar mi posible caso. He leído la Política de Privacidad y los Términos de Uso.',
         'consent-sms-text': 'Doy mi consentimiento para recibir mensajes de texto del Despacho Jurídico de Caroline Golian sobre mi consulta. Se pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar la suscripción.'
       }

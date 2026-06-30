@@ -8,6 +8,72 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is habitability law?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "California law requires landlords to keep rental properties in a livable condition, including freedom from mold, pests, and other health hazards. When landlords fail, tenants have legal rights."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "My landlord won't fix the mold in my apartment. What can I do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start by sending written notice to your landlord documenting the problem and requesting repairs. Keep copies of everything. If they fail to respond or make repairs, you may have a legal claim."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it cost anything to hire you for a mold or habitability case?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mold and habitability cases are handled on a contingency-fee basis — you pay no attorney fees unless your case resolves in your favor. There is no upfront cost and no fee if there is no recovery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost to hire you for a personal injury case?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Personal injury fee arrangements vary by case. Please contact us to discuss the specifics of your situation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a case take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every case is different. Some settle in a few months, others take longer. We'll give you a realistic timeline once we understand your situation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer consultations in Spanish?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We conduct consultations in English, but a Spanish-language interpreter can be arranged upon request."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What areas do you serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We serve clients throughout Southern California."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div id="scroll-progress" aria-hidden="true"></div>
@@ -88,14 +154,26 @@
           </div>
         </div>
 
-        <div class="faq-item reveal">
+        <div class="faq-item reveal" id="fees">
           <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-            How much does it cost to hire you?
+            Does it cost anything to hire you for a mold or habitability case?
             <span class="faq-icon" aria-hidden="true"></span>
           </button>
           <div class="faq-answer" role="region">
             <div class="faq-answer-inner">
-              Contact us to discuss fee arrangements.
+              Mold and habitability cases are handled on a <strong>contingency-fee basis</strong> — you pay no attorney fees unless your case resolves in your favor. There is no upfront cost and no fee if there is no recovery. If your case settles or results in a judgment, the attorney fee is calculated as a percentage of that recovery.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+            What about fees for personal injury cases?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Personal injury fee arrangements vary by case. Please contact us to discuss the specifics of your situation. We offer free consultations and are happy to explain how fees work before you decide anything.
             </div>
           </div>
         </div>
@@ -140,7 +218,7 @@
 
       <div class="cta-box reveal" style="margin-top:72px;">
         <h3>Still have questions?</h3>
-        <p>The best way to get answers is to speak directly with Caroline. Consultations are free.</p>
+        <p>The best way to get answers is to speak directly with Caroline. All consultations are free, and there is no obligation to proceed.</p>
         <a href="intake.html" class="btn btn-primary">Request a Free Consultation</a>
       </div>
 
@@ -153,6 +231,7 @@
         <div class="footer-brand">
           <p class="logo-name">Law Office of Caroline Golian</p>
           <p>Caroline Golian, Esq.</p>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,.4);margin-top:4px;">Cal. State Bar No. [STATE BAR # PLACEHOLDER]</p>
           <p style="margin-top:10px;line-height:1.7">Serving Southern California</p>
         </div>
         <div class="footer-col">

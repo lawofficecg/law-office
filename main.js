@@ -128,6 +128,7 @@
 
   function animateCounter(el) {
     const target = parseInt(el.dataset.target, 10);
+    const start  = parseInt(el.dataset.start  || '0', 10);
     const prefix = el.dataset.prefix || '';
     const duration = 1800;
     let startTime = null;
@@ -139,7 +140,7 @@
       if (!startTime) startTime = now;
       const elapsed  = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const value    = Math.round(easeOutCubic(progress) * target);
+      const value    = Math.round(start + easeOutCubic(progress) * (target - start));
       el.textContent = prefix + value.toLocaleString();
       if (progress < 1) {
         counterRafs.set(el, requestAnimationFrame(step));
@@ -155,7 +156,8 @@
   function resetCounter(el) {
     if (counterRafs.has(el)) { cancelAnimationFrame(counterRafs.get(el)); counterRafs.delete(el); }
     const prefix = el.dataset.prefix || '';
-    el.textContent = prefix + '0';
+    const start  = parseInt(el.dataset.start || '0', 10);
+    el.textContent = prefix + start.toLocaleString();
   }
 
   if (counterEls.length && 'IntersectionObserver' in window) {
@@ -286,6 +288,10 @@
 
     /* ── SUBMIT LOADING STATE ── */
     intakeForm.addEventListener('submit', (e) => {
+      /* Honeypot check — bots fill hidden fields */
+      const hp = document.getElementById('website');
+      if (hp && hp.value) { e.preventDefault(); return; }
+
       /* Validate all required fields */
       let valid = true;
       Object.keys(validations).forEach(id => {

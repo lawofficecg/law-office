@@ -4,10 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Law Office of Caroline Golian | Habitability Law &amp; Personal Injury | Southern California</title>
-  <meta name="description" content="Caroline Golian, Esq. represents tenants in habitability and mold cases, and individuals injured in accidents throughout Southern California. Free consultations." />
+  <meta name="description" content="Caroline Golian, Esq. represents tenants in mold and habitability cases on contingency, and individuals injured in accidents throughout Southern California. Free consultations." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- JSON-LD: Attorney / LegalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Law Office of Caroline Golian",
+    "url": "https://lawofficecg.github.io/law-office/",
+    "logo": "https://lawofficecg.github.io/law-office/logo.png",
+    "description": "Tenant rights attorney representing clients in mold, habitability, and personal injury cases throughout Southern California.",
+    "areaServed": {
+      "@type": "State",
+      "name": "California"
+    },
+    "serviceType": ["Habitability Law", "Mold Cases", "Personal Injury"],
+    "priceRange": "Free consultation",
+    "attorney": {
+      "@type": "Attorney",
+      "name": "Caroline Golian",
+      "honorificSuffix": "Esq.",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "University of La Verne College of Law"
+      },
+      "memberOf": {
+        "@type": "Organization",
+        "name": "State Bar of California",
+        "identifier": "[STATE BAR # PLACEHOLDER]"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
   <div id="scroll-progress" aria-hidden="true"></div>
@@ -43,17 +75,90 @@
 
   <!-- HERO -->
   <section class="hero" id="main-content">
+    <!-- Decorative background layers -->
     <div class="hero-grain" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <span class="hero-eyebrow">Southern California Tenant &amp; Injury Attorney</span>
-      <h1 class="word-split">Your home should be safe. Your rights should be protected.</h1>
-      <p>When landlords fail their tenants, and when accidents leave you injured, you deserve an attorney who will fight to make it right.</p>
-      <div class="hero-actions">
-        <a href="intake.html" class="btn btn-primary btn-magnetic">Request a Free Consultation</a>
-        <a href="practice-areas.html" class="btn btn-outline btn-magnetic">Our Practice Areas</a>
+
+    <!-- Floating legal motifs -->
+    <div class="legal-motifs" aria-hidden="true">
+      <!-- Scales of justice — largest, primary -->
+      <svg class="motif motif-scales" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="50" y1="8" x2="50" y2="92"/>
+        <line x1="20" y1="20" x2="80" y2="20"/>
+        <line x1="20" y1="20" x2="8" y2="46"/>
+        <line x1="20" y1="20" x2="32" y2="46"/>
+        <path d="M6 46 Q20 52 34 46"/>
+        <line x1="80" y1="20" x2="68" y2="46"/>
+        <line x1="80" y1="20" x2="92" y2="46"/>
+        <path d="M66 46 Q80 52 94 46"/>
+        <rect x="40" y="88" width="20" height="4" rx="1"/>
+        <circle cx="50" cy="18" r="3"/>
+      </svg>
+
+      <!-- Gavel -->
+      <svg class="motif motif-gavel" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="36" height="16" rx="4" transform="rotate(-45 28 38)"/>
+        <rect x="28" y="14" width="14" height="10" rx="2" transform="rotate(-45 35 19)"/>
+        <line x1="36" y1="44" x2="62" y2="70"/>
+        <line x1="14" y1="66" x2="66" y2="66"/>
+      </svg>
+
+      <!-- Law book -->
+      <svg class="motif motif-book" viewBox="0 0 70 80" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="8" width="50" height="64" rx="3"/>
+        <line x1="18" y1="8" x2="18" y2="72"/>
+        <line x1="24" y1="20" x2="52" y2="20"/>
+        <line x1="24" y1="30" x2="52" y2="30"/>
+        <line x1="24" y1="40" x2="52" y2="40"/>
+        <line x1="24" y1="50" x2="42" y2="50"/>
+      </svg>
+
+      <!-- Classical column / pillar -->
+      <svg class="motif motif-column" viewBox="0 0 40 100" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="6" width="32" height="6" rx="1"/>
+        <rect x="4" y="88" width="32" height="6" rx="1"/>
+        <line x1="10" y1="12" x2="10" y2="88"/>
+        <line x1="20" y1="12" x2="20" y2="88"/>
+        <line x1="30" y1="12" x2="30" y2="88"/>
+        <rect x="2" y="2" width="36" height="4" rx="1"/>
+      </svg>
+
+      <!-- Legal document -->
+      <svg class="motif motif-doc" viewBox="0 0 60 76" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 4 h36 l8 8 v60 H8 V4z"/>
+        <path d="M44 4 v8 h8"/>
+        <line x1="16" y1="24" x2="44" y2="24"/>
+        <line x1="16" y1="34" x2="44" y2="34"/>
+        <line x1="16" y1="44" x2="44" y2="44"/>
+        <line x1="16" y1="54" x2="34" y2="54"/>
+      </svg>
+
+      <!-- Fountain pen -->
+      <svg class="motif motif-pen" viewBox="0 0 24 80" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 4 L18 18 L18 58 Q18 62 12 66 Q6 62 6 58 L6 18 Z"/>
+        <line x1="6" y1="30" x2="18" y2="30"/>
+        <path d="M12 66 L9 74 L12 70 L15 74 Z"/>
+      </svg>
+    </div>
+
+    <!-- Hero content — asymmetric two-column layout -->
+    <div class="hero-inner hero-inner-split">
+      <div class="hero-text">
+        <span class="hero-eyebrow">Southern California Tenant &amp; Injury Attorney</span>
+        <h1 class="word-split">When your landlord lets mold take over your home, you have more options than you think.</h1>
+        <p>Caroline Golian represents tenants in mold and habitability cases — on contingency, so you pay nothing unless your case resolves. She also represents individuals injured through no fault of their own.</p>
+        <p class="hero-contingency-note">Mold &amp; habitability cases: no fee unless you recover. <a href="faq.html#fees">Learn about fees &rarr;</a></p>
+        <div class="hero-actions">
+          <a href="intake.html" class="btn btn-primary btn-magnetic">Request a Free Consultation</a>
+          <a href="practice-areas.html" class="btn btn-outline btn-magnetic">Our Practice Areas</a>
+        </div>
+      </div>
+      <div class="hero-portrait-wrap" aria-hidden="true">
+        <div class="hero-portrait-placeholder">
+          <span>[Portrait of Caroline — coming soon]</span>
+        </div>
       </div>
     </div>
   </section>
@@ -67,20 +172,21 @@
         <p class="results-label">Results for our clients</p>
         <div class="results-list stagger">
           <div class="result-item reveal">
-            <span class="result-amount" data-target="475000" data-prefix="$">$0</span>
+            <span class="result-amount" data-target="475000" data-start="50000" data-prefix="$">$50,000</span>
             <span class="result-desc">Confidential settlement, mold habitability case</span>
+            <span class="result-disclaimer">Past results do not guarantee a similar outcome in your case.</span>
           </div>
           <div class="result-item reveal">
-            <span class="result-amount" data-target="210000" data-prefix="$">$0</span>
+            <span class="result-amount" data-target="210000" data-start="50000" data-prefix="$">$50,000</span>
             <span class="result-desc">Confidential settlement, mold habitability case</span>
+            <span class="result-disclaimer">Past results do not guarantee a similar outcome in your case.</span>
           </div>
-          <p class="results-note">Past results do not guarantee a similar outcome in your case.</p>
         </div>
       </div>
       <div class="reveal">
         <p class="results-tagline">
-          <strong>Contact us to discuss fee arrangements.</strong>
-          <span class="consult-line">Free consultations available by phone or Zoom.</span>
+          <strong>Mold &amp; habitability cases taken on contingency.</strong>
+          <span class="consult-line">You pay nothing unless your case resolves. Free consultations by phone or Zoom.</span>
           <a href="intake.html" class="btn btn-consult">Request a Free Consultation</a>
         </p>
       </div>
@@ -93,15 +199,15 @@
   <section class="practice-preview">
     <div class="container">
       <span class="section-label reveal">What We Do</span>
-      <h2 class="section-heading word-split">Focused. Dedicated. On your side.</h2>
-      <p class="section-subheading reveal">We represent tenants living in unsafe conditions and individuals injured by the negligence of others throughout Southern California.</p>
+      <h2 class="section-heading word-split">Tenants deserve safe homes. Injured people deserve real representation.</h2>
+      <p class="section-subheading reveal">We represent tenants living in uninhabitable conditions and individuals injured by someone else's negligence throughout Southern California.</p>
       <div class="cards-grid stagger">
         <div class="practice-card tilt-card reveal">
           <div class="practice-card-icon">
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           </div>
           <h3>Habitability Law</h3>
-          <p>California law requires landlords to maintain safe, livable conditions. When they fail to maintain safe conditions (mold, water damage, pest infestations, dangerous conditions), tenants have rights. We help them use those rights.</p>
+          <p>Mold, water damage, pests, broken heat — California law requires landlords to keep rental homes livable. When they don't, tenants have legal options. We take these cases on contingency: no fee unless you recover.</p>
           <a href="practice-areas.html#habitability" class="btn btn-outline-green" aria-label="Learn more about Habitability Law">Learn More</a>
         </div>
         <div class="practice-card tilt-card reveal">
@@ -109,7 +215,7 @@
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
           </div>
           <h3>Personal Injury</h3>
-          <p>When someone else's negligence causes you harm, you shouldn't bear the financial burden alone. We pursue compensation for medical bills, lost wages, pain and suffering, and more.</p>
+          <p>When someone else's negligence causes you harm, you shouldn't bear the financial burden alone. We pursue compensation for medical bills, lost wages, pain and suffering, and more. Contact us to discuss fee arrangements.</p>
           <a href="practice-areas.html#personal-injury" class="btn btn-outline-green" aria-label="Learn more about Personal Injury">Learn More</a>
         </div>
       </div>
@@ -187,7 +293,7 @@
   <section class="bottom-cta">
     <div class="container reveal">
       <h2>Ready to talk about your case?</h2>
-      <p>We offer free consultations by phone or Zoom. If we believe you have a case, we'll reach out to discuss next steps.</p>
+      <p>We offer free consultations by phone or Zoom. Tell us what's going on and we'll give you an honest picture of your options.</p>
       <a href="intake.html" class="btn btn-primary">Request a Free Consultation</a>
     </div>
   </section>
@@ -199,6 +305,7 @@
         <div class="footer-brand">
           <p class="logo-name">Law Office of Caroline Golian</p>
           <p>Caroline Golian, Esq.</p>
+          <p style="margin-top:4px;font-size:0.78rem;color:rgba(255,255,255,.4);">Cal. State Bar No. [STATE BAR # PLACEHOLDER]</p>
           <p style="margin-top:10px;line-height:1.7">Serving Southern California</p>
         </div>
         <div class="footer-col">
