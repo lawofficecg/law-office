@@ -651,84 +651,85 @@ section    { padding: var(--section-v) 24px; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 0;   /* behind hero-inner which is z-index: 1 */
   overflow: hidden;
 }
 .motif {
   position: absolute;
   color: var(--accent);
-  opacity: 0.07;
+  opacity: 0.055;
   will-change: transform;
+  pointer-events: none;
 }
 
-/* Scales of justice — large, upper-right */
+/* Scales of justice — slightly larger than the rest, upper-right */
 .motif-scales {
-  width: 220px; height: 220px;
-  top: -20px; right: 8%;
-  animation: motif-drift-1 28s ease-in-out infinite;
+  width: 52px; height: 52px;
+  top: 14%; right: 12%;
+  animation: motif-drift-1 30s ease-in-out infinite;
 }
-/* Gavel — mid-right */
+/* Gavel — lower-right area */
 .motif-gavel {
-  width: 100px; height: 100px;
-  top: 55%; right: 18%;
-  opacity: 0.055;
-  animation: motif-drift-2 22s ease-in-out infinite;
+  width: 36px; height: 36px;
+  bottom: 22%; right: 22%;
+  opacity: 0.042;
+  animation: motif-drift-2 24s ease-in-out infinite;
 }
 /* Book — lower-left */
 .motif-book {
-  width: 90px; height: 100px;
-  bottom: 12%; left: 6%;
-  opacity: 0.06;
-  animation: motif-drift-3 32s ease-in-out infinite;
+  width: 32px; height: 36px;
+  bottom: 18%; left: 8%;
+  opacity: 0.048;
+  animation: motif-drift-3 34s ease-in-out infinite;
 }
-/* Column — far left mid */
+/* Column — far left, mid-height */
 .motif-column {
-  width: 52px; height: 130px;
-  top: 20%; left: 2%;
-  opacity: 0.05;
-  animation: motif-drift-4 40s ease-in-out infinite;
+  width: 20px; height: 50px;
+  top: 30%; left: 3%;
+  opacity: 0.038;
+  animation: motif-drift-4 42s ease-in-out infinite;
 }
-/* Document — upper-left area */
+/* Document — upper area, behind headline */
 .motif-doc {
-  width: 80px; height: 100px;
-  top: 10%; left: 28%;
-  opacity: 0.045;
-  animation: motif-drift-5 36s ease-in-out infinite;
+  width: 28px; height: 36px;
+  top: 12%; left: 42%;
+  opacity: 0.035;
+  animation: motif-drift-5 38s ease-in-out infinite;
 }
-/* Pen — lower-right */
+/* Pen — mid-right */
 .motif-pen {
-  width: 28px; height: 90px;
-  bottom: 8%; right: 32%;
-  opacity: 0.055;
-  animation: motif-drift-6 25s ease-in-out infinite;
+  width: 14px; height: 42px;
+  top: 52%; right: 6%;
+  opacity: 0.04;
+  animation: motif-drift-6 27s ease-in-out infinite;
 }
 
 @keyframes motif-drift-1 {
-  0%, 100% { transform: translateY(0px)    rotate(-4deg); }
-  40%       { transform: translateY(-18px)  rotate(-1deg); }
-  70%       { transform: translateY(10px)   rotate(-6deg); }
+  0%, 100% { transform: translateY(0px)   rotate(-3deg); }
+  40%       { transform: translateY(-14px) rotate(0deg);  }
+  70%       { transform: translateY(8px)   rotate(-5deg); }
 }
 @keyframes motif-drift-2 {
-  0%, 100% { transform: translateY(0px)    rotate(8deg); }
-  35%       { transform: translateY(-12px)  rotate(12deg); }
-  65%       { transform: translateY(8px)    rotate(5deg); }
+  0%, 100% { transform: translateY(0px)   rotate(6deg);  }
+  35%       { transform: translateY(-10px) rotate(10deg); }
+  65%       { transform: translateY(6px)   rotate(4deg);  }
 }
 @keyframes motif-drift-3 {
-  0%, 100% { transform: translateY(0px)    rotate(-6deg); }
-  50%       { transform: translateY(-14px)  rotate(-3deg); }
+  0%, 100% { transform: translateY(0px)   rotate(-5deg); }
+  50%       { transform: translateY(-12px) rotate(-2deg); }
 }
 @keyframes motif-drift-4 {
-  0%, 100% { transform: translateY(0px)    rotate(3deg); }
-  30%       { transform: translateY(-20px)  rotate(0deg); }
-  60%       { transform: translateY(8px)    rotate(5deg); }
+  0%, 100% { transform: translateY(0px)   rotate(2deg);  }
+  30%       { transform: translateY(-16px) rotate(0deg);  }
+  60%       { transform: translateY(6px)   rotate(4deg);  }
 }
 @keyframes motif-drift-5 {
-  0%, 100% { transform: translateY(0px)    rotate(2deg); }
-  45%       { transform: translateY(-10px)  rotate(-2deg); }
+  0%, 100% { transform: translateY(0px)   rotate(1deg);  }
+  45%       { transform: translateY(-8px)  rotate(-1deg); }
 }
 @keyframes motif-drift-6 {
-  0%, 100% { transform: translateY(0px)    rotate(-12deg); }
-  55%       { transform: translateY(-16px)  rotate(-8deg); }
+  0%, 100% { transform: translateY(0px)   rotate(-10deg); }
+  55%       { transform: translateY(-12px) rotate(-6deg);  }
 }
 
 @media (prefers-reduced-motion: reduce) {
