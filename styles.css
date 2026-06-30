@@ -672,23 +672,8 @@ section    { padding: var(--section-v) 24px; }
   pointer-events: none;
 }
 
-/* ── Individual motif positions, sizes, opacities, animations ── */
-/* Each uses a unique drift keyframe + animation-delay so nothing moves in sync */
-
-.motif-a { width:60px; height:60px; top:8%;  left:6%;  opacity:.09; animation: md1 28s ease-in-out -3s  infinite; }
-.motif-b { width:40px; height:40px; top:18%; left:22%; opacity:.07; animation: md2 22s ease-in-out -8s  infinite; }
-.motif-c { width:72px; height:72px; top:10%; left:52%; opacity:.08; animation: md3 35s ease-in-out -1s  infinite; }
-.motif-d { width:36px; height:36px; top:6%;  right:8%; opacity:.10; animation: md4 19s ease-in-out -12s infinite; }
-.motif-e { width:54px; height:54px; top:40%; left:3%;  opacity:.07; animation: md5 31s ease-in-out -5s  infinite; }
-.motif-f { width:44px; height:44px; top:35%; left:35%; opacity:.06; animation: md6 26s ease-in-out -17s infinite; }
-.motif-g { width:68px; height:68px; top:30%; right:5%; opacity:.09; animation: md1 33s ease-in-out -9s  infinite; }
-.motif-h { width:32px; height:32px; top:55%; left:18%; opacity:.08; animation: md2 20s ease-in-out -6s  infinite; }
-.motif-i { width:50px; height:50px; top:60%; left:48%; opacity:.07; animation: md3 29s ease-in-out -14s infinite; }
-.motif-j { width:38px; height:38px; top:50%; right:18%; opacity:.09; animation: md4 24s ease-in-out -2s  infinite; }
-.motif-k { width:26px; height:26px; top:75%; left:8%;  opacity:.08; animation: md5 37s ease-in-out -20s infinite; }
-.motif-l { width:56px; height:56px; top:70%; left:30%; opacity:.07; animation: md6 23s ease-in-out -10s infinite; }
-.motif-m { width:42px; height:42px; top:72%; right:12%; opacity:.09; animation: md1 27s ease-in-out -4s  infinite; }
-.motif-n { width:30px; height:30px; top:22%; right:30%; opacity:.07; animation: md3 41s ease-in-out -16s infinite; }
+/* All 48 motifs use inline styles for position/size/opacity/duration/delay.
+   Only the base .motif class and 6 shared keyframes are needed here. */
 
 /* 6 unique drift keyframes — mix of float + gentle rotate */
 @keyframes md1 {
@@ -1816,30 +1801,9 @@ section    { padding: var(--section-v) 24px; }
   }
 }
 
-/* ── Hero floating orbs ── */
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  will-change: transform;
-}
-.hero-orb-1 {
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(154,136,120,.14) 0%, transparent 70%);
-  top: -120px; right: -80px;
-  animation: orb-float-1 14s ease-in-out infinite;
-}
-.hero-orb-2 {
-  width: 280px; height: 280px;
-  background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 70%);
-  bottom: -60px; left: 30%;
-  animation: orb-float-2 18s ease-in-out infinite;
-}
-.hero-orb-3 {
-  width: 180px; height: 180px;
-  background: radial-gradient(circle, rgba(154,136,120,.1) 0%, transparent 70%);
-  top: 40%; left: 60%;
-  animation: orb-float-3 11s ease-in-out infinite;
+/* Hero orbs removed — elements deleted from HTML */
+.hero-orb { display: none; }
+.hero-orb-1, .hero-orb-2, .hero-orb-3 { display: none;
 }
 
 @keyframes orb-float-1 {
