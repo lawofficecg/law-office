@@ -1189,6 +1189,18 @@ section    { padding: var(--section-v) 24px; }
   top: 96px;
   background: transparent;
 }
+/* .pa-text carries the reveal-left/reveal-right entrance animation, which
+   leaves a non-"none" transform (translateX(0) / its identity matrix) in
+   place even after the element becomes visible. A transform on an
+   ancestor is a well-known cross-browser footgun for position:sticky
+   descendants (Safari in particular will stop the sticky .section-label
+   above from sticking at all, so it just scrolls away with the page).
+   Clearing it once revealed removes the conflict; the transition still
+   animates identically since browsers interpolate transform <-> none. */
+.pa-text.reveal-left.visible,
+.pa-text.reveal-right.visible {
+  transform: none;
+}
 
 .pa-icon {
   width: 72px; height: 72px;
