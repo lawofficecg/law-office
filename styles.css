@@ -1541,3 +1541,70 @@ section    { padding: var(--section-v) 24px; }
   .float-group label { top: 16px; }
   .pa-icon { width: 60px; height: 60px; }
 }
+
+/* ===== SKIP LINK ===== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--green);
+  color: var(--surface);
+  padding: 8px 16px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  z-index: 10000;
+  transition: top .15s;
+}
+.skip-link:focus { top: 0; }
+
+/* ===== LEGAL PROSE (privacy, terms, accessibility pages) ===== */
+.legal-prose h2 {
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  margin-top: 40px;
+  margin-bottom: 12px;
+  color: var(--green);
+}
+.legal-prose h2:first-child { margin-top: 0; }
+.legal-prose p { color: var(--text-muted); line-height: 1.8; }
+.legal-prose ul {
+  padding-left: 1.4em;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.legal-prose ul li { margin-bottom: 4px; }
+.legal-prose a { color: var(--green); text-decoration: underline; }
+.legal-prose a:hover { color: var(--accent); }
+
+/* ===== ACCENT TEXT — darkened for WCAG AA contrast on body text uses ===== */
+:root { --accent-text: #7A6858; }
+.testimonial-label { color: var(--accent-text); }
+.results-tagline .consult-line { color: var(--accent-text); }
+
+/* ===== CONSENT CHECKBOXES (intake form) ===== */
+.consent-group {
+  margin-bottom: 20px;
+}
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.consent-label input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+.consent-label a {
+  color: var(--green);
+  text-decoration: underline;
+}
+.consent-label a:hover { color: var(--accent); }

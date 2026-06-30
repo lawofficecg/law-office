@@ -10,12 +10,13 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="page-overlay"></div>
 
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-logo">
-        <img src="logo.png" alt="Law Office of Caroline Golian" />
+        <img src="logo.png" alt="Law Office of Caroline Golian logo" />
         <span class="logo-text">
           <span class="logo-name">Law Office of Caroline Golian</span>
           <span class="logo-subtitle">Attorney at Law</span>
@@ -36,7 +37,7 @@
     </div>
   </header>
 
-  <section class="page-hero">
+  <section class="page-hero" id="main-content">
     <div class="container">
       <h1 id="page-heading">Tell us about your case</h1>
       <p id="page-subheading">Please fill out the form below. We'll review your information and if we think this may be a strong case, someone from our office will reach out to you directly.</p>
@@ -102,7 +103,7 @@
           <h4 style="font-family:var(--font-serif);color:var(--green);margin-bottom:20px;font-size:1.05rem;" id="hab-section-title">Additional Information, Habitability</h4>
 
           <div class="form-group">
-            <label id="label-written-notice">Have you given written notice to your landlord about the issue?</label>
+            <label for="written-notice" id="label-written-notice">Have you given written notice to your landlord about the issue?</label>
             <select name="written_notice" id="written-notice">
               <option value="">-- Select --</option>
               <option value="yes" id="opt-yes1">Yes</option>
@@ -140,7 +141,7 @@
             <input type="date" id="incident-date" name="incident_date" />
           </div>
           <div class="form-group">
-            <label id="label-medical-treatment">Have you received medical treatment?</label>
+            <label for="medical-treatment" id="label-medical-treatment">Have you received medical treatment?</label>
             <select name="medical_treatment" id="medical-treatment">
               <option value="">-- Select --</option>
               <option value="yes" id="opt-yes2">Yes</option>
@@ -151,6 +152,20 @@
             <label for="pi-description" id="label-pi-desc">Please describe your situation in your own words.</label>
             <textarea id="pi-description" name="pi_description" rows="5"></textarea>
           </div>
+        </div>
+
+        <div class="form-group consent-group">
+          <label class="consent-label">
+            <input type="checkbox" id="consent-legal" name="consent_legal" required />
+            <span id="consent-legal-text">I understand that submitting this form does not create an attorney-client relationship, and that the Law Office of Caroline Golian will use the information I provide solely to evaluate my potential case. I have read the <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.</span>
+          </label>
+        </div>
+
+        <div class="form-group consent-group">
+          <label class="consent-label">
+            <input type="checkbox" id="consent-sms" name="consent_sms" />
+            <span id="consent-sms-text">I consent to receive text messages from the Law Office of Caroline Golian regarding my inquiry. Message and data rates may apply. Reply STOP to opt out.</span>
+          </label>
         </div>
 
         <div class="form-submit-area">
@@ -181,6 +196,9 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="resources.html">Resources</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Use</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
           </ul>
         </div>
         <div class="footer-col footer-contact">
@@ -195,7 +213,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Law Office of Caroline Golian. All rights reserved.</p>
-        <p>Southern California, Remote</p>
+        <p>Serving Southern California</p>
       </div>
       <p class="footer-disclaimer">The information on this website is for general informational purposes only and does not constitute legal advice. Viewing this website or contacting our office does not create an attorney-client relationship.</p>
     </div>
@@ -233,7 +251,9 @@
         'opt-yes2': 'Yes', 'opt-no2': 'No',
         'label-pi-desc': 'Please describe your situation in your own words.',
         'submit-btn': 'Submit',
-        'submit-note': "We'll be in touch if we think we can help."
+        'submit-note': "We'll be in touch if we think we can help.",
+        'consent-legal-text': 'I understand that submitting this form does not create an attorney-client relationship, and that the Law Office of Caroline Golian will use the information I provide solely to evaluate my potential case. I have read the Privacy Policy and Terms of Use.',
+        'consent-sms-text': 'I consent to receive text messages from the Law Office of Caroline Golian regarding my inquiry. Message and data rates may apply. Reply STOP to opt out.'
       },
       es: {
         heading: 'Cuéntenos sobre su caso',
@@ -257,7 +277,9 @@
         'opt-yes2': 'Sí', 'opt-no2': 'No',
         'label-pi-desc': 'Por favor describa su situación con sus propias palabras.',
         'submit-btn': 'Enviar',
-        'submit-note': 'Nos comunicaremos con usted si creemos que podemos ayudarle.'
+        'submit-note': 'Nos comunicaremos con usted si creemos que podemos ayudarle.',
+        'consent-legal-text': 'Entiendo que enviar este formulario no crea una relación abogado-cliente, y que el Despacho Jurídico de Caroline Golian utilizará la información que proporcione únicamente para evaluar mi posible caso. He leído la Política de Privacidad y los Términos de Uso.',
+        'consent-sms-text': 'Doy mi consentimiento para recibir mensajes de texto del Despacho Jurídico de Caroline Golian sobre mi consulta. Se pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar la suscripción.'
       }
     };
 
@@ -272,7 +294,7 @@
         const el = document.getElementById(key);
         if (!el) return;
         if (el.tagName === 'OPTION') { el.textContent = t[key]; return; }
-        if (['BUTTON','LABEL','H4','P'].includes(el.tagName)) el.textContent = t[key];
+        if (['BUTTON','LABEL','H4','P','SPAN'].includes(el.tagName)) el.textContent = t[key];
       });
     }
   </script>

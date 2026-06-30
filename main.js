@@ -223,6 +223,7 @@
       if (!msgEl) {
         msgEl = document.createElement('p');
         msgEl.className = 'field-message';
+        msgEl.setAttribute('role', 'alert');
         group.appendChild(msgEl);
       }
 
@@ -289,6 +290,28 @@
         const input = document.getElementById(id);
         if (input && !validateField(input)) valid = false;
       });
+
+      /* Validate required consent checkbox */
+      const consentLegal = document.getElementById('consent-legal');
+      if (consentLegal && !consentLegal.checked) {
+        valid = false;
+        const group = consentLegal.closest('.form-group');
+        if (group) {
+          group.classList.add('field-error');
+          let msgEl = group.querySelector('.field-message');
+          if (!msgEl) {
+            msgEl = document.createElement('p');
+            msgEl.className = 'field-message';
+            msgEl.setAttribute('role', 'alert');
+            group.appendChild(msgEl);
+          }
+          msgEl.textContent = 'You must agree to the terms before submitting.';
+        }
+      } else if (consentLegal) {
+        const group = consentLegal.closest('.form-group');
+        if (group) group.classList.remove('field-error');
+      }
+
       if (!valid) {
         e.preventDefault();
         /* Focus first error */
