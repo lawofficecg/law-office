@@ -1692,8 +1692,12 @@ section    { padding: var(--section-v) 24px; }
 @media (max-width: 960px) {
   .about-grid { grid-template-columns: 1fr; }
   .about-sidebar { position: static; }
+  /* On mobile, the practice-area description should always read before the
+     sidebar's quick-facts/results boxes — without this, the aside (which
+     comes first in HTML source for both sections) shows ahead of the
+     actual "Habitability Law"/"Personal Injury" heading and copy. */
   .pa-inner, .pa-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
-  .pa-inner.reverse .pa-text { order: 0; }
+  .pa-inner .pa-text, .pa-inner.reverse .pa-text { order: -1; }
   .pa-text .section-label { position: static; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
 }
