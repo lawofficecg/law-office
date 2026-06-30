@@ -216,6 +216,23 @@
   });
 
   /* ── INLINE FORM VALIDATION ── */
+  /* ── INTAKE FORM SUBMISSION CONFIG ──
+     The intake form POSTs to Web3Forms (api.web3forms.com) — a hosted form
+     backend chosen specifically because it supports a dynamically
+     interpolated email subject (via {full_name}/{case_type} placeholders)
+     without a paid plan, keeps the destination inbox private (you never
+     put an email address in the frontend, only an access key), and never
+     requires frontend JS to talk to an SMTP/email API directly.
+     ACCESS_KEY is intentionally blank. A Web3Forms access key is designed
+     to be public/client-side (like a Stripe publishable key) — it only
+     identifies which inbox a submission routes to in their dashboard and
+     is not a secret credential. It is left blank here so the form stays
+     inert until the office provides the real key. */
+  const INTAKE_FORM_CONFIG = {
+    endpoint: 'https://api.web3forms.com/submit',
+    accessKey: '', // TODO: paste the Web3Forms access key here once issued
+  };
+
   const intakeForm = document.getElementById('intake-form');
   if (intakeForm) {
     const validations = {
@@ -296,11 +313,26 @@
       if (el) el.addEventListener('change', updateProgress);
     });
 
-    /* ── SUBMIT LOADING STATE ── */
+    /* ── SUBMIT: validate, then POST to the form backend via fetch ── */
+    const resultMsgEl = document.getElementById('form-result-message');
+    const SUCCESS_MESSAGE = "Thank you. Your inquiry has been received. Submitting this form does not create an attorney-client relationship. Our office will review the information provided and respond if appropriate.";
+    const ERROR_MESSAGE   = "Your message could not be submitted. Please contact the office directly.";
+
+    function showResultMessage(kind, text) {
+      if (!resultMsgEl) return;
+      resultMsgEl.hidden = false;
+      resultMsgEl.textContent = text;
+      resultMsgEl.classList.remove('success', 'error');
+      resultMsgEl.classList.add(kind);
+      resultMsgEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
     intakeForm.addEventListener('submit', (e) => {
-      /* Honeypot check — bots fill hidden fields */
+      e.preventDefault();
+
+      /* Honeypot check — bots fill hidden fields; silently no-op */
       const hp = document.getElementById('website');
-      if (hp && hp.value) { e.preventDefault(); return; }
+      if (hp && hp.value) return;
 
       /* Validate all required fields */
       let valid = true;
@@ -331,19 +363,53 @@
       }
 
       if (!valid) {
-        e.preventDefault();
         /* Focus first error */
         const firstErr = intakeForm.querySelector('.field-error input, .field-error select');
         if (firstErr) firstErr.focus();
         return;
       }
 
-      const btn = document.getElementById('submit-btn');
-      if (btn) {
-        btn.classList.add('loading');
-        /* Restore after 4s in case mailto opens */
-        setTimeout(() => btn.classList.remove('loading'), 4000);
+      /* Online submission is intentionally inactive until a real provider
+         access key is configured (see INTAKE_FORM_CONFIG above). Surface
+         the existing inactive notice rather than attempting a request. */
+      if (!INTAKE_FORM_CONFIG.endpoint || !INTAKE_FORM_CONFIG.accessKey) {
+        const notice = document.getElementById('form-inactive-notice');
+        if (notice) notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
       }
+
+      /* Build the dynamic subject: "[Full Name] submitted a [Case Type] intake form" */
+      const fullName = document.getElementById('full-name').value.trim();
+      const caseType = document.getElementById('case-type').value.trim();
+      const subjectEl = document.getElementById('email-subject');
+      if (subjectEl) subjectEl.value = `${fullName} submitted a ${caseType} intake form`;
+
+      const accessKeyEl = document.getElementById('access-key');
+      if (accessKeyEl) accessKeyEl.value = INTAKE_FORM_CONFIG.accessKey;
+
+      const submittedAtEl = document.getElementById('submitted-at');
+      if (submittedAtEl) submittedAtEl.value = new Date().toLocaleString('en-US', { timeZoneName: 'short' });
+
+      const btn = document.getElementById('submit-btn');
+      if (btn) btn.classList.add('loading');
+
+      fetch(INTAKE_FORM_CONFIG.endpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(intakeForm),
+      })
+        .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+        .then(({ ok, data }) => {
+          if (ok && data && data.success !== false) {
+            showResultMessage('success', SUCCESS_MESSAGE);
+            intakeForm.reset();
+            if (progressBar) progressBar.style.width = '0%';
+          } else {
+            showResultMessage('error', ERROR_MESSAGE);
+          }
+        })
+        .catch(() => showResultMessage('error', ERROR_MESSAGE))
+        .finally(() => { if (btn) btn.classList.remove('loading'); });
     });
   }
 
