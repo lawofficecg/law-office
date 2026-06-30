@@ -212,14 +212,24 @@ section    { padding: var(--section-v) 24px; }
   background: var(--green);
   color: var(--surface);
   border-color: var(--green);
-  box-shadow: 0 2px 8px rgba(44,74,62,.25);
+  box-shadow: 0 2px 8px rgba(44,74,62,.25), 0 0 12px 2px rgba(154,136,120,.35);
+  /* gentle, premium pulsing glow in the taupe/cream accent */
+  animation: btn-primary-glow 3s var(--ease-in-out) infinite;
 }
 .btn-primary:hover {
   background: var(--green-dark);
   border-color: var(--green-dark);
   color: var(--surface);
-  box-shadow: 0 6px 20px rgba(44,74,62,.32);
+  box-shadow: 0 6px 20px rgba(44,74,62,.32), 0 0 22px 5px rgba(181,165,151,.55);
   transform: translateY(-2px);
+  animation: none !important;
+}
+@keyframes btn-primary-glow {
+  0%, 100% { box-shadow: 0 2px 8px rgba(44,74,62,.25), 0 0 12px 2px rgba(154,136,120,.35); }
+  50%      { box-shadow: 0 2px 8px rgba(44,74,62,.25), 0 0 22px 6px rgba(181,165,151,.6); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary { animation: none; }
 }
 
 .btn-outline {
@@ -850,14 +860,24 @@ section    { padding: var(--section-v) 24px; }
   padding: 16px 36px;
   font-weight: 700;
   letter-spacing: .1em;
-  box-shadow: 0 4px 18px rgba(0,0,0,.25);
+  box-shadow: 0 4px 18px rgba(0,0,0,.25), 0 0 14px 3px rgba(154,136,120,.45);
+  /* gentle, premium pulsing glow in the taupe/cream accent */
+  animation: btn-consult-glow 3s var(--ease-in-out) infinite;
 }
 .results-tagline .btn-consult:hover {
   background: #fff;
   border-color: #fff;
   color: var(--green-dark);
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,.3), 0 0 26px 7px rgba(181,165,151,.7);
+  animation: none !important;
+}
+@keyframes btn-consult-glow {
+  0%, 100% { box-shadow: 0 4px 18px rgba(0,0,0,.25), 0 0 14px 3px rgba(154,136,120,.45); }
+  50%      { box-shadow: 0 4px 18px rgba(0,0,0,.25), 0 0 26px 7px rgba(181,165,151,.7); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .results-tagline .btn-consult { animation: none; }
 }
 
 /* ===== PRACTICE CARDS ===== */
