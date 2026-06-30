@@ -619,6 +619,17 @@ section    { padding: var(--section-v) 24px; }
   align-items: center;
 }
 .hero-text { max-width: 660px; }
+
+/* ── Hero centered (single column, no portrait) ── */
+.hero-inner-centered {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-inner-centered .hero-text { max-width: 100%; }
+.hero-inner-centered .hero p,
+.hero-inner-centered .hero-contingency-note { margin-left: auto; margin-right: auto; }
+.hero-inner-centered .hero-actions { justify-content: center; }
 .hero-contingency-note {
   font-size: 0.82rem;
   color: rgba(255,255,255,.68);
