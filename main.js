@@ -119,35 +119,58 @@
     document.querySelectorAll('.section-label').forEach(el => el.classList.add('visible'));
   }
 
-  /* ── COUNTER ANIMATION ── */
+  /* ── COUNTER ANIMATION — resets to 0 on leave, replays on re-enter ── */
   const counterEls = document.querySelectorAll('[data-target]');
-  if (counterEls.length && !prefersReduced && 'IntersectionObserver' in window) {
-    const counterObs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        counterObs.unobserve(entry.target);
-        animateCounter(entry.target);
-      });
-    }, { threshold: 0.5 });
-    counterEls.forEach(el => counterObs.observe(el));
-  }
+  /* Track active rAF id per element so we can cancel in-flight animations */
+  const counterRafs = new WeakMap();
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
 
   function animateCounter(el) {
-    const target   = parseInt(el.dataset.target, 10);
+    const target = parseInt(el.dataset.target, 10);
+    const prefix = el.dataset.prefix || '';
     const duration = 1800;
-    const start    = performance.now();
-    const prefix   = el.dataset.prefix || '';
+    let startTime = null;
 
-    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+    /* Cancel any previous animation on this element */
+    if (counterRafs.has(el)) cancelAnimationFrame(counterRafs.get(el));
 
     function step(now) {
-      const elapsed  = now - start;
+      if (!startTime) startTime = now;
+      const elapsed  = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const value    = Math.round(easeOutCubic(progress) * target);
       el.textContent = prefix + value.toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) {
+        counterRafs.set(el, requestAnimationFrame(step));
+      } else {
+        counterRafs.delete(el);
+      }
     }
-    requestAnimationFrame(step);
+    counterRafs.set(el, requestAnimationFrame(step));
+  }
+
+  function resetCounter(el) {
+    if (counterRafs.has(el)) { cancelAnimationFrame(counterRafs.get(el)); counterRafs.delete(el); }
+    const prefix = el.dataset.prefix || '';
+    el.textContent = prefix + '0';
+  }
+
+  if (counterEls.length && 'IntersectionObserver' in window) {
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (!prefersReduced) animateCounter(entry.target);
+          else {
+            const prefix = entry.target.dataset.prefix || '';
+            entry.target.textContent = prefix + parseInt(entry.target.dataset.target, 10).toLocaleString();
+          }
+        } else {
+          resetCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+    counterEls.forEach(el => counterObs.observe(el));
   }
 
   /* ── SCROLL-LINKED HERO OPACITY ── */
@@ -283,22 +306,18 @@
     });
   }
 
-  /* ── TESTIMONIAL CAROUSEL ── */
+  /* ── TESTIMONIAL CAROUSEL — auto-flowing, no buttons ── */
   (function () {
-    const carousel = document.getElementById('testimonial-carousel');
-    if (!carousel) return;
+    const track = document.getElementById('testimonial-track');
+    if (!track) return;
 
-    const track   = document.getElementById('testimonial-track');
-    const slides  = track.querySelectorAll('.testimonial-slide');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
-    const dots    = document.querySelectorAll('.carousel-dot');
-    const total   = slides.length;
-    let current   = 0;
+    const slides = track.querySelectorAll('.testimonial-slide');
+    const dots   = document.querySelectorAll('.carousel-dot');
+    const total  = slides.length;
+    let current  = 0;
     let autoTimer = null;
 
     function goTo(idx) {
-      /* Wrap around (circular) */
       current = ((idx % total) + total) % total;
       track.style.transform = `translateX(-${current * 100}%)`;
       dots.forEach((d, i) => {
@@ -308,40 +327,29 @@
     }
 
     function next() { goTo(current + 1); }
-    function prev() { goTo(current - 1); }
 
     function startAuto() {
       clearInterval(autoTimer);
-      autoTimer = setInterval(next, 5000);
+      autoTimer = setInterval(next, 4500);
     }
 
-    prevBtn.addEventListener('click', () => { prev(); startAuto(); });
-    nextBtn.addEventListener('click', () => { next(); startAuto(); });
+    /* Dots still let users jump to a specific slide */
     dots.forEach(dot => {
       dot.addEventListener('click', () => { goTo(+dot.dataset.index); startAuto(); });
     });
 
-    /* Keyboard nav when carousel is focused */
-    carousel.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft')  { prev(); startAuto(); }
-      if (e.key === 'ArrowRight') { next(); startAuto(); }
-    });
-
-    /* Touch / pointer swipe */
-    let swipeStartX = 0;
-    carousel.addEventListener('pointerdown', (e) => { swipeStartX = e.clientX; }, { passive: true });
-    carousel.addEventListener('pointerup',   (e) => {
-      const dx = swipeStartX - e.clientX;
-      if (Math.abs(dx) > 50) { dx > 0 ? next() : prev(); startAuto(); }
-    }, { passive: true });
-
-    /* Auto-advance (pause on hover) */
-    if (!prefersReduced) {
-      startAuto();
-      carousel.addEventListener('mouseenter', () => clearInterval(autoTimer));
-      carousel.addEventListener('mouseleave', startAuto);
+    /* Touch swipe on mobile */
+    const carousel = track.closest('.testimonial-carousel');
+    if (carousel) {
+      let swipeStartX = 0;
+      carousel.addEventListener('pointerdown', (e) => { swipeStartX = e.clientX; }, { passive: true });
+      carousel.addEventListener('pointerup', (e) => {
+        const dx = swipeStartX - e.clientX;
+        if (Math.abs(dx) > 50) { dx > 0 ? next() : goTo(current - 1); startAuto(); }
+      }, { passive: true });
     }
 
+    if (!prefersReduced) startAuto();
     goTo(0);
   })();
 
