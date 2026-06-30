@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" fill="none">
+  <!-- Large C -->
+  <text x="8" y="210" font-family="Georgia, 'Times New Roman', serif" font-size="230" fill="#1C1916" font-weight="400">C</text>
+  <!-- Smaller G (overlapping) -->
+  <text x="78" y="248" font-family="Georgia, 'Times New Roman', serif" font-size="170" fill="#1C1916" font-weight="400">G</text>
+
+  <!-- Scales of justice — replacing content inside G's opening -->
+  <!-- Central pillar (column with fluting lines) -->
+  <rect x="151" y="178" width="7" height="55" fill="#1C1916"/>
+  <rect x="144" y="230" width="21" height="5" fill="#1C1916"/>
+
+  <!-- Horizontal bar -->
+  <rect x="122" y="173" width="65" height="2.5" fill="#1C1916"/>
+
+  <!-- Left circle pivot -->
+  <circle cx="122" cy="174" r="4.5" fill="#1C1916"/>
+  <!-- Right circle pivot -->
+  <circle cx="187" cy="174" r="4.5" fill="#1C1916"/>
+
+  <!-- Left pan chains (V shape) -->
+  <line x1="122" y1="178" x2="109" y2="214" stroke="#1C1916" stroke-width="1.8"/>
+  <line x1="122" y1="178" x2="135" y2="214" stroke="#1C1916" stroke-width="1.8"/>
+  <!-- Left pan -->
+  <path d="M107 214 Q122 222 137 214" stroke="#1C1916" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Right pan chains (V shape) -->
+  <line x1="187" y1="178" x2="174" y2="214" stroke="#1C1916" stroke-width="1.8"/>
+  <line x1="187" y1="178" x2="200" y2="214" stroke="#1C1916" stroke-width="1.8"/>
+  <!-- Right pan -->
+  <path d="M172 214 Q187 222 202 214" stroke="#1C1916" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

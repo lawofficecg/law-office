@@ -283,26 +283,66 @@
     });
   }
 
-  /* ── TOUCH-SWIPEABLE TESTIMONIALS (mobile pointer events) ── */
-  const testimonialsGrid = document.querySelector('.testimonials-grid');
-  if (testimonialsGrid) {
-    let startX = 0, isDragging = false;
+  /* ── TESTIMONIAL CAROUSEL ── */
+  (function () {
+    const carousel = document.getElementById('testimonial-carousel');
+    if (!carousel) return;
 
-    testimonialsGrid.addEventListener('pointerdown', (e) => {
-      startX    = e.clientX;
-      isDragging = true;
-      testimonialsGrid.setPointerCapture(e.pointerId);
+    const track   = document.getElementById('testimonial-track');
+    const slides  = track.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const dots    = document.querySelectorAll('.carousel-dot');
+    const total   = slides.length;
+    let current   = 0;
+    let autoTimer = null;
+
+    function goTo(idx) {
+      /* Wrap around (circular) */
+      current = ((idx % total) + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+        d.setAttribute('aria-selected', i === current);
+      });
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(next, 5000);
+    }
+
+    prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+    nextBtn.addEventListener('click', () => { next(); startAuto(); });
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => { goTo(+dot.dataset.index); startAuto(); });
+    });
+
+    /* Keyboard nav when carousel is focused */
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft')  { prev(); startAuto(); }
+      if (e.key === 'ArrowRight') { next(); startAuto(); }
+    });
+
+    /* Touch / pointer swipe */
+    let swipeStartX = 0;
+    carousel.addEventListener('pointerdown', (e) => { swipeStartX = e.clientX; }, { passive: true });
+    carousel.addEventListener('pointerup',   (e) => {
+      const dx = swipeStartX - e.clientX;
+      if (Math.abs(dx) > 50) { dx > 0 ? next() : prev(); startAuto(); }
     }, { passive: true });
 
-    testimonialsGrid.addEventListener('pointermove', (e) => {
-      if (!isDragging) return;
-      const dx = startX - e.clientX;
-      testimonialsGrid.scrollLeft += dx * 0.8;
-      startX = e.clientX;
-    }, { passive: true });
+    /* Auto-advance (pause on hover) */
+    if (!prefersReduced) {
+      startAuto();
+      carousel.addEventListener('mouseenter', () => clearInterval(autoTimer));
+      carousel.addEventListener('mouseleave', startAuto);
+    }
 
-    testimonialsGrid.addEventListener('pointerup', () => { isDragging = false; });
-    testimonialsGrid.addEventListener('pointercancel', () => { isDragging = false; });
-  }
+    goTo(0);
+  })();
 
 })();
