@@ -619,26 +619,37 @@ section    { padding: var(--section-v) 24px; }
 
 .hero-portrait-wrap {
   display: flex;
+  align-items: center;
   justify-content: center;
   animation: fadeSlideUp .9s var(--ease-out) .4s both;
 }
 .hero-portrait-placeholder {
-  width: 300px;
-  height: 380px;
-  border: 2px dashed rgba(255,255,255,.2);
+  width: 160px;
+  height: 200px;
+  border: 1.5px dashed rgba(255,255,255,.18);
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 24px;
+  padding: 16px;
   background: rgba(255,255,255,.04);
 }
 .hero-portrait-placeholder span {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,.3);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,.25);
   font-style: italic;
   line-height: 1.5;
+}
+
+/* Real portrait image (replaces placeholder once photo is committed) */
+.hero-portrait-img {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
 }
 
 @media (max-width: 860px) {
@@ -656,8 +667,8 @@ section    { padding: var(--section-v) 24px; }
 }
 .motif {
   position: absolute;
-  color: var(--accent);
-  opacity: 0.055;
+  color: var(--off-white);
+  opacity: 0.07;
   will-change: transform;
   pointer-events: none;
 }
@@ -672,35 +683,35 @@ section    { padding: var(--section-v) 24px; }
 .motif-gavel {
   width: 36px; height: 36px;
   bottom: 22%; right: 22%;
-  opacity: 0.042;
+  opacity: 0.06;
   animation: motif-drift-2 24s ease-in-out infinite;
 }
 /* Book — lower-left */
 .motif-book {
   width: 32px; height: 36px;
   bottom: 18%; left: 8%;
-  opacity: 0.048;
+  opacity: 0.065;
   animation: motif-drift-3 34s ease-in-out infinite;
 }
 /* Column — far left, mid-height */
 .motif-column {
   width: 20px; height: 50px;
   top: 30%; left: 3%;
-  opacity: 0.038;
+  opacity: 0.055;
   animation: motif-drift-4 42s ease-in-out infinite;
 }
 /* Document — upper area, behind headline */
 .motif-doc {
   width: 28px; height: 36px;
   top: 12%; left: 42%;
-  opacity: 0.035;
+  opacity: 0.05;
   animation: motif-drift-5 38s ease-in-out infinite;
 }
 /* Pen — mid-right */
 .motif-pen {
   width: 14px; height: 42px;
   top: 52%; right: 6%;
-  opacity: 0.04;
+  opacity: 0.06;
   animation: motif-drift-6 27s ease-in-out infinite;
 }
 
