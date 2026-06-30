@@ -306,51 +306,6 @@
     });
   }
 
-  /* ── TESTIMONIAL CAROUSEL — auto-flowing, no buttons ── */
-  (function () {
-    const track = document.getElementById('testimonial-track');
-    if (!track) return;
-
-    const slides = track.querySelectorAll('.testimonial-slide');
-    const dots   = document.querySelectorAll('.carousel-dot');
-    const total  = slides.length;
-    let current  = 0;
-    let autoTimer = null;
-
-    function goTo(idx) {
-      current = ((idx % total) + total) % total;
-      track.style.transform = `translateX(-${current * 100}%)`;
-      dots.forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-        d.setAttribute('aria-selected', i === current);
-      });
-    }
-
-    function next() { goTo(current + 1); }
-
-    function startAuto() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(next, 4500);
-    }
-
-    /* Dots still let users jump to a specific slide */
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => { goTo(+dot.dataset.index); startAuto(); });
-    });
-
-    /* Touch swipe on mobile */
-    const carousel = track.closest('.testimonial-carousel');
-    if (carousel) {
-      let swipeStartX = 0;
-      carousel.addEventListener('pointerdown', (e) => { swipeStartX = e.clientX; }, { passive: true });
-      carousel.addEventListener('pointerup', (e) => {
-        const dx = swipeStartX - e.clientX;
-        if (Math.abs(dx) > 50) { dx > 0 ? next() : goTo(current - 1); startAuto(); }
-      }, { passive: true });
-    }
-
-    if (!prefersReduced) startAuto();
-    goTo(0);
-  })();
+  /* Testimonials now use a pure CSS marquee — no JS needed */
 
 })();

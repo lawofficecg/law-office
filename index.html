@@ -60,11 +60,11 @@
         <div class="results-list stagger">
           <div class="result-item reveal">
             <span class="result-amount" data-target="475000" data-prefix="$">$0</span>
-            <span class="result-desc">Confidential settlement &mdash; mold habitability case</span>
+            <span class="result-desc">Confidential settlement, mold habitability case</span>
           </div>
           <div class="result-item reveal">
             <span class="result-amount" data-target="210000" data-prefix="$">$0</span>
-            <span class="result-desc">Confidential settlement &mdash; mold habitability case</span>
+            <span class="result-desc">Confidential settlement, mold habitability case</span>
           </div>
           <p class="results-note">Past results do not guarantee a similar outcome in your case.</p>
         </div>
@@ -93,7 +93,7 @@
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           </div>
           <h3>Habitability Law</h3>
-          <p>California law requires landlords to maintain safe, livable conditions. When they fail — mold, water damage, pest infestations, dangerous conditions — tenants have rights. We help them use those rights.</p>
+          <p>California law requires landlords to maintain safe, livable conditions. When they fail, mold, water damage, pest infestations, dangerous conditions, tenants have rights. We help them use those rights.</p>
           <a href="practice-areas.html#habitability" class="btn btn-outline-green">Learn More</a>
         </div>
         <div class="practice-card reveal">
@@ -116,50 +116,59 @@
       <span class="section-label reveal">Client Testimonials</span>
       <h2 class="section-heading reveal">What our clients say</h2>
     </div>
-    <div class="testimonial-carousel reveal" id="testimonial-carousel" aria-label="Client testimonials" aria-roledescription="carousel">
-      <div class="testimonial-track" id="testimonial-track">
-        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="1 of 5">
-          <div class="testimonial-card-big">
-            <div class="testimonial-quote-mark">&ldquo;</div>
-            <div class="testimonial-placeholder"></div>
-            <p class="testimonial-label">[TESTIMONIAL 1]</p>
-          </div>
+    <div class="testimonial-marquee" aria-label="Client testimonials">
+      <div class="testimonial-marquee-track">
+        <div class="testimonial-marquee-card">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 1]</p>
         </div>
-        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="2 of 5">
-          <div class="testimonial-card-big">
-            <div class="testimonial-quote-mark">&ldquo;</div>
-            <div class="testimonial-placeholder"></div>
-            <p class="testimonial-label">[TESTIMONIAL 2]</p>
-          </div>
+        <div class="testimonial-marquee-card">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 2]</p>
         </div>
-        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="3 of 5">
-          <div class="testimonial-card-big">
-            <div class="testimonial-quote-mark">&ldquo;</div>
-            <div class="testimonial-placeholder"></div>
-            <p class="testimonial-label">[TESTIMONIAL 3]</p>
-          </div>
+        <div class="testimonial-marquee-card">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 3]</p>
         </div>
-        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="4 of 5">
-          <div class="testimonial-card-big">
-            <div class="testimonial-quote-mark">&ldquo;</div>
-            <div class="testimonial-placeholder"></div>
-            <p class="testimonial-label">[TESTIMONIAL 4]</p>
-          </div>
+        <div class="testimonial-marquee-card">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 4]</p>
         </div>
-        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="5 of 5">
-          <div class="testimonial-card-big">
-            <div class="testimonial-quote-mark">&ldquo;</div>
-            <div class="testimonial-placeholder"></div>
-            <p class="testimonial-label">[TESTIMONIAL 5]</p>
-          </div>
+        <div class="testimonial-marquee-card">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 5]</p>
         </div>
-      </div>
-      <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Select testimonial">
-        <button class="carousel-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
-        <button class="carousel-dot" data-index="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
-        <button class="carousel-dot" data-index="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
-        <button class="carousel-dot" data-index="3" role="tab" aria-selected="false" aria-label="Testimonial 4"></button>
-        <button class="carousel-dot" data-index="4" role="tab" aria-selected="false" aria-label="Testimonial 5"></button>
+        <!-- Duplicated for seamless loop -->
+        <div class="testimonial-marquee-card" aria-hidden="true">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 1]</p>
+        </div>
+        <div class="testimonial-marquee-card" aria-hidden="true">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 2]</p>
+        </div>
+        <div class="testimonial-marquee-card" aria-hidden="true">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 3]</p>
+        </div>
+        <div class="testimonial-marquee-card" aria-hidden="true">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 4]</p>
+        </div>
+        <div class="testimonial-marquee-card" aria-hidden="true">
+          <div class="tm-quote">&ldquo;</div>
+          <div class="testimonial-placeholder"></div>
+          <p class="testimonial-label">[TESTIMONIAL 5]</p>
+        </div>
       </div>
     </div>
   </section>
@@ -182,7 +191,7 @@
         <div class="footer-brand">
           <p class="logo-name">Law Office of Caroline Golian</p>
           <p>Caroline Golian, Esq.</p>
-          <p style="margin-top:10px;line-height:1.7">By appointment only<br>Serving Southern California</p>
+          <p style="margin-top:10px;line-height:1.7">Serving Southern California</p>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
@@ -207,7 +216,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Law Office of Caroline Golian. All rights reserved.</p>
-        <p>Southern California &mdash; Remote, by appointment only</p>
+        <p>Southern California, Remote</p>
       </div>
       <p class="footer-disclaimer">The information on this website is for general informational purposes only and does not constitute legal advice. Viewing this website or contacting our office does not create an attorney-client relationship.</p>
     </div>
