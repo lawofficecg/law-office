@@ -56,7 +56,7 @@
         banner.classList.add('visible');
         /* Move focus to Accept for keyboard users */
         var acceptBtn = document.getElementById('cookie-accept');
-        if (acceptBtn) acceptBtn.focus();
+        if (acceptBtn) acceptBtn.focus({ preventScroll: true });
       });
     });
 

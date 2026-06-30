@@ -1720,7 +1720,7 @@ section    { padding: var(--section-v) 24px; }
 /* ===== ACCENT TEXT — darkened for WCAG AA contrast on body text uses ===== */
 :root { --accent-text: #7A6858; }
 .testimonial-label { color: var(--accent-text); }
-.results-tagline .consult-line { color: var(--accent-text); }
+.results-tagline .consult-line { color: rgba(255,255,255,.82); }
 
 /* ===== CONSENT CHECKBOXES (intake form) ===== */
 .consent-group {
