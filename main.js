@@ -119,14 +119,20 @@
     document.querySelectorAll('.section-label').forEach(el => el.classList.add('visible'));
   }
 
-  /* ── COUNTER ANIMATION — resets to 0 on leave, replays on re-enter ── */
+  /* ── COUNTER ANIMATION — resets to 0 on leave, replays on re-enter ──
+     The HTML starts with the correct final amounts already in place (for
+     no-JS users, search engines, and AI previews). We only ever blank a
+     counter to 0 AFTER it has animated at least once, so a visitor who
+     never scrolls the results into view always sees the real number. */
   const counterEls = document.querySelectorAll('[data-target]');
   /* Track active rAF id per element so we can cancel in-flight animations */
   const counterRafs = new WeakMap();
+  const counterStarted = new WeakSet();
 
   function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
 
   function animateCounter(el) {
+    counterStarted.add(el);
     const target = parseInt(el.dataset.target, 10);
     const start  = parseInt(el.dataset.start  || '0', 10);
     const prefix = el.dataset.prefix || '';
@@ -154,6 +160,9 @@
   }
 
   function resetCounter(el) {
+    /* Never blank a counter that hasn't animated yet — leave the correct
+       static HTML value in place until it actually enters the viewport. */
+    if (!counterStarted.has(el)) return;
     if (counterRafs.has(el)) { cancelAnimationFrame(counterRafs.get(el)); counterRafs.delete(el); }
     const prefix = el.dataset.prefix || '';
     const start  = parseInt(el.dataset.start || '0', 10);
@@ -166,6 +175,7 @@
         if (entry.isIntersecting) {
           if (!prefersReduced) animateCounter(entry.target);
           else {
+            counterStarted.add(entry.target);
             const prefix = entry.target.dataset.prefix || '';
             entry.target.textContent = prefix + parseInt(entry.target.dataset.target, 10).toLocaleString();
           }
