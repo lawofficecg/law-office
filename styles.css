@@ -581,58 +581,34 @@ section    { padding: var(--section-v) 24px; }
   z-index: 1;
 }
 
-/* Eyebrow now sits under the h1 — adjust spacing and delay it to follow the headline */
-.hero-eyebrow {
-  display: block;
-  font-size: clamp(0.72rem, 1.1vw, 0.82rem);
-  font-weight: 700;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.68);
-  margin-top: 4px;
-  margin-bottom: 14px;
-  animation: fadeSlideUp .6s var(--ease-out) .3s both;
-}
-
 .hero h1 {
   color: var(--surface);
   text-align: center;
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(2rem, 4.6vw, 3.1rem);
   font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 10px;
+  line-height: 1.18;
+  margin-bottom: 14px;
   letter-spacing: -.01em;
   animation: fadeSlideUp .7s var(--ease-out) .2s both;
   will-change: opacity;
 }
 
 .hero-subheading {
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   font-weight: 500;
-  color: rgba(255,255,255,.9);
-  max-width: 600px;
-  line-height: 1.5;
-  margin: 0 auto 18px;
-  animation: fadeSlideUp .7s var(--ease-out) .4s both;
-}
-
-.hero p {
-  font-size: clamp(0.82rem, 1.3vw, 0.92rem);
-  color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.85);
   text-align: center;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.65;
-  margin-bottom: 20px;
-  animation: fadeSlideUp .7s var(--ease-out) .5s both;
+  max-width: 560px;
+  line-height: 1.55;
+  margin: 0 auto 26px;
+  animation: fadeSlideUp .7s var(--ease-out) .35s both;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  animation: fadeSlideUp .7s var(--ease-out) .7s both;
+  animation: fadeSlideUp .7s var(--ease-out) .5s both;
 }
 
 /* The hero entrance animations use fill-mode "both" with a start delay, so
@@ -640,8 +616,7 @@ section    { padding: var(--section-v) 24px; }
    anyone with prefers-reduced-motion: reduce, since no other rule disables
    them. */
 @media (prefers-reduced-motion: reduce) {
-  .hero h1, .hero-eyebrow, .hero-subheading, .hero p,
-  .hero-contingency-note, .hero-actions { animation: none; }
+  .hero h1, .hero-subheading, .hero-actions { animation: none; }
 }
 
 /* ── Hero split (asymmetric two-column) ── */
@@ -662,32 +637,7 @@ section    { padding: var(--section-v) 24px; }
   text-align: center;
 }
 .hero-inner-centered .hero-text { max-width: 100%; }
-.hero-inner-centered .hero p,
-.hero-inner-centered .hero-contingency-note { margin-left: auto; margin-right: auto; }
 .hero-inner-centered .hero-actions { justify-content: center; }
-.hero-contingency-note {
-  font-size: clamp(0.74rem, 1.1vw, 0.8rem);
-  color: rgba(255,255,255,.68);
-  letter-spacing: .02em;
-  text-align: center;
-  max-width: 460px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 16px;
-  line-height: 1.55;
-  animation: fadeSlideUp .7s var(--ease-out) .6s both;
-}
-.hero-contingency-note a {
-  color: rgba(255,255,255,.75);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.hero-contingency-note a:hover { color: var(--surface); }
-.hero-contingency-note u {
-  text-decoration-color: var(--accent-light);
-  text-underline-offset: 3px;
-  font-weight: 700;
-}
 
 .hero-portrait-wrap {
   display: flex;
@@ -729,67 +679,6 @@ section    { padding: var(--section-v) 24px; }
   .hero-portrait-wrap { display: none; }
 }
 
-/* ── Floating legal motifs ── */
-.legal-motifs {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.motif {
-  position: absolute;
-  color: var(--off-white);
-  will-change: transform;
-  pointer-events: none;
-}
-
-/* All 90 motifs use inline styles for position/size/opacity/duration/delay.
-   Only the base .motif class and 6 shared keyframes are needed here. */
-
-/* 6 unique drift keyframes — wide, multi-waypoint sweeps so each icon visibly
-   travels across a large span of the hero (not a small in-place wobble)
-   before looping back to its start position. */
-@keyframes md1 {
-  0%   { transform: translate(0, 0)          rotate(-6deg);  }
-  30%  { transform: translate(110px, -150px) rotate(10deg);  }
-  65%  { transform: translate(-80px, 100px)  rotate(-18deg); }
-  100% { transform: translate(0, 0)          rotate(-6deg);  }
-}
-@keyframes md2 {
-  0%   { transform: translate(0, 0)           rotate(8deg);   }
-  40%  { transform: translate(-140px, -130px) rotate(24deg);  }
-  70%  { transform: translate(95px, 85px)     rotate(2deg);   }
-  100% { transform: translate(0, 0)           rotate(8deg);   }
-}
-@keyframes md3 {
-  0%   { transform: translate(0, 0)          rotate(-4deg); }
-  50%  { transform: translate(160px, -150px) rotate(16deg); }
-  100% { transform: translate(0, 0)          rotate(-4deg); }
-}
-@keyframes md4 {
-  0%   { transform: translate(0, 0)           rotate(5deg);   }
-  25%  { transform: translate(-110px, -160px) rotate(-12deg); }
-  75%  { transform: translate(130px, 95px)    rotate(20deg);  }
-  100% { transform: translate(0, 0)           rotate(5deg);   }
-}
-@keyframes md5 {
-  0%   { transform: translate(0, 0)          rotate(-10deg); }
-  45%  { transform: translate(175px, -120px) rotate(8deg);    }
-  100% { transform: translate(0, 0)          rotate(-10deg); }
-}
-@keyframes md6 {
-  0%   { transform: translate(0, 0)           rotate(12deg);  }
-  35%  { transform: translate(-120px, -110px) rotate(-10deg); }
-  60%  { transform: translate(85px, 140px)    rotate(28deg);  }
-  100% { transform: translate(0, 0)           rotate(12deg);  }
-}
-
-/* The motif animations are set inline (high specificity), so this override
-   needs !important to actually stop motion for reduced-motion users. */
-@media (prefers-reduced-motion: reduce) {
-  .motif { animation: none !important; }
-}
 
 /* ===== RESULTS BAND ===== */
 .results-band {
@@ -984,6 +873,31 @@ section    { padding: var(--section-v) 24px; }
 .practice-card h3 { margin-bottom: 14px; }
 .practice-card p  { color: var(--text-muted); font-size: clamp(0.88rem, 1.5vw, 0.95rem); margin-bottom: 28px; }
 .practice-card p + p { margin-top: -14px; }
+
+/* ===== HOW FEES WORK ===== */
+.fees-section {
+  background: var(--off-white);
+  padding: var(--section-v) 24px;
+}
+.fees-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 8px;
+}
+.fees-item {
+  border-left: 3px solid var(--accent);
+  padding-left: 24px;
+}
+.fees-item h3 {
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  margin-bottom: 10px;
+}
+.fees-item p {
+  color: var(--text-muted);
+  font-size: clamp(0.88rem, 1.5vw, 0.95rem);
+  line-height: 1.65;
+}
 
 /* ===== TESTIMONIALS MARQUEE ===== */
 .testimonials {
@@ -1720,6 +1634,7 @@ section    { padding: var(--section-v) 24px; }
 
   .cards-grid { grid-template-columns: 1fr; }
   .practice-card { padding: 36px 28px; }
+  .fees-grid { grid-template-columns: 1fr; gap: 28px; }
 
   .results-band-inner { grid-template-columns: 1fr; gap: 36px; }
   .footer-top { grid-template-columns: 1fr; gap: 36px; }
