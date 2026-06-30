@@ -124,7 +124,7 @@ section    { padding: var(--section-v) 24px; }
   font-weight: 700;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--green);
   margin-bottom: 20px;
   padding: 0 0 10px;
   border-bottom: 2px solid var(--accent-pale);
@@ -526,7 +526,7 @@ section    { padding: var(--section-v) 24px; }
 .hero {
   background: linear-gradient(145deg, var(--green-dark) 0%, var(--green) 50%, var(--green-mid) 100%);
   color: var(--surface);
-  padding: 72px 24px 64px;
+  padding: 44px 24px 40px;
   position: relative;
   overflow: hidden;
 }
@@ -563,7 +563,7 @@ section    { padding: var(--section-v) 24px; }
   font-weight: 700;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--accent-light);
+  color: rgba(255,255,255,.68);
   margin-bottom: 28px;
   animation: fadeSlideUp .6s var(--ease-out) .1s both;
 }
@@ -605,13 +605,13 @@ section    { padding: var(--section-v) 24px; }
 .hero-text { max-width: 660px; }
 .hero-contingency-note {
   font-size: 0.82rem;
-  color: var(--accent-light);
+  color: rgba(255,255,255,.68);
   letter-spacing: .02em;
   margin-bottom: 32px;
   animation: fadeSlideUp .7s var(--ease-out) .45s both;
 }
 .hero-contingency-note a {
-  color: var(--accent-light);
+  color: rgba(255,255,255,.75);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -675,34 +675,40 @@ section    { padding: var(--section-v) 24px; }
 /* All 48 motifs use inline styles for position/size/opacity/duration/delay.
    Only the base .motif class and 6 shared keyframes are needed here. */
 
-/* 6 unique drift keyframes — mix of float + gentle rotate */
+/* 6 unique drift keyframes — translate both axes + rotate so movement is clearly visible */
 @keyframes md1 {
-  0%,100% { transform: translateY(0)    rotate(-4deg); }
-  30%      { transform: translateY(-18px) rotate(0deg);  }
-  65%      { transform: translateY(10px)  rotate(-7deg); }
+  0%   { transform: translate(0, 0)       rotate(-4deg); }
+  30%  { transform: translate(12px, -28px) rotate(4deg);  }
+  65%  { transform: translate(-8px, 16px)  rotate(-8deg); }
+  100% { transform: translate(0, 0)       rotate(-4deg); }
 }
 @keyframes md2 {
-  0%,100% { transform: translateY(0)    rotate(5deg);  }
-  40%      { transform: translateY(-12px) rotate(9deg);  }
-  70%      { transform: translateY(7px)   rotate(3deg);  }
+  0%   { transform: translate(0, 0)        rotate(5deg);  }
+  40%  { transform: translate(-14px, -22px) rotate(12deg); }
+  70%  { transform: translate(10px, 12px)   rotate(2deg);  }
+  100% { transform: translate(0, 0)        rotate(5deg);  }
 }
 @keyframes md3 {
-  0%,100% { transform: translateY(0)    rotate(-2deg); }
-  50%      { transform: translateY(-15px) rotate(2deg);  }
+  0%   { transform: translate(0, 0)       rotate(-2deg); }
+  50%  { transform: translate(16px, -24px) rotate(6deg);  }
+  100% { transform: translate(0, 0)       rotate(-2deg); }
 }
 @keyframes md4 {
-  0%,100% { transform: translateY(0)    rotate(3deg);  }
-  25%      { transform: translateY(-20px) rotate(-1deg); }
-  75%      { transform: translateY(8px)   rotate(6deg);  }
+  0%   { transform: translate(0, 0)        rotate(3deg);   }
+  25%  { transform: translate(-10px, -30px) rotate(-4deg); }
+  75%  { transform: translate(14px, 14px)   rotate(9deg);  }
+  100% { transform: translate(0, 0)        rotate(3deg);   }
 }
 @keyframes md5 {
-  0%,100% { transform: translateY(0)    rotate(-6deg); }
-  45%      { transform: translateY(-10px) rotate(-2deg); }
+  0%   { transform: translate(0, 0)       rotate(-6deg); }
+  45%  { transform: translate(18px, -20px) rotate(2deg);  }
+  100% { transform: translate(0, 0)       rotate(-6deg); }
 }
 @keyframes md6 {
-  0%,100% { transform: translateY(0)    rotate(8deg);  }
-  35%      { transform: translateY(-14px) rotate(4deg);  }
-  60%      { transform: translateY(5px)   rotate(11deg); }
+  0%   { transform: translate(0, 0)        rotate(8deg);  }
+  35%  { transform: translate(-12px, -18px) rotate(-2deg); }
+  60%  { transform: translate(8px, 20px)    rotate(14deg); }
+  100% { transform: translate(0, 0)        rotate(8deg);  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1640,7 +1646,7 @@ section    { padding: var(--section-v) 24px; }
   .results-band-inner { grid-template-columns: 1fr; gap: 36px; }
   .footer-top { grid-template-columns: 1fr; gap: 36px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
-  .hero { padding: 56px 24px 48px; }
+  .hero { padding: 32px 24px 28px; }
   .hero-inner { max-width: 100%; }
   .form-row { grid-template-columns: 1fr; }
 
@@ -1704,7 +1710,7 @@ section    { padding: var(--section-v) 24px; }
 
 /* ===== ACCENT TEXT — darkened for WCAG AA contrast on body text uses ===== */
 :root { --accent-text: #7A6858; }
-.testimonial-label { color: var(--accent-text); }
+.testimonial-label { color: var(--text-muted); }
 .results-tagline .consult-line { color: rgba(255,255,255,.82); }
 
 /* ===== CONSENT CHECKBOXES (intake form) ===== */
