@@ -1171,6 +1171,11 @@ section    { padding: var(--section-v) 24px; }
 /* ===== PRACTICE AREAS PAGE ===== */
 .pa-section { padding: 80px 24px; }
 .pa-section:nth-child(even) { background: var(--surface); }
+/* Tighten the shared boundary between Habitability and Personal Injury
+   specifically (was 80px+80px = 160px of combined whitespace), without
+   touching the padding above Habitability or below Personal Injury. */
+#habitability { padding-bottom: 40px; }
+#personal-injury { padding-top: 40px; }
 
 .pa-inner {
   max-width: var(--max-width);
