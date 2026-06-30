@@ -951,35 +951,30 @@ section    { padding: var(--section-v) 24px; }
   transform: translateY(-4px);
 }
 
+.tm-stars {
+  color: #F5A623;
+  font-size: 1.05rem;
+  letter-spacing: .06em;
+  margin-bottom: 10px;
+  display: block;
+}
+
 .tm-quote {
   font-family: var(--font-serif);
-  font-size: 5rem;
+  font-size: 4rem;
   line-height: 0.75;
   color: var(--accent);
-  opacity: .2;
-  margin-bottom: 12px;
+  opacity: .25;
+  margin-bottom: 10px;
   display: block;
   pointer-events: none;
 }
 
-.testimonial-placeholder {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--border) 0px, var(--border) 1px,
-    transparent 1px, transparent 18px
-  );
-  height: 80px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  opacity: .5;
-}
-
-.testimonial-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--accent);
+.tm-text {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
