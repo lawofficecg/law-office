@@ -1183,24 +1183,11 @@ section    { padding: var(--section-v) 24px; }
 .pa-inner.reverse { grid-template-columns: 1.5fr 1fr; }
 .pa-inner.reverse .pa-text { order: -1; }
 
-/* Sticky section label on practice areas */
-.pa-text .section-label {
-  position: sticky;
-  top: 96px;
-  background: transparent;
-}
-/* .pa-text carries the reveal-left/reveal-right entrance animation, which
-   leaves a non-"none" transform (translateX(0) / its identity matrix) in
-   place even after the element becomes visible. A transform on an
-   ancestor is a well-known cross-browser footgun for position:sticky
-   descendants (Safari in particular will stop the sticky .section-label
-   above from sticking at all, so it just scrolls away with the page).
-   Clearing it once revealed removes the conflict; the transition still
-   animates identically since browsers interpolate transform <-> none. */
-.pa-text.reveal-left.visible,
-.pa-text.reveal-right.visible {
-  transform: none;
-}
+/* The "PRACTICE AREA" label used to be position:sticky, but since it sits
+   as the first child directly above the heading/paragraphs it introduces
+   (not in a separate sidebar column), sticking it just let the rest of
+   that same column's text scroll up underneath/through it, overlapping
+   and garbling both. A plain in-flow label has no such collision. */
 
 .pa-icon {
   width: 72px; height: 72px;
