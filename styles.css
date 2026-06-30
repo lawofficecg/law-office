@@ -581,6 +581,7 @@ section    { padding: var(--section-v) 24px; }
   z-index: 1;
 }
 
+/* Eyebrow now sits under the h1 — adjust spacing and delay it to follow the headline */
 .hero-eyebrow {
   display: block;
   font-size: clamp(0.72rem, 1.1vw, 0.82rem);
@@ -588,8 +589,9 @@ section    { padding: var(--section-v) 24px; }
   letter-spacing: .22em;
   text-transform: uppercase;
   color: rgba(255,255,255,.68);
-  margin-bottom: 12px;
-  animation: fadeSlideUp .6s var(--ease-out) .1s both;
+  margin-top: 4px;
+  margin-bottom: 14px;
+  animation: fadeSlideUp .6s var(--ease-out) .3s both;
 }
 
 .hero h1 {
@@ -603,20 +605,39 @@ section    { padding: var(--section-v) 24px; }
   will-change: opacity;
 }
 
+.hero-subheading {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 500;
+  color: rgba(255,255,255,.9);
+  max-width: 600px;
+  line-height: 1.5;
+  margin: 0 auto 18px;
+  animation: fadeSlideUp .7s var(--ease-out) .4s both;
+}
+
 .hero p {
   font-size: clamp(0.9rem, 1.6vw, 1rem);
   color: rgba(255,255,255,.75);
   max-width: 540px;
   line-height: 1.65;
   margin-bottom: 20px;
-  animation: fadeSlideUp .7s var(--ease-out) .35s both;
+  animation: fadeSlideUp .7s var(--ease-out) .5s both;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  animation: fadeSlideUp .7s var(--ease-out) .5s both;
+  animation: fadeSlideUp .7s var(--ease-out) .7s both;
+}
+
+/* The hero entrance animations use fill-mode "both" with a start delay, so
+   without this they'd stay frozen at their 0%-keyframe (invisible) for
+   anyone with prefers-reduced-motion: reduce, since no other rule disables
+   them. */
+@media (prefers-reduced-motion: reduce) {
+  .hero h1, .hero-eyebrow, .hero-subheading, .hero p,
+  .hero-contingency-note, .hero-actions { animation: none; }
 }
 
 /* ── Hero split (asymmetric two-column) ── */
@@ -645,7 +666,7 @@ section    { padding: var(--section-v) 24px; }
   color: rgba(255,255,255,.68);
   letter-spacing: .02em;
   margin-bottom: 16px;
-  animation: fadeSlideUp .7s var(--ease-out) .45s both;
+  animation: fadeSlideUp .7s var(--ease-out) .6s both;
 }
 .hero-contingency-note a {
   color: rgba(255,255,255,.75);
@@ -653,6 +674,11 @@ section    { padding: var(--section-v) 24px; }
   text-underline-offset: 3px;
 }
 .hero-contingency-note a:hover { color: var(--surface); }
+.hero-contingency-note u {
+  text-decoration-color: var(--accent-light);
+  text-underline-offset: 3px;
+  font-weight: 700;
+}
 
 .hero-portrait-wrap {
   display: flex;
@@ -952,6 +978,7 @@ section    { padding: var(--section-v) 24px; }
 
 .practice-card h3 { margin-bottom: 14px; }
 .practice-card p  { color: var(--text-muted); font-size: clamp(0.88rem, 1.5vw, 0.95rem); margin-bottom: 28px; }
+.practice-card p + p { margin-top: -14px; }
 
 /* ===== TESTIMONIALS MARQUEE ===== */
 .testimonials {
