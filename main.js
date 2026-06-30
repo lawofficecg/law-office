@@ -145,6 +145,8 @@
         counterRafs.set(el, requestAnimationFrame(step));
       } else {
         counterRafs.delete(el);
+        el.classList.add('pulse-done');
+        el.addEventListener('animationend', () => el.classList.remove('pulse-done'), { once: true });
       }
     }
     counterRafs.set(el, requestAnimationFrame(step));
@@ -330,5 +332,123 @@
   }
 
   /* Testimonials now use a pure CSS marquee — no JS needed */
+
+  /* ── SCROLL PROGRESS BAR ── */
+  const scrollBar = document.getElementById('scroll-progress');
+  if (scrollBar) {
+    window.addEventListener('scroll', () => {
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      scrollBar.style.width = (docH > 0 ? (window.scrollY / docH) * 100 : 0) + '%';
+    }, { passive: true });
+  }
+
+  /* ── CUSTOM CURSOR (desktop pointer devices only) ── */
+  const cursorDot  = document.querySelector('.cursor-dot');
+  const cursorRing = document.querySelector('.cursor-ring');
+  if (cursorDot && cursorRing && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      cursorDot.style.left = mx + 'px';
+      cursorDot.style.top  = my + 'px';
+    });
+
+    (function lerpRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      cursorRing.style.left = rx + 'px';
+      cursorRing.style.top  = ry + 'px';
+      requestAnimationFrame(lerpRing);
+    })();
+
+    const hoverEls = document.querySelectorAll('a, button, [role="button"], .practice-card, label');
+    hoverEls.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('hovering');
+        cursorRing.classList.add('hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('hovering');
+        cursorRing.classList.remove('hovering');
+      });
+    });
+
+    document.addEventListener('mousedown', () => {
+      cursorDot.classList.add('clicking');
+      cursorRing.classList.add('clicking');
+    });
+    document.addEventListener('mouseup', () => {
+      cursorDot.classList.remove('clicking');
+      cursorRing.classList.remove('clicking');
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursorDot.style.opacity = '0';
+      cursorRing.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      cursorDot.style.opacity = '';
+      cursorRing.style.opacity = '';
+    });
+  }
+
+  /* ── WORD-SPLIT REVEAL ── */
+  if (!prefersReduced) {
+    document.querySelectorAll('.word-split').forEach(el => {
+      const words = el.textContent.split(/(\s+)/);
+      el.innerHTML = words.map(w =>
+        w.trim()
+          ? `<span class="word"><span class="word-inner">${w}</span></span>`
+          : w
+      ).join('');
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    const wsObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); wsObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.word-split').forEach(el => wsObs.observe(el));
+  } else {
+    document.querySelectorAll('.word-split').forEach(el => el.classList.add('visible'));
+  }
+
+  /* ── 3D TILT CARDS ── */
+  if (!prefersReduced) {
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const dx = (e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2);
+        const dy = (e.clientY - rect.top  - rect.height / 2) / (rect.height / 2);
+        card.style.setProperty('--rx', (-dy * 7) + 'deg');
+        card.style.setProperty('--ry', ( dx * 7) + 'deg');
+        card.style.setProperty('--spotlight-x', ((e.clientX - rect.left) / rect.width  * 100) + '%');
+        card.style.setProperty('--spotlight-y', ((e.clientY - rect.top)  / rect.height * 100) + '%');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
+
+  /* ── MAGNETIC BUTTONS ── */
+  if (!prefersReduced) {
+    document.querySelectorAll('.btn-magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const dx = (e.clientX - rect.left - rect.width  / 2) * 0.28;
+        const dy = (e.clientY - rect.top  - rect.height / 2) * 0.28;
+        btn.style.setProperty('--mx', dx + 'px');
+        btn.style.setProperty('--my', dy + 'px');
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.setProperty('--mx', '0px');
+        btn.style.setProperty('--my', '0px');
+      });
+    });
+  }
 
 })();

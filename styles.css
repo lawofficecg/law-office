@@ -1607,4 +1607,222 @@ section    { padding: var(--section-v) 24px; }
   color: var(--green);
   text-decoration: underline;
 }
+
+/* ===== WOW FACTOR ENHANCEMENTS ===== */
+
+/* ── Custom cursor (desktop only) ── */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform .1s, opacity .2s, background .2s;
+    will-change: transform;
+  }
+  .cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width .3s var(--ease-out), height .3s var(--ease-out),
+                border-color .3s, opacity .2s;
+    opacity: .55;
+    will-change: transform;
+  }
+  .cursor-ring.hovering {
+    width: 52px; height: 52px;
+    border-color: var(--green);
+    opacity: .35;
+  }
+  .cursor-dot.hovering {
+    background: var(--green);
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  .cursor-ring.clicking, .cursor-dot.clicking {
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  a, button, [role="button"], .practice-card, label[class] {
+    cursor: none !important;
+  }
+}
+
+/* ── Hero floating orbs ── */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+.hero-orb-1 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(154,136,120,.14) 0%, transparent 70%);
+  top: -120px; right: -80px;
+  animation: orb-float-1 14s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 70%);
+  bottom: -60px; left: 30%;
+  animation: orb-float-2 18s ease-in-out infinite;
+}
+.hero-orb-3 {
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(154,136,120,.1) 0%, transparent 70%);
+  top: 40%; left: 60%;
+  animation: orb-float-3 11s ease-in-out infinite;
+}
+
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-30px, 20px) scale(1.05); }
+  66%       { transform: translate(20px, -30px) scale(0.97); }
+}
+@keyframes orb-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(40px, -25px) scale(1.08); }
+  75%       { transform: translate(-20px, 15px) scale(0.95); }
+}
+@keyframes orb-float-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-25px, 30px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb { animation: none; }
+}
+
+/* ── Tilt card 3D effect — JS writes custom props ── */
+.tilt-card {
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .6s var(--ease-out), box-shadow .4s var(--ease-out);
+}
+.tilt-card:hover {
+  transition: transform .1s linear, box-shadow .2s;
+}
+
+/* ── Magnetic button — JS writes --mx / --my offsets ── */
+.btn-magnetic {
+  transition: transform .4s var(--ease-spring), box-shadow .3s var(--ease-out),
+              color .25s, background .25s, border-color .25s;
+  transform: translate(var(--mx, 0px), var(--my, 0px));
+}
+
+/* ── Word-split heading reveal ── */
+.word-split .word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.word-split .word-inner {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform .65s var(--ease-out), opacity .55s var(--ease-out);
+}
+.word-split.visible .word-inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+/* Stagger each word */
+.word-split.visible .word:nth-child(1)  .word-inner { transition-delay:   0ms; }
+.word-split.visible .word:nth-child(2)  .word-inner { transition-delay:  60ms; }
+.word-split.visible .word:nth-child(3)  .word-inner { transition-delay: 120ms; }
+.word-split.visible .word:nth-child(4)  .word-inner { transition-delay: 180ms; }
+.word-split.visible .word:nth-child(5)  .word-inner { transition-delay: 240ms; }
+.word-split.visible .word:nth-child(6)  .word-inner { transition-delay: 300ms; }
+.word-split.visible .word:nth-child(7)  .word-inner { transition-delay: 360ms; }
+.word-split.visible .word:nth-child(8)  .word-inner { transition-delay: 420ms; }
+.word-split.visible .word:nth-child(9)  .word-inner { transition-delay: 480ms; }
+.word-split.visible .word:nth-child(10) .word-inner { transition-delay: 540ms; }
+.word-split.visible .word:nth-child(11) .word-inner { transition-delay: 600ms; }
+.word-split.visible .word:nth-child(12) .word-inner { transition-delay: 660ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .word-split .word-inner {
+    transform: none; opacity: 1; transition: none;
+  }
+}
+
+/* ── Counter finish pulse ── */
+@keyframes counter-pulse {
+  0%   { color: var(--surface); }
+  40%  { color: var(--accent-light); text-shadow: 0 0 32px rgba(181,165,151,.6); }
+  100% { color: var(--surface); text-shadow: none; }
+}
+.result-amount.pulse-done {
+  animation: counter-pulse .8s var(--ease-out) forwards;
+}
+
+/* ── Scroll progress bar ── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2.5px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  z-index: 9999;
+  pointer-events: none;
+  transition: width .05s linear;
+  box-shadow: 0 0 8px rgba(154,136,120,.5);
+}
+
+/* ── Spotlight hover on practice cards ── */
+.practice-card {
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+}
+.practice-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: radial-gradient(
+    circle 180px at var(--spotlight-x) var(--spotlight-y),
+    rgba(154,136,120,.10) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+.practice-card:hover::after { opacity: 1; }
+
+/* ── Grain overlay on hero (animated) ── */
+.hero-grain {
+  position: absolute;
+  inset: -50%;
+  width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .035;
+  animation: grain-shift 8s steps(10) infinite;
+  pointer-events: none;
+}
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-3%, -3%); }
+  20%  { transform: translate(3%, 3%); }
+  30%  { transform: translate(-3%, 3%); }
+  40%  { transform: translate(3%, -3%); }
+  50%  { transform: translate(-1%, -2%); }
+  60%  { transform: translate(2%, 1%); }
+  70%  { transform: translate(-2%, 2%); }
+  80%  { transform: translate(1%, -1%); }
+  90%  { transform: translate(-1%, 1%); }
+  100% { transform: translate(0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-grain { animation: none; }
+}
 .consent-label a:hover { color: var(--accent); }
