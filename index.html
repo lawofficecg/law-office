@@ -22,7 +22,7 @@
           <span class="logo-subtitle">Attorney at Law</span>
         </span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.classList.toggle('active'); document.querySelector('.site-nav').classList.toggle('open')">
         <span></span><span></span><span></span>
       </button>
       <ul class="site-nav">
@@ -54,21 +54,21 @@
   <div class="results-band">
     <div class="results-inner container">
       <div>
-        <p class="results-label">Results for our clients</p>
+        <p class="results-label reveal">Results for our clients</p>
         <div class="results-list">
-          <div class="result-item">
-            <span class="result-amount">$475,000</span>
+          <div class="result-item reveal">
+            <span class="result-amount" data-prefix="$" data-count="475000">$0</span>
             <span class="result-desc">Confidential settlement &mdash; mold habitability case</span>
           </div>
-          <div class="result-item">
-            <span class="result-amount">$210,000</span>
+          <div class="result-item reveal">
+            <span class="result-amount" data-prefix="$" data-count="210000">$0</span>
             <span class="result-desc">Confidential settlement &mdash; mold habitability case</span>
           </div>
           <p class="results-note">Past results do not guarantee a similar outcome in your case.</p>
         </div>
       </div>
       <div>
-        <p class="results-tagline">We work on a contingency fee basis &mdash; you pay nothing unless we win your case.
+        <p class="results-tagline reveal">We work on a contingency fee basis &mdash; you pay nothing unless we win your case.
           <span>Free consultations available by phone or Zoom.</span>
         </p>
       </div>
@@ -78,11 +78,11 @@
   <!-- PRACTICE AREAS PREVIEW -->
   <section class="practice-preview">
     <div class="container">
-      <span class="section-label">What We Do</span>
-      <h2 class="section-heading">Focused. Dedicated. On your side.</h2>
-      <p class="section-subheading">We represent tenants living in unsafe conditions and individuals injured by the negligence of others throughout Southern California.</p>
+      <span class="section-label reveal">What We Do</span>
+      <h2 class="section-heading reveal">Focused. Dedicated. On your side.</h2>
+      <p class="section-subheading reveal">We represent tenants living in unsafe conditions and individuals injured by the negligence of others throughout Southern California.</p>
       <div class="cards-grid">
-        <div class="practice-card">
+        <div class="practice-card reveal">
           <div class="practice-card-icon">
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           </div>
@@ -90,7 +90,7 @@
           <p>California law requires landlords to maintain safe, livable conditions. When they fail — mold, water damage, pest infestations, dangerous conditions — tenants have rights. We help them use those rights.</p>
           <a href="practice-areas.html#habitability" class="btn btn-outline-green">Learn More</a>
         </div>
-        <div class="practice-card">
+        <div class="practice-card reveal" style="transition-delay: 0.1s;">
           <div class="practice-card-icon">
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
           </div>
@@ -105,31 +105,31 @@
   <!-- TESTIMONIALS -->
   <section class="testimonials">
     <div class="container">
-      <span class="section-label">Client Testimonials</span>
-      <h2 class="section-heading">What our clients say</h2>
+      <span class="section-label reveal">Client Testimonials</span>
+      <h2 class="section-heading reveal">What our clients say</h2>
       <div class="testimonials-grid">
 
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal">
           <div class="testimonial-placeholder"></div>
           <p class="testimonial-label">[TESTIMONIAL 1]</p>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal" style="transition-delay: 0.08s;">
           <div class="testimonial-placeholder"></div>
           <p class="testimonial-label">[TESTIMONIAL 2]</p>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal" style="transition-delay: 0.16s;">
           <div class="testimonial-placeholder"></div>
           <p class="testimonial-label">[TESTIMONIAL 3]</p>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal" style="transition-delay: 0.24s;">
           <div class="testimonial-placeholder"></div>
           <p class="testimonial-label">[TESTIMONIAL 4]</p>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal" style="transition-delay: 0.32s;">
           <div class="testimonial-placeholder"></div>
           <p class="testimonial-label">[TESTIMONIAL 5]</p>
         </div>
@@ -140,7 +140,7 @@
 
   <!-- BOTTOM CTA -->
   <section class="bottom-cta">
-    <div class="container">
+    <div class="container reveal">
       <h2>Ready to talk about your case?</h2>
       <p>We offer free consultations by phone or Zoom. If we believe you have a case, we'll reach out to discuss next steps.</p>
       <a href="intake.html" class="btn btn-primary">Request a Free Consultation</a>
@@ -185,5 +185,6 @@
     </div>
   </footer>
 
+  <script src="site.js"></script>
 </body>
 </html>
