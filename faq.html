@@ -7,7 +7,7 @@
   <meta name="description" content="Answers to common questions about personal injury claims, mold and habitability law, attorney's fees, and our intake process in Southern California, from the Law Office of Caroline Golian." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20260701-5" />
+  <link rel="stylesheet" href="styles.css?v=20260701-6" />
 
   <!-- JSON-LD: FAQPage -->
   <script type="application/ld+json">
@@ -253,15 +253,21 @@
     <div class="container" style="max-width:800px;">
 
       <nav class="faq-jump-nav reveal" aria-label="FAQ categories">
-        <a href="#personal-injury-faq">Personal Injury</a>
-        <a href="#habitability-mold-faq">Habitability &amp; Mold</a>
-        <a href="#fees-faq">Fees</a>
-        <a href="#intake-faq">Intake</a>
+        <a href="#personal-injury-faq" onclick="expandFaqSection('personal-injury-faq')">Personal Injury</a>
+        <a href="#habitability-mold-faq" onclick="expandFaqSection('habitability-mold-faq')">Habitability &amp; Mold</a>
+        <a href="#fees-faq" onclick="expandFaqSection('fees-faq')">Fees</a>
+        <a href="#intake-faq" onclick="expandFaqSection('intake-faq')">Intake</a>
       </nav>
 
-      <div class="faq-section">
-        <h2 class="faq-section-heading" id="personal-injury-faq">Personal Injury FAQ</h2>
+      <div class="faq-section" id="personal-injury-faq">
+        <h2 class="faq-section-heading">
+          <button class="faq-section-toggle" onclick="toggleFaqSection(this)" aria-expanded="false">
+            Personal Injury FAQ
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
         <p class="faq-section-intro">Common questions about slip-and-fall, trip-and-fall, and other premises liability matters in Southern California.</p>
+        <div class="faq-section-body">
         <div class="faq-list">
 
           <div class="faq-item reveal">
@@ -376,11 +382,18 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
 
-      <div class="faq-section">
-        <h2 class="faq-section-heading" id="habitability-mold-faq">Habitability & Mold FAQ</h2>
+      <div class="faq-section" id="habitability-mold-faq">
+        <h2 class="faq-section-heading">
+          <button class="faq-section-toggle" onclick="toggleFaqSection(this)" aria-expanded="false">
+            Habitability & Mold FAQ
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
         <p class="faq-section-intro">Common questions about mold, water intrusion, and other unsafe rental conditions under California habitability law.</p>
+        <div class="faq-section-body">
         <div class="faq-list">
 
           <div class="faq-item reveal">
@@ -495,11 +508,18 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
 
-      <div class="faq-section">
-        <h2 class="faq-section-heading" id="fees-faq">Fees FAQ</h2>
+      <div class="faq-section" id="fees-faq">
+        <h2 class="faq-section-heading">
+          <button class="faq-section-toggle" onclick="toggleFaqSection(this)" aria-expanded="false">
+            Fees FAQ
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
         <p class="faq-section-intro">How consultations, attorney's fees, and case costs work at the Law Office of Caroline Golian.</p>
+        <div class="faq-section-body">
         <div class="faq-list">
 
           <div class="faq-item reveal">
@@ -558,11 +578,18 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
 
-      <div class="faq-section">
-        <h2 class="faq-section-heading" id="intake-faq">Intake FAQ</h2>
+      <div class="faq-section" id="intake-faq">
+        <h2 class="faq-section-heading">
+          <button class="faq-section-toggle" onclick="toggleFaqSection(this)" aria-expanded="false">
+            Intake FAQ
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+        </h2>
         <p class="faq-section-intro">What to expect when you reach out or submit our intake form.</p>
+        <div class="faq-section-body">
         <div class="faq-list">
 
           <div class="faq-item reveal">
@@ -621,6 +648,7 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <div class="cta-box reveal" style="margin-top:72px;">
@@ -674,7 +702,7 @@
     </div>
   </footer>
 
-  <script src="main.js?v=20260701-5" defer></script>
+  <script src="main.js?v=20260701-6" defer></script>
   <script>
     function toggleFaq(btn) {
       const item   = btn.closest('.faq-item');
@@ -687,6 +715,23 @@
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
       }
+    }
+
+    /* Category sections (Personal Injury FAQ, Habitability & Mold FAQ, etc.)
+       all start collapsed; each can be expanded independently. */
+    function toggleFaqSection(btn) {
+      const section = btn.closest('.faq-section');
+      const isOpen  = section.classList.contains('open');
+      section.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    function expandFaqSection(id) {
+      const section = document.getElementById(id);
+      if (!section || section.classList.contains('open')) return;
+      section.classList.add('open');
+      const btn = section.querySelector('.faq-section-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
     }
   </script>
 </body>
