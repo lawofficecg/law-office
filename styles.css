@@ -102,6 +102,11 @@ html {
 /* ===== RESET ===== */
 html { scroll-behavior: smooth; }
 
+/* Keep anchor-jump targets clear of the sticky header */
+#testimonials, #habitability, #personal-injury {
+  scroll-margin-top: 96px;
+}
+
 body {
   font-family: var(--font-sans);
   background: var(--off-white);
@@ -1871,9 +1876,11 @@ section    { padding: var(--section-v) 24px; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
 }
 
-@media (max-width: 768px) {
-  :root { --section-v: 72px; }
-
+/* Nav switches to the hamburger menu at a wider breakpoint than the
+   rest of the mobile layout — 8 nav items (including "Testimonials")
+   no longer fit the desktop bar once the header gets much narrower
+   than typical desktop widths, well before 768px. */
+@media (max-width: 900px) {
   .site-nav {
     display: none;
     position: absolute;
@@ -1909,6 +1916,10 @@ section    { padding: var(--section-v) 24px; }
   }
   .nav-toggle { display: flex; }
   .header-inner { position: relative; }
+}
+
+@media (max-width: 768px) {
+  :root { --section-v: 72px; }
 
   .cards-grid { grid-template-columns: 1fr; }
   .practice-card { padding: 36px 28px; }
