@@ -21,6 +21,10 @@
   --accent:        #9A8878;
   --accent-light:  #B5A597;
   --accent-pale:   #EDE6DF;
+  /* Distinct warm terracotta for "Call Now" — deliberately not green or
+     taupe, so it reads as a separate, clearly visible action. */
+  --call:          #A8632B;
+  --call-light:    #C98B4F;
   --text:          #1C1916;
   --text-muted:    #6B6460;
   --border:        #E5E0D8;
@@ -862,6 +866,37 @@ section    { padding: var(--section-v) 24px; }
   .results-tagline .btn-consult { animation: none; }
 }
 
+/* ── "Call Now" — a distinct warm-terracotta CTA under every consult
+   button, with its own glow color so it never gets mistaken for the
+   green/taupe "Request a Free Consultation" buttons next to it. ── */
+.call-now-wrap { margin-top: 12px; }
+.btn-call {
+  background: var(--call);
+  color: var(--surface);
+  border-color: var(--call);
+  font-size: clamp(0.7rem, 1.1vw, 0.76rem);
+  padding: 11px 24px;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(168,99,43,.3), 0 0 12px 2px rgba(168,99,43,.4);
+  animation: btn-call-glow 3s var(--ease-in-out) infinite;
+}
+.btn-call:hover {
+  background: var(--call-light);
+  border-color: var(--call-light);
+  color: var(--surface);
+  box-shadow: 0 6px 20px rgba(168,99,43,.4), 0 0 22px 5px rgba(201,139,79,.6);
+  transform: translateY(-2px);
+  animation: none !important;
+}
+.btn-call svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
+@keyframes btn-call-glow {
+  0%, 100% { box-shadow: 0 2px 8px rgba(168,99,43,.3), 0 0 12px 2px rgba(168,99,43,.4); }
+  50%      { box-shadow: 0 2px 8px rgba(168,99,43,.3), 0 0 24px 6px rgba(201,139,79,.65); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-call { animation: none; }
+}
+
 /* ===== PRACTICE CARDS ===== */
 .practice-preview {
   background: var(--surface);
@@ -880,6 +915,8 @@ section    { padding: var(--section-v) 24px; }
   grid-template-columns: 1fr 1fr;
   gap: 28px;
 }
+/* Offset the second card's icon breathe so the two don't pulse in lockstep */
+.cards-grid .practice-card:nth-child(2) .practice-card-icon { animation-delay: 1.6s; }
 
 .practice-card {
   background: var(--surface);
@@ -921,11 +958,22 @@ section    { padding: var(--section-v) 24px; }
   margin-bottom: 24px;
   box-shadow: 0 4px 14px rgba(44,74,62,.25);
   transition: background .3s, transform .4s var(--ease-spring), box-shadow .3s;
+  /* Gentle continuous breathing so the Habitability/Personal Injury icons
+     show life even before a visitor hovers, not just on interaction. */
+  animation: icon-breathe 3.2s var(--ease-in-out) infinite;
 }
 .practice-card:hover .practice-card-icon {
   background: linear-gradient(135deg, var(--accent), var(--accent-light));
   transform: scale(1.1) rotate(-3deg);
   box-shadow: 0 6px 20px rgba(154,136,120,.3);
+  animation: none;
+}
+@keyframes icon-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.07); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .practice-card-icon { animation: none; }
 }
 .practice-card-icon svg {
   width: 24px; height: 24px;
