@@ -391,6 +391,10 @@ section    { padding: var(--section-v) 24px; }
 .site-nav a.active::after{ width: 100%; }
 
 .nav-cta {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 700;
+  text-transform: uppercase;
   background: var(--green) !important;
   color: var(--surface) !important;
   padding: 12px 26px !important;
@@ -1938,6 +1942,28 @@ section    { padding: var(--section-v) 24px; }
   }
   .nav-toggle { display: flex; }
   .header-inner { position: relative; }
+  /* The standalone desktop CTA is replaced by the CTA inside the
+     mobile dropdown at this width. The sibling .nav-cta rule above
+     sets display:block !important, which would otherwise beat this
+     regardless of selector specificity. */
+  .nav-cta-desktop { display: none !important; }
+}
+
+@media (min-width: 1061px) {
+  /* Center the nav links between the logo and the CTA button instead
+     of bunching the whole nav+CTA cluster against the right edge
+     (which is what a plain 2-child space-between flex row does). A
+     3-column grid with equal outer columns puts the nav in the true
+     visual center regardless of how wide the logo/CTA are. */
+  .header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .site-logo { justify-self: start; }
+  .site-nav { justify-self: center; }
+  .site-nav li:last-child { display: none; }
+  .nav-cta-desktop { justify-self: end; }
 }
 
 @media (max-width: 768px) {
