@@ -22,7 +22,7 @@
           <span class="logo-subtitle">Attorney at Law</span>
         </span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.classList.toggle('active'); document.querySelector('.site-nav').classList.toggle('open')">
         <span></span><span></span><span></span>
       </button>
       <ul class="site-nav">
@@ -50,7 +50,7 @@
     <div class="container">
 
       <!-- Mold Testing -->
-      <div class="resource-card">
+      <div class="resource-card reveal">
         <span class="section-label">Mold Testing</span>
         <h3>Test Your Home for Mold</h3>
         <p>If you suspect mold in your home, getting a proper test is important &mdash; both for your health and for documenting your case. We recommend the <strong>My Mold Detective</strong> kit, which uses professional-grade air sampling and lab analysis. Having documentation of mold levels can be a critical part of a habitability claim.</p>
@@ -61,7 +61,7 @@
       </div>
 
       <!-- FAQ Link -->
-      <div class="resource-card">
+      <div class="resource-card reveal" style="transition-delay: 0.08s;">
         <span class="section-label">Legal Information</span>
         <h3>Frequently Asked Questions</h3>
         <p>Have questions about your rights as a tenant or what to expect from the legal process? Our FAQ page covers common questions about habitability law, personal injury claims, fees, timelines, and more.</p>
@@ -72,7 +72,7 @@
       </div>
 
       <!-- Documentation Tips -->
-      <div class="resource-card">
+      <div class="resource-card reveal" style="transition-delay: 0.16s;">
         <span class="section-label">Tips for Tenants</span>
         <h3>How to Document Habitability Issues</h3>
         <p>If you're experiencing unsafe conditions in your rental, documenting everything is one of the most important things you can do. Here are some practical steps:</p>
@@ -86,8 +86,46 @@
         </ul>
       </div>
 
+      <!-- Common Mistakes After an Injury -->
+      <div class="resource-card reveal" style="transition-delay: 0.24s;">
+        <span class="section-label">Personal Injury</span>
+        <h3>Common Mistakes After an Injury</h3>
+        <p>After an injury, small decisions can affect how a claim is evaluated. Preserving evidence early can make a significant difference.</p>
+        <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-muted); font-size: 0.95rem; line-height: 2;">
+          <li>Leaving without reporting the incident</li>
+          <li>Failing to photograph the dangerous condition</li>
+          <li>Not getting witness names</li>
+          <li>Waiting too long to seek medical treatment</li>
+          <li>Throwing away shoes, clothing, or damaged items</li>
+          <li>Giving a recorded statement before understanding the claim</li>
+          <li>Signing broad medical authorizations too early</li>
+          <li>Posting about the incident, injuries, or case online</li>
+          <li>Ignoring follow-up medical care</li>
+          <li>Waiting until video footage or records disappear</li>
+        </ul>
+      </div>
+
+      <!-- Personal Injury Case Checklist -->
+      <div class="resource-card reveal" style="transition-delay: 0.32s;">
+        <span class="section-label">Personal Injury</span>
+        <h3>Personal Injury Case Checklist</h3>
+        <p>If you were injured because of a dangerous property condition, unsafe walkway, fall, or other incident, the information below can help our office evaluate your potential claim.</p>
+        <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-muted); font-size: 0.95rem; line-height: 2;">
+          <li>Date and location of the incident</li>
+          <li>What caused the injury</li>
+          <li>Who owned, managed, or controlled the property</li>
+          <li>Whether the incident was reported</li>
+          <li>Names and contact information for witnesses</li>
+          <li>Photos or videos of the hazard</li>
+          <li>Medical treatment received</li>
+          <li>Injuries, symptoms, and ongoing limitations</li>
+          <li>Medical bills, lost wages, or missed work</li>
+          <li>Any insurance communications</li>
+        </ul>
+      </div>
+
       <!-- CTA -->
-      <div style="margin-top: 48px; padding: 40px; background: var(--green); border-radius: 3px; text-align: center;">
+      <div class="reveal" style="margin-top: 48px; padding: 40px; background: var(--green); border-radius: 3px; text-align: center;">
         <h3 style="color: var(--white); margin-bottom: 12px;">Ready to take the next step?</h3>
         <p style="color: rgba(255,255,255,0.8); margin-bottom: 28px; font-size: 0.97rem;">If you believe your landlord has failed you, or if you've been injured through no fault of your own, we're here to help. Free consultations available.</p>
         <a href="intake.html" class="btn btn-primary">Submit an Intake Form</a>
@@ -134,5 +172,6 @@
     </div>
   </footer>
 
+  <script src="site.js"></script>
 </body>
 </html>

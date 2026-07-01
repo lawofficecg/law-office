@@ -22,7 +22,7 @@
           <span class="logo-subtitle">Attorney at Law</span>
         </span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.classList.toggle('active'); document.querySelector('.site-nav').classList.toggle('open')">
         <span></span><span></span><span></span>
       </button>
       <ul class="site-nav">
@@ -56,11 +56,12 @@
       </div>
 
       <!-- Disclaimer -->
-      <div class="disclaimer-box" id="disclaimer">
+      <div class="disclaimer-box reveal" id="disclaimer">
         Submitting this form does not create an attorney-client relationship.
       </div>
 
       <form
+        class="reveal"
         action="mailto:intake@[DOMAIN PLACEHOLDER].com"
         method="POST"
         enctype="text/plain"
@@ -297,6 +298,6 @@
       });
     }
   </script>
-
+  <script src="site.js"></script>
 </body>
 </html>

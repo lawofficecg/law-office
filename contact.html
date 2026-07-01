@@ -22,7 +22,7 @@
           <span class="logo-subtitle">Attorney at Law</span>
         </span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.classList.toggle('active'); document.querySelector('.site-nav').classList.toggle('open')">
         <span></span><span></span><span></span>
       </button>
       <ul class="site-nav">
@@ -49,7 +49,7 @@
   <div class="contact-grid">
 
     <!-- Left: Contact Details -->
-    <div class="contact-info">
+    <div class="contact-info reveal">
       <h2>How to reach us</h2>
       <p class="lead">Free consultations available by phone or Zoom. Remote office serving Southern California &mdash; by appointment only.</p>
 
@@ -105,7 +105,7 @@
     </div>
 
     <!-- Right: CTA Box -->
-    <div class="contact-aside">
+    <div class="contact-aside reveal" style="transition-delay: 0.1s;">
       <h3>Ready to get started?</h3>
       <p>The fastest way to move forward is to submit our intake form. Tell us about your situation, and we'll review your case and follow up if we think we can help.</p>
       <a href="intake.html" class="btn btn-primary" style="width: 100%; text-align: center; display: block; margin-bottom: 16px;">Submit an Intake Form</a>
@@ -158,5 +158,6 @@
     </div>
   </footer>
 
+  <script src="site.js"></script>
 </body>
 </html>

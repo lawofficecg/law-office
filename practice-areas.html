@@ -22,7 +22,7 @@
           <span class="logo-subtitle">Attorney at Law</span>
         </span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.classList.toggle('active'); document.querySelector('.site-nav').classList.toggle('open')">
         <span></span><span></span><span></span>
       </button>
       <ul class="site-nav">
@@ -48,7 +48,7 @@
   <!-- HABITABILITY LAW -->
   <section class="practice-section" id="habitability">
     <div class="practice-section-inner container" style="max-width: var(--max-width);">
-      <div class="practice-text">
+      <div class="practice-text reveal">
         <span class="section-label">Practice Area</span>
         <div class="practice-icon-large">
           <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
@@ -61,7 +61,7 @@
           <a href="intake.html" class="btn btn-primary">Submit an Intake Form</a>
         </div>
       </div>
-      <aside>
+      <aside class="reveal" style="transition-delay: 0.1s;">
         <div class="practice-sidebar-box">
           <h4>Common Issues We Handle</h4>
           <ul>
@@ -77,11 +77,11 @@
           <h4>Results</h4>
           <ul>
             <li style="flex-direction: column; align-items: flex-start; gap: 2px;">
-              <strong style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--gold);">$475,000</strong>
+              <strong style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--gold); font-variant-numeric: tabular-nums;" data-prefix="$" data-count="475000">$0</strong>
               Confidential settlement, mold habitability
             </li>
             <li style="flex-direction: column; align-items: flex-start; gap: 2px;">
-              <strong style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--gold);">$210,000</strong>
+              <strong style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--gold); font-variant-numeric: tabular-nums;" data-prefix="$" data-count="210000">$0</strong>
               Confidential settlement, mold habitability
             </li>
           </ul>
@@ -94,7 +94,7 @@
   <!-- PERSONAL INJURY -->
   <section class="practice-section" id="personal-injury" style="background: var(--white);">
     <div class="practice-section-inner reverse container" style="max-width: var(--max-width);">
-      <aside>
+      <aside class="reveal">
         <div class="practice-sidebar-box">
           <h4>Types of Cases</h4>
           <ul>
@@ -111,7 +111,7 @@
           <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">We work on a <strong>contingency fee basis</strong>. You pay nothing unless we win your case. Free consultations by phone or Zoom.</p>
         </div>
       </aside>
-      <div class="practice-text">
+      <div class="practice-text reveal" style="transition-delay: 0.1s;">
         <span class="section-label">Practice Area</span>
         <div class="practice-icon-large">
           <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
@@ -128,7 +128,7 @@
 
   <!-- BOTTOM CTA -->
   <section class="bottom-cta">
-    <div class="container">
+    <div class="container reveal">
       <h2>Not sure if you have a case?</h2>
       <p>We offer free consultations — there's no cost to speak with us. Tell us what happened and we'll give you an honest assessment.</p>
       <a href="intake.html" class="btn btn-primary">Request a Free Consultation</a>
@@ -173,5 +173,6 @@
     </div>
   </footer>
 
+  <script src="site.js"></script>
 </body>
 </html>
