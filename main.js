@@ -75,6 +75,14 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach((el) => observer.observe(el));
+    /* Safety net: a scroll-triggered fade is a nice-to-have, not something
+       that should ever leave real content permanently invisible (e.g. if a
+       browser extension, a rendering glitch, or an unusual scroll pattern
+       stops an element from ever registering as intersecting). Force
+       everything visible after a few seconds regardless. */
+    setTimeout(() => {
+      revealEls.forEach((el) => el.classList.add('visible'));
+    }, 3000);
   } else {
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
       el.classList.add('visible');

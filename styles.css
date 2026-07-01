@@ -651,12 +651,16 @@ section    { padding: var(--section-v) 24px; }
   animation: fadeSlideUp .7s var(--ease-out) .5s both;
 }
 
+.hero .call-now-wrap {
+  animation: fadeSlideUp .7s var(--ease-out) .65s both;
+}
+
 /* The hero entrance animations use fill-mode "both" with a start delay, so
    without this they'd stay frozen at their 0%-keyframe (invisible) for
    anyone with prefers-reduced-motion: reduce, since no other rule disables
    them. */
 @media (prefers-reduced-motion: reduce) {
-  .hero h1, .hero-subheading, .hero-actions { animation: none; }
+  .hero h1, .hero-subheading, .hero-actions, .hero .call-now-wrap { animation: none; }
 }
 
 /* ── Floating legal motifs ── */
