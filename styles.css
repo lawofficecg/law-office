@@ -9,6 +9,25 @@
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Smooth native cross-fade between page navigations (progressive
+   enhancement — Chromium only, no-op elsewhere). */
+@view-transition { navigation: auto; }
+
+::selection { background: var(--accent); color: var(--surface); }
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--off-white);
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb {
+  background: var(--accent-light);
+  border-radius: 8px;
+  border: 2px solid var(--off-white);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
 /* ===== TOKENS ===== */
 :root {
   /* Quiet luxury palette — green brand + warm neutrals */
@@ -1289,12 +1308,14 @@ section    { padding: var(--section-v) 24px; }
 }
 .sidebar-box ul li:last-child { border-bottom: none; }
 .sidebar-box ul li:hover { color: var(--text); }
+.sidebar-box ul li:hover::before { transform: translateX(3px); }
 .sidebar-box ul li::before {
   content: '→';
   color: var(--accent);
   font-size: 0.8rem;
   margin-top: 1px;
   flex-shrink: 0;
+  transition: transform .2s var(--ease-out);
 }
 
 /* ===== INTAKE FORM ===== */
