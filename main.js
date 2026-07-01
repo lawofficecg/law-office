@@ -497,21 +497,30 @@
     document.querySelectorAll('.word-split').forEach(el => el.classList.add('visible'));
   }
 
-  /* ── 3D TILT CARDS ── */
+  /* ── 3D TILT + CURSOR-SPOTLIGHT CARDS ──
+     .tilt-card gets the 3D rotation (and spotlight); .spotlight-hover-only
+     cards (ones that already have their own hover transform, like sliding
+     or lifting) get just the cursor-following glow so it doesn't fight
+     with their existing transform. */
   if (!prefersReduced) {
-    document.querySelectorAll('.tilt-card').forEach(card => {
+    document.querySelectorAll('.tilt-card, .spotlight-hover').forEach(card => {
+      const doTilt = card.classList.contains('tilt-card');
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
-        const dx = (e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2);
-        const dy = (e.clientY - rect.top  - rect.height / 2) / (rect.height / 2);
-        card.style.setProperty('--rx', (-dy * 7) + 'deg');
-        card.style.setProperty('--ry', ( dx * 7) + 'deg');
         card.style.setProperty('--spotlight-x', ((e.clientX - rect.left) / rect.width  * 100) + '%');
         card.style.setProperty('--spotlight-y', ((e.clientY - rect.top)  / rect.height * 100) + '%');
+        if (doTilt) {
+          const dx = (e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2);
+          const dy = (e.clientY - rect.top  - rect.height / 2) / (rect.height / 2);
+          card.style.setProperty('--rx', (-dy * 7) + 'deg');
+          card.style.setProperty('--ry', ( dx * 7) + 'deg');
+        }
       });
       card.addEventListener('mouseleave', () => {
-        card.style.setProperty('--rx', '0deg');
-        card.style.setProperty('--ry', '0deg');
+        if (doTilt) {
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+        }
       });
     });
   }
