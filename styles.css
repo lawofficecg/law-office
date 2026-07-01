@@ -1575,17 +1575,53 @@ section    { padding: var(--section-v) 24px; }
    its own margin or typography on top of .faq-question's own styling. */
 .faq-q-heading { margin: 0; font-size: inherit; font-weight: inherit; }
 
-.faq-section { margin-bottom: 56px; }
-.faq-section:last-of-type { margin-bottom: 0; }
-.faq-section-heading {
-  font-size: clamp(1.5rem, 2.6vw, 1.9rem);
-  margin-bottom: 8px;
-}
+.faq-section { margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
+.faq-section:last-of-type { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+.faq-section-heading { margin-bottom: 8px; }
 .faq-section-intro {
   color: var(--text-muted);
   font-size: clamp(0.9rem, 1.4vw, 0.95rem);
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
+
+/* Each category (Personal Injury FAQ, Habitability & Mold FAQ, etc.) is its
+   own collapsible section, starting closed so the page isn't a wall of 24
+   questions at once. Individual questions inside still toggle separately. */
+.faq-section-toggle {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+  font-weight: 600;
+  color: var(--green);
+  transition: color .2s;
+}
+.faq-section-toggle:hover { color: var(--accent); }
+.faq-section-toggle .faq-icon { width: 32px; height: 32px; }
+.faq-section.open .faq-section-toggle .faq-icon {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(45deg);
+}
+.faq-section.open .faq-section-toggle .faq-icon::before,
+.faq-section.open .faq-section-toggle .faq-icon::after { background: var(--surface); }
+
+.faq-section-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s var(--ease-out);
+}
+/* Generous enough to never clip even with several long answers expanded
+   inside an open section at once. */
+.faq-section.open .faq-section-body { max-height: 20000px; }
 
 .faq-jump-nav {
   display: flex;
