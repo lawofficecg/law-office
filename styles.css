@@ -320,7 +320,10 @@ section    { padding: var(--section-v) 24px; }
 }
 
 .header-inner {
-  max-width: var(--max-width);
+  /* Wider than the body content's --max-width: the nav bar needs more
+     horizontal room for 8 items + logo + CTA than a reading-width
+     column does. */
+  max-width: 1360px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
@@ -334,6 +337,7 @@ section    { padding: var(--section-v) 24px; }
   align-items: center;
   gap: 14px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 .site-logo img { height: 50px; width: auto; }
 .logo-text { display: flex; flex-direction: column; line-height: 1.25; }
@@ -343,24 +347,28 @@ section    { padding: var(--section-v) 24px; }
   font-weight: 600;
   color: var(--green);
   letter-spacing: -.01em;
+  white-space: nowrap;
 }
 .logo-subtitle {
   font-size: clamp(0.6rem, 0.9vw, 0.65rem);
   letter-spacing: .12em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--text-muted);
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
   list-style: none;
 }
 .site-nav a {
-  font-size: clamp(0.72rem, 1.1vw, 0.78rem);
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(0.68rem, 1vw, 0.76rem);
   font-weight: 700;
-  letter-spacing: .06em;
+  letter-spacing: .05em;
   text-transform: uppercase;
   color: var(--text-muted);
   position: relative;
@@ -1880,7 +1888,7 @@ section    { padding: var(--section-v) 24px; }
    rest of the mobile layout — 8 nav items (including "Testimonials")
    no longer fit the desktop bar once the header gets much narrower
    than typical desktop widths, well before 768px. */
-@media (max-width: 900px) {
+@media (max-width: 1060px) {
   .site-nav {
     display: none;
     position: absolute;
