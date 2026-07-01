@@ -925,7 +925,7 @@ section    { padding: var(--section-v) 24px; }
   padding: 44px 40px;
   position: relative;
   overflow: hidden;
-  transition: transform .4s var(--ease-spring), box-shadow .3s var(--ease-out);
+  transition: opacity .8s var(--ease-out), transform .4s var(--ease-spring), box-shadow .3s var(--ease-out);
   cursor: default;
   box-shadow: var(--shadow-sm);
 }
@@ -1267,7 +1267,7 @@ section    { padding: var(--section-v) 24px; }
   padding: 32px 28px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow .3s, transform .4s var(--ease-spring);
+  transition: opacity .8s var(--ease-out), box-shadow .3s, transform .4s var(--ease-spring);
 }
 .sidebar-box:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 .sidebar-box h4 {
@@ -1775,7 +1775,7 @@ section    { padding: var(--section-v) 24px; }
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   margin-bottom: 28px;
   box-shadow: var(--shadow-sm);
-  transition: transform .35s var(--ease-spring), box-shadow .3s var(--ease-out), border-left-color .3s;
+  transition: opacity .8s var(--ease-out), transform .35s var(--ease-spring), box-shadow .3s var(--ease-out), border-left-color .3s;
 }
 .resource-card:hover {
   transform: translateX(7px);
@@ -2068,7 +2068,7 @@ section    { padding: var(--section-v) 24px; }
 .tilt-card {
   transform-style: preserve-3d;
   transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transition: transform .6s var(--ease-out), box-shadow .4s var(--ease-out);
+  transition: opacity .8s var(--ease-out), transform .6s var(--ease-out), box-shadow .4s var(--ease-out);
 }
 .tilt-card:hover {
   transition: transform .1s linear, box-shadow .2s;
