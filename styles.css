@@ -103,7 +103,7 @@ html {
 html { scroll-behavior: smooth; }
 
 /* Keep anchor-jump targets clear of the sticky header */
-#testimonials, #habitability, #personal-injury {
+#testimonials, #habitability, #personal-injury, #testimonials-disclosure {
   scroll-margin-top: 96px;
 }
 
