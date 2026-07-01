@@ -1027,17 +1027,21 @@ section    { padding: var(--section-v) 24px; }
 /* ===== HOW FEES WORK ===== */
 .fees-section {
   background: var(--off-white);
-  padding: 32px 24px var(--section-v);
+  padding: 32px 24px calc(var(--section-v) + 16px);
 }
 .fees-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-top: 8px;
+  gap: 56px;
+  margin-top: 24px;
 }
 .fees-item {
-  border-left: 3px solid var(--accent);
-  padding: 4px 0 4px 24px;
+  display: block;
+  border-left: 4px solid var(--accent);
+  padding: 12px 0 12px 30px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
   /* opacity is included so this rule (which sits after .reveal in the
      cascade) doesn't silently clobber .reveal's own opacity transition —
      the same class of bug fixed earlier on .practice-card/.resource-card/
@@ -1050,8 +1054,8 @@ section    { padding: var(--section-v) 24px; }
   transform: translateX(6px);
 }
 .fees-item h3 {
-  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
-  margin-bottom: 10px;
+  font-size: clamp(1.3rem, 2.3vw, 1.55rem);
+  margin-bottom: 14px;
   transition: color .3s;
 }
 .fees-item:hover h3 {
@@ -1059,8 +1063,8 @@ section    { padding: var(--section-v) 24px; }
 }
 .fees-item p {
   color: var(--text-muted);
-  font-size: clamp(0.88rem, 1.5vw, 0.95rem);
-  line-height: 1.65;
+  font-size: clamp(1rem, 1.7vw, 1.1rem);
+  line-height: 1.7;
 }
 
 /* ===== TESTIMONIALS MARQUEE ===== */
