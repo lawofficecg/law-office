@@ -1484,6 +1484,23 @@ section    { padding: var(--section-v) 24px; }
   color: var(--accent);
 }
 
+/* A <select> always shows visible text (its placeholder option, e.g.
+   "-- Select --"), unlike an empty text input which shows nothing —
+   so its label can't rest in the centered position while waiting for
+   a value. Keep it floated up at all times. */
+.float-group:has(select) label {
+  top: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.float-group:has(select).focused label,
+.float-group:has(select).has-value label {
+  color: var(--accent);
+}
+
 /* Inline validation states */
 .form-group.field-error input,
 .form-group.field-error select,
