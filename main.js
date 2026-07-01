@@ -7,6 +7,50 @@
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ── SCROLL REVEAL ──
+     Deliberately the very first thing this script does, wrapped in its
+     own try/catch, so a bug anywhere else on the page (custom cursor,
+     intake form config, third-party interference, etc.) can never stop
+     real content from becoming visible. This code has caused repeated
+     "content stays permanently blank" reports, so it gets a very short
+     forced-visible fallback rather than relying solely on
+     IntersectionObserver ever firing. */
+  try {
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const showAll = () => revealEls.forEach((el) => el.classList.add('visible'));
+
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      showAll();
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach((el) => observer.observe(el));
+      /* Safety net — never let a scroll-triggered fade permanently hide
+         real content. */
+      setTimeout(showAll, 1200);
+    }
+
+    /* Stagger delays */
+    document.querySelectorAll('.stagger').forEach((parent) => {
+      const children = parent.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      children.forEach((child, i) => {
+        child.style.transitionDelay = `${i * 80}ms`;
+      });
+    });
+  } catch (err) {
+    /* If anything above threw, fall back to showing everything
+       immediately rather than leaving the page blank. */
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => {
+      el.classList.add('visible');
+    });
+  }
+
   /* ── PAGE TRANSITION OVERLAY ── */
   const overlay = document.querySelector('.page-overlay');
   if (overlay) {
@@ -62,40 +106,6 @@
       });
     });
   }
-
-  /* ── SCROLL REVEAL ── */
-  if (!prefersReduced && 'IntersectionObserver' in window) {
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observer  = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach((el) => observer.observe(el));
-    /* Safety net: a scroll-triggered fade is a nice-to-have, not something
-       that should ever leave real content permanently invisible (e.g. if a
-       browser extension, a rendering glitch, or an unusual scroll pattern
-       stops an element from ever registering as intersecting). Force
-       everything visible after a few seconds regardless. */
-    setTimeout(() => {
-      revealEls.forEach((el) => el.classList.add('visible'));
-    }, 3000);
-  } else {
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
-      el.classList.add('visible');
-    });
-  }
-
-  /* Stagger delays */
-  document.querySelectorAll('.stagger').forEach((parent) => {
-    const children = parent.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    children.forEach((child, i) => {
-      child.style.transitionDelay = `${i * 80}ms`;
-    });
-  });
 
   /* ── ANIMATED DIVIDERS ── */
   if (!prefersReduced && 'IntersectionObserver' in window) {
