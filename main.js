@@ -11,10 +11,12 @@
      Deliberately the very first thing this script does, wrapped in its
      own try/catch, so a bug anywhere else on the page (custom cursor,
      intake form config, third-party interference, etc.) can never stop
-     real content from becoming visible. This code has caused repeated
-     "content stays permanently blank" reports, so it gets a very short
-     forced-visible fallback rather than relying solely on
-     IntersectionObserver ever firing. */
+     real content from becoming visible — if anything above throws, the
+     catch block below force-reveals everything immediately. There is no
+     additional blanket timeout beyond that: a fixed timeout that fires
+     regardless of scroll position would force-reveal below-the-fold
+     sections (e.g. Fees) before the visitor ever scrolls to them,
+     silently skipping their entrance animation. */
   try {
     const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const showAll = () => revealEls.forEach((el) => el.classList.add('visible'));
@@ -31,9 +33,6 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       revealEls.forEach((el) => observer.observe(el));
-      /* Safety net — never let a scroll-triggered fade permanently hide
-         real content. */
-      setTimeout(showAll, 1200);
     }
 
     /* Stagger delays */
