@@ -1507,10 +1507,13 @@ section    { padding: var(--section-v) 24px; }
 }
 
 /* A <select> always shows visible text (its placeholder option, e.g.
-   "-- Select --"), unlike an empty text input which shows nothing —
-   so its label can't rest in the centered position while waiting for
-   a value. Keep it floated up at all times. */
-.float-group:has(select) label {
+   "-- Select --"), and a date input always shows its own mm/dd/yyyy
+   placeholder segments regardless of the placeholder attribute —
+   unlike an empty text input, which shows nothing. Their labels can't
+   rest in the centered position while waiting for a value, so keep
+   them floated up at all times. */
+.float-group:has(select) label,
+.float-group:has(input[type="date"]) label {
   top: 5px;
   font-size: 0.65rem;
   font-weight: 700;
@@ -1519,7 +1522,9 @@ section    { padding: var(--section-v) 24px; }
   color: var(--text-muted);
 }
 .float-group:has(select).focused label,
-.float-group:has(select).has-value label {
+.float-group:has(select).has-value label,
+.float-group:has(input[type="date"]).focused label,
+.float-group:has(input[type="date"]).has-value label {
   color: var(--accent);
 }
 
