@@ -1048,6 +1048,15 @@ section    { padding: var(--section-v) 24px; }
   overflow: hidden;
 }
 .testimonials .container { text-align: center; padding-bottom: 52px; }
+.testimonials-disclaimer {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  opacity: .75;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 36px auto 0;
+}
 
 @keyframes marquee-scroll {
   from { transform: translateX(0); }

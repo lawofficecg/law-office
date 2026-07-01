@@ -74,7 +74,7 @@
       </div>
 
       <div class="disclaimer-box" id="disclaimer">
-        Submitting this form does not create an attorney-client relationship.
+        Submitting this form does not create an attorney-client relationship. The Law Office of Caroline Golian will use the information provided to evaluate your inquiry, conduct conflict checks, and determine whether the firm may be able to assist. The firm may decline representation. Please do not submit urgent deadlines through this form.
       </div>
 
       <!-- Online submission is intentionally inactive until a secure form
@@ -473,14 +473,14 @@
         <div class="form-group consent-group">
           <label class="consent-label">
             <input type="checkbox" id="consent-legal" name="consent_legal" required />
-            <span id="consent-legal-text">I understand that submitting this form does not create an attorney-client relationship, and that the Law Office of Caroline Golian will use the information I provide solely to evaluate my potential case. I have read the <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.</span>
+            <span id="consent-legal-text">I understand that submitting this form does not create an attorney-client relationship. I understand that the Law Office of Caroline Golian will use the information provided to evaluate my inquiry and may decline representation. Please review our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.</span>
           </label>
         </div>
 
         <div class="form-group consent-group">
           <label class="consent-label">
             <input type="checkbox" id="consent-contact" name="consent_contact" />
-            <span id="consent-contact-text">I consent to receive text messages and phone calls from the Law Office of Caroline Golian regarding my inquiry. Message and data rates may apply. Reply STOP to opt out. <strong>Consent to text or call is not required to submit this form.</strong></span>
+            <span id="consent-contact-text">I consent to receive calls and text messages from the Law Office of Caroline Golian regarding my inquiry. Message and data rates may apply. Reply STOP to opt out. <strong>Consent to texts is not required to submit this form.</strong></span>
           </label>
         </div>
 
@@ -557,7 +557,7 @@
       en: {
         heading: 'Tell us about your case',
         subheading: "Fill out the form below and we'll review your situation. All consultations are free and there is no obligation to proceed.",
-        disclaimer: 'Submitting this form does not create an attorney-client relationship.',
+        disclaimer: 'Submitting this form does not create an attorney-client relationship. The Law Office of Caroline Golian will use the information provided to evaluate your inquiry, conduct conflict checks, and determine whether the firm may be able to assist. The firm may decline representation. Please do not submit urgent deadlines through this form.',
         'label-name': 'Full Name', 'label-phone': 'Phone Number',
         'label-email': 'Email Address', 'label-besttime': 'Best Time to Reach You',
         'label-casetype': 'Case Type',
@@ -577,14 +577,14 @@
         'label-pi-desc': 'Please describe your situation in your own words.',
         'submit-btn': 'Submit',
         'submit-note': "We'll review your information and be in touch soon.",
-        'consent-legal-text': 'I understand that submitting this form does not create an attorney-client relationship, and that the Law Office of Caroline Golian will use the information I provide solely to evaluate my potential case. I have read the Privacy Policy and Terms of Use.',
-        'consent-contact-text': 'I consent to receive text messages and phone calls from the Law Office of Caroline Golian regarding my inquiry. Message and data rates may apply. Reply STOP to opt out. Consent to text or call is not required to submit this form.',
+        'consent-legal-text': 'I understand that submitting this form does not create an attorney-client relationship. I understand that the Law Office of Caroline Golian will use the information provided to evaluate my inquiry and may decline representation. Please review our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.',
+        'consent-contact-text': 'I consent to receive calls and text messages from the Law Office of Caroline Golian regarding my inquiry. Message and data rates may apply. Reply STOP to opt out. <strong>Consent to texts is not required to submit this form.</strong>',
         'form-inactive-notice': 'Online submission is being finalized. Please call or email our office directly using the contact information in the footer below.'
       },
       es: {
         heading: 'Cuéntenos sobre su caso',
         subheading: 'Complete el formulario a continuación y revisaremos su situación. Todas las consultas son gratuitas y sin ninguna obligación de continuar.',
-        disclaimer: 'Enviar este formulario no crea una relación abogado-cliente.',
+        disclaimer: 'Enviar este formulario no crea una relación abogado-cliente. El Despacho Jurídico de Caroline Golian utilizará la información proporcionada para evaluar su consulta, realizar verificaciones de conflicto de intereses y determinar si la firma puede ayudarle. La firma puede rechazar la representación. Por favor, no envíe información con plazos urgentes a través de este formulario.',
         'label-name': 'Nombre completo', 'label-phone': 'Número de teléfono',
         'label-email': 'Correo electrónico', 'label-besttime': 'Mejor hora para contactarle',
         'label-casetype': 'Tipo de caso',
@@ -602,8 +602,8 @@
         'label-pi-desc': 'Por favor describa su situación con sus propias palabras.',
         'submit-btn': 'Enviar',
         'submit-note': 'Revisaremos su información y nos pondremos en contacto pronto.',
-        'consent-legal-text': 'Entiendo que enviar este formulario no crea una relación abogado-cliente, y que el Despacho Jurídico de Caroline Golian utilizará la información que proporcione únicamente para evaluar mi posible caso. He leído la Política de Privacidad y los Términos de Uso.',
-        'consent-contact-text': 'Doy mi consentimiento para recibir mensajes de texto y llamadas del Despacho Jurídico de Caroline Golian sobre mi consulta. Se pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar la suscripción. No es necesario dar su consentimiento para enviar este formulario.',
+        'consent-legal-text': 'Entiendo que enviar este formulario no crea una relación abogado-cliente. Entiendo que el Despacho Jurídico de Caroline Golian utilizará la información proporcionada para evaluar mi consulta y que la firma puede rechazar la representación. Por favor revise nuestra <a href="privacy-policy.html">Política de Privacidad</a> y nuestros <a href="terms.html">Términos de Uso</a>.',
+        'consent-contact-text': 'Doy mi consentimiento para recibir llamadas y mensajes de texto del Despacho Jurídico de Caroline Golian sobre mi consulta. Se pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar la suscripción. <strong>No es necesario dar su consentimiento para enviar este formulario.</strong>',
         'form-inactive-notice': 'El envío en línea se está finalizando. Llame o envíe un correo electrónico directamente a nuestra oficina utilizando la información de contacto en el pie de página.'
       }
     };
@@ -620,10 +620,12 @@
       document.getElementById('page-heading').textContent = t.heading;
       document.getElementById('page-subheading').textContent = t.subheading;
       document.getElementById('disclaimer').textContent = t.disclaimer;
+      const htmlKeys = ['consent-legal-text', 'consent-contact-text'];
       Object.keys(t).forEach(key => {
         const el = document.getElementById(key);
         if (!el) return;
         if (el.tagName === 'OPTION') { el.textContent = t[key]; return; }
+        if (htmlKeys.includes(key)) { el.innerHTML = t[key]; return; }
         if (['BUTTON','LABEL','H4','P','SPAN'].includes(el.tagName)) el.textContent = t[key];
       });
     }
