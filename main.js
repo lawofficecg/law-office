@@ -59,6 +59,15 @@
       requestAnimationFrame(() => overlay.classList.add('fade-out'));
     });
 
+    /* When a page is restored from the browser's back/forward cache
+       (e.g. clicking the Back button), this script does not re-run, so
+       the overlay would otherwise stay stuck in the opaque state it was
+       left in right before navigating away — showing as a solid color
+       screen. Force it transparent again on any bfcache restore. */
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) overlay.classList.add('fade-out');
+    });
+
     if (!prefersReduced) {
       document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href]');
