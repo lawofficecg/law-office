@@ -493,24 +493,24 @@ section    { padding: var(--section-v) 24px; }
 /* ===== SCROLL REVEAL ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+  transform: translateY(46px) scale(.97);
+  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
 
 .reveal-left {
   opacity: 0;
-  transform: translateX(-32px);
-  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+  transform: translateX(-52px) scale(.97);
+  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
 }
-.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-left.visible { opacity: 1; transform: translateX(0) scale(1); }
 
 .reveal-right {
   opacity: 0;
-  transform: translateX(32px);
-  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+  transform: translateX(52px) scale(.97);
+  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
 }
-.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.reveal-right.visible { opacity: 1; transform: translateX(0) scale(1); }
 
 .stagger > *:nth-child(1) { transition-delay: 0ms; }
 .stagger > *:nth-child(2) { transition-delay: 80ms; }
@@ -2026,11 +2026,17 @@ section    { padding: var(--section-v) 24px; }
   transition: transform .1s linear, box-shadow .2s;
 }
 
-/* ── Magnetic button — JS writes --mx / --my offsets ── */
+/* ── Magnetic button — JS writes --mx / --my offsets ──
+   Combines with the button's own hover lift (same specificity tier as
+   .btn-primary:hover etc.; wins the tie by coming later in the file) so
+   the magnetic pull doesn't just get silently overridden on hover. */
 .btn-magnetic {
   transition: transform .4s var(--ease-spring), box-shadow .3s var(--ease-out),
               color .25s, background .25s, border-color .25s;
   transform: translate(var(--mx, 0px), var(--my, 0px));
+}
+.btn-magnetic:hover {
+  transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(-2px);
 }
 
 /* ── Word-split heading reveal ── */
@@ -2092,16 +2098,20 @@ section    { padding: var(--section-v) 24px; }
   box-shadow: 0 0 8px rgba(154,136,120,.5);
 }
 
-/* ── Spotlight hover on practice cards ── */
-.practice-card {
+/* ── Cursor-spotlight hover glow — generalized so any card can opt in via
+   .spotlight-hover (JS sets --spotlight-x/y for both this and .tilt-card).
+   border-radius:inherit so it matches whatever shape the host card uses. ── */
+.spotlight-hover {
   --spotlight-x: 50%;
   --spotlight-y: 50%;
+  position: relative;
+  overflow: hidden;
 }
-.practice-card::after {
+.spotlight-hover::after {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-md);
+  border-radius: inherit;
   background: radial-gradient(
     circle 180px at var(--spotlight-x) var(--spotlight-y),
     rgba(154,136,120,.10) 0%,
@@ -2111,7 +2121,7 @@ section    { padding: var(--section-v) 24px; }
   transition: opacity .3s;
   pointer-events: none;
 }
-.practice-card:hover::after { opacity: 1; }
+.spotlight-hover:hover::after { opacity: 1; }
 
 /* ── Grain overlay on hero (animated) ── */
 .hero-grain {
