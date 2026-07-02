@@ -390,6 +390,58 @@ section    { padding: var(--section-v) 24px; }
 .site-nav a.active       { color: var(--green); }
 .site-nav a.active::after{ width: 100%; }
 
+/* ── Practice Areas dropdown (Habitability / Personal Injury) ── */
+.nav-item-dropdown { position: relative; }
+.nav-item-dropdown > a::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  margin-bottom: 1px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform .2s;
+}
+.nav-item-dropdown:hover > a::before,
+.nav-item-dropdown:focus-within > a::before {
+  transform: rotate(225deg);
+  margin-bottom: -2px;
+}
+.nav-dropdown {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 6px);
+  min-width: 190px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility .2s;
+  z-index: 300;
+}
+.nav-item-dropdown:hover .nav-dropdown,
+.nav-item-dropdown:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.nav-dropdown li { width: 100%; }
+.nav-dropdown a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+.nav-dropdown a::after { display: none; }
+.nav-dropdown a:hover { background: var(--off-white); }
+
 .nav-cta {
   display: inline-block;
   white-space: nowrap;
@@ -961,6 +1013,30 @@ section    { padding: var(--section-v) 24px; }
 .practice-card h3 { margin-bottom: 14px; }
 .practice-card p  { color: var(--text-muted); font-size: clamp(0.88rem, 1.5vw, 0.95rem); margin-bottom: 28px; }
 .practice-card p + p { margin-top: -14px; }
+.practice-card p.practice-card-handle-label {
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.practice-card-list {
+  list-style: none;
+  margin: 0 0 28px;
+}
+.practice-card-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 5px 0;
+  font-size: clamp(0.88rem, 1.5vw, 0.95rem);
+  color: var(--text-muted);
+}
+.practice-card-list li::before {
+  content: '→';
+  color: var(--accent);
+  font-size: 0.8rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
 
 
 /* ===== TESTIMONIALS MARQUEE ===== */
@@ -1866,6 +1942,27 @@ section    { padding: var(--section-v) 24px; }
      sets display:block !important, which would otherwise beat this
      regardless of selector specificity. */
   .nav-cta-desktop { display: none !important; }
+
+  /* The desktop dropdown relies on :hover, which doesn't exist on touch —
+     tapping "Practice Areas" would just navigate away. On mobile, render
+     Habitability/Personal Injury as an always-visible indented sub-list
+     instead of a hover flyout. */
+  .nav-item-dropdown > a::before { display: none; }
+  .nav-dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    background: var(--off-white);
+    padding: 0;
+  }
+  .nav-dropdown a {
+    padding: 14px 24px 14px 40px;
+    font-size: 0.8rem;
+  }
 }
 
 @media (min-width: 1061px) {

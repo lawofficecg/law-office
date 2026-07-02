@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intake Form | Law Office of Caroline Golian</title>
-  <meta name="description" content="Tell us about your case. Submit a free intake form and we'll review your situation." />
+  <title>Habitability Intake Form | Law Office of Caroline Golian</title>
+  <meta name="description" content="Tell us about your habitability or mold case. Submit our free intake form and we'll review your situation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20260701-21" />
+  <link rel="stylesheet" href="styles.css?v=20260701-23" />
   <link rel="canonical" href="https://lawofficecg.github.io/law-office/intake.html" />
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Law Office of Caroline Golian" />
-  <meta property="og:title" content="Intake Form | Law Office of Caroline Golian" />
-  <meta property="og:description" content="Tell us about your case. Submit a free intake form and we'll review your situation." />
+  <meta property="og:title" content="Habitability Intake Form | Law Office of Caroline Golian" />
+  <meta property="og:description" content="Tell us about your habitability or mold case. Submit our free intake form and we'll review your situation." />
   <meta property="og:url" content="https://lawofficecg.github.io/law-office/intake.html" />
   <meta property="og:image" content="https://lawofficecg.github.io/law-office/logo.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Intake Form | Law Office of Caroline Golian" />
-  <meta name="twitter:description" content="Tell us about your case. Submit a free intake form and we'll review your situation." />
+  <meta name="twitter:title" content="Habitability Intake Form | Law Office of Caroline Golian" />
+  <meta name="twitter:description" content="Tell us about your habitability or mold case. Submit our free intake form and we'll review your situation." />
   <meta name="twitter:image" content="https://lawofficecg.github.io/law-office/logo.png" />
 </head>
 <body>
@@ -32,7 +32,7 @@
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-logo">
-        <img src="logo.png?v=20260701-21" alt="Law Office of Caroline Golian logo" />
+        <img src="logo.png?v=20260701-23" alt="Law Office of Caroline Golian logo" />
         <span class="logo-text">
           <span class="logo-name">Law Office of Caroline Golian</span>
           <span class="logo-subtitle">Attorney at Law</span>
@@ -44,20 +44,26 @@
       <ul class="site-nav" id="site-nav" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="practice-areas.html">Practice Areas</a></li>
+        <li class="nav-item-dropdown">
+          <a href="practice-areas.html">Practice Areas</a>
+          <ul class="nav-dropdown">
+            <li><a href="habitability.html">Habitability</a></li>
+            <li><a href="personal-injury.html">Personal Injury</a></li>
+          </ul>
+        </li>
         <li><a href="index.html#testimonials">Testimonials</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="intake.html" class="nav-cta">Free Consultation</a></li>
+        <li><a href="intake.html" class="nav-cta">Start Habitability Intake</a></li>
       </ul>
-      <a href="intake.html" class="nav-cta nav-cta-desktop active">Free Consultation</a>
+      <a href="intake.html" class="nav-cta nav-cta-desktop active">Start Habitability Intake</a>
     </div>
   </header>
 
   <section class="page-hero" id="main-content">
     <div class="container">
-      <h1 id="page-heading">Tell us about your case</h1>
+      <h1 id="page-heading">Tell us about your habitability case</h1>
       <p id="page-subheading">Fill out the form below and we'll review your situation. All consultations are free and there is no obligation to proceed.</p>
     </div>
   </section>
@@ -88,6 +94,7 @@
       <form
         action="https://api.web3forms.com/submit"
         method="POST"
+        enctype="multipart/form-data"
         id="intake-form"
         novalidate
       >
@@ -123,347 +130,51 @@
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group float-group">
-            <label for="preferred-language" id="label-preferred-language">Preferred Language</label>
-            <select id="preferred-language" name="preferred_language">
-              <option value="" id="opt-lang-select">-- Select --</option>
-              <option value="English" id="opt-lang-en">English</option>
-              <option value="Spanish" id="opt-lang-es">Spanish</option>
-              <option value="Other" id="opt-lang-other">Other</option>
-            </select>
-          </div>
-          <div class="form-group float-group">
-            <label for="case-type" id="label-casetype">Case Type <span class="required-star" aria-hidden="true">*</span></label>
-            <select id="case-type" name="case_type" required aria-required="true" onchange="handleCaseType(this.value)">
-              <option value="" id="opt-select">-- Select a case type --</option>
-              <option value="Mold / Habitability" id="opt-hab">Mold / Habitability</option>
-              <option value="Personal Injury" id="opt-pi">Personal Injury</option>
-            </select>
-          </div>
+        <input type="hidden" name="case_type" value="Mold / Habitability" />
+
+        <div class="form-group float-group">
+          <label for="preferred-language" id="label-preferred-language">Preferred Language</label>
+          <select id="preferred-language" name="preferred_language">
+            <option value="" id="opt-lang-select">-- Select --</option>
+            <option value="English" id="opt-lang-en">English</option>
+            <option value="Spanish" id="opt-lang-es">Spanish</option>
+            <option value="Other" id="opt-lang-other">Other</option>
+          </select>
         </div>
 
-        <!-- Habitability Conditional Fields -->
-        <div class="conditional-fields" id="habitability-fields">
-          <h4 class="conditional-fields-title" id="hab-section-title">Additional Information, Habitability</h4>
-
-          <div class="form-row">
-            <div class="form-group float-group">
-              <label for="rental-address" id="label-rental-address">Rental Property Address</label>
-              <input type="text" id="rental-address" name="rental_address" placeholder=" " />
-            </div>
-            <div class="form-group float-group">
-              <label for="rental-city" id="label-rental-city">City</label>
-              <input type="text" id="rental-city" name="rental_city" placeholder=" " />
-            </div>
-          </div>
+        <!-- Habitability Fields -->
+        <div class="conditional-fields visible" id="habitability-fields">
+          <h4 class="conditional-fields-title" id="hab-section-title">Additional Information</h4>
 
           <div class="form-group">
-            <label for="occupant-status" id="label-occupant-status">Are you a current tenant, former tenant, family member of a tenant, or other?</label>
-            <select name="occupant_status" id="occupant-status">
-              <option value="" id="opt-occ-select">-- Select --</option>
-              <option value="Current tenant" id="opt-occ-current">Current tenant</option>
-              <option value="Former tenant" id="opt-occ-former">Former tenant</option>
-              <option value="Family member of tenant" id="opt-occ-family">Family member of tenant</option>
-              <option value="Other" id="opt-occ-other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group float-group">
-              <label for="landlord-name" id="label-landlord-name">Landlord / Property Owner Name</label>
-              <input type="text" id="landlord-name" name="landlord_name" placeholder=" " />
-            </div>
-            <div class="form-group float-group">
-              <label for="property-mgmt" id="label-property-mgmt">Property Management Company Name</label>
-              <input type="text" id="property-mgmt" name="property_mgmt_company" placeholder=" " />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="problem-began" id="label-problem-began">When did the problem first begin?</label>
-            <input type="text" id="problem-began" name="problem_began" placeholder=" " />
-          </div>
-
-          <div class="form-group checkbox-group">
-            <p class="checkbox-group-label" id="label-issue-type">What type of issue is involved? (Select all that apply.)</p>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="issue_mold" value="Yes" />
-              <span id="opt-issue-mold">Mold</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="issue_water_intrusion" value="Yes" />
-              <span id="opt-issue-water">Water intrusion / leaks</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="issue_sewage_backup" value="Yes" />
-              <span id="opt-issue-sewage">Sewage backup</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="issue_broken_heat_utilities" value="Yes" />
-              <span id="opt-issue-heat">Broken heat / utilities</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="issue_other_unsafe_conditions" value="Yes" />
-              <span id="opt-issue-other">Other unsafe conditions</span>
-            </label>
-          </div>
-
-          <div class="form-group">
-            <label for="written-notice" id="label-written-notice">Have you given written notice to your landlord about the issue?</label>
+            <label for="written-notice" id="label-written-notice">Did you tell your landlord in writing (text, email, etc.)?</label>
             <select name="written_notice" id="written-notice">
               <option value="">-- Select --</option>
               <option value="Yes" id="opt-yes1">Yes</option>
               <option value="No" id="opt-no1">No</option>
             </select>
           </div>
+
           <div class="form-group">
-            <label for="notice-when-how" id="label-notice-when-how">When and how was notice given?</label>
-            <textarea id="notice-when-how" name="notice_when_how" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="landlord-responded" id="label-landlord-responded">Did your landlord or property manager respond?</label>
-            <select name="landlord_responded" id="landlord-responded">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-resp">Yes</option>
-              <option value="No" id="opt-no-resp">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="landlord-response-how" id="label-landlord-response-how">If so, how did they respond?</label>
-            <textarea id="landlord-response-how" name="landlord_response_how" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="repairs-attempted" id="label-repairs-attempted">Were any repairs attempted?</label>
-            <select name="repairs_attempted" id="repairs-attempted">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-repairs">Yes</option>
-              <option value="No" id="opt-no-repairs">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="unit-inspected" id="label-unit-inspected">Has anyone inspected or tested the unit?</label>
-            <select name="unit_inspected" id="unit-inspected">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-inspected">Yes</option>
-              <option value="No" id="opt-no-inspected">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="mold-test-done" id="label-mold-test-done">Have you had an air test or mold test done?</label>
-            <select name="mold_test_done" id="mold-test-done">
+            <label for="mold-test-done" id="label-mold-test-done">Did you do a mold test?</label>
+            <select name="mold_test_done" id="mold-test-done" onchange="document.getElementById('mold-test-result-wrap').style.display = this.value === 'Yes' ? 'block' : 'none';">
               <option value="">-- Select --</option>
               <option value="Yes" id="opt-yes-test">Yes</option>
               <option value="No" id="opt-no-test">No</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="mold-test-results" id="label-mold-test-results">If so, what were the results?</label>
-            <textarea id="mold-test-results" name="mold_test_results" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="symptoms" id="label-symptoms">Are you experiencing any symptoms? If so, please describe them.</label>
-            <textarea id="symptoms" name="symptoms" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="hab-medical-treatment" id="label-hab-medical-treatment">Have you sought medical treatment for your symptoms?</label>
-            <select name="hab_medical_treatment" id="hab-medical-treatment">
+          <div class="form-group" id="mold-test-result-wrap" style="display:none;">
+            <label for="mold-test-result" id="label-mold-test-result">Was it positive or negative?</label>
+            <select name="mold_test_result" id="mold-test-result">
               <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-habmed">Yes</option>
-              <option value="No" id="opt-no-habmed">No</option>
+              <option value="Positive" id="opt-mold-positive">Positive</option>
+              <option value="Negative" id="opt-mold-negative">Negative</option>
             </select>
           </div>
 
-          <div class="form-group checkbox-group">
-            <p class="checkbox-group-label" id="label-hab-evidence">Do you have any of the following? (Select all that apply.)</p>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="hab_evidence_photos_videos" value="Yes" />
-              <span id="opt-hab-ev-photos">Photos or videos</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="hab_evidence_emails" value="Yes" />
-              <span id="opt-hab-ev-emails">Emails</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="hab_evidence_repair_requests" value="Yes" />
-              <span id="opt-hab-ev-repair">Repair requests</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="hab_evidence_inspection_reports" value="Yes" />
-              <span id="opt-hab-ev-inspection">Inspection reports</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="hab_evidence_medical_records" value="Yes" />
-              <span id="opt-hab-ev-medical">Medical records</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="hab_evidence_test_results" value="Yes" />
-              <span id="opt-hab-ev-testresults">Test results</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="hab_evidence_other" value="Yes" />
-              <span id="opt-hab-ev-other">Other</span>
-            </label>
-          </div>
-
           <div class="form-group">
-            <label for="hab-description" id="label-hab-desc">Please describe your situation in your own words.</label>
-            <textarea id="hab-description" name="hab_description" rows="5"></textarea>
-          </div>
-        </div>
-
-        <!-- Personal Injury Conditional Fields -->
-        <div class="conditional-fields" id="pi-fields">
-          <h4 class="conditional-fields-title" id="pi-section-title">Additional Information, Personal Injury</h4>
-
-          <div class="form-row">
-            <div class="form-group float-group">
-              <label for="incident-date" id="label-incident-date">Date of Incident</label>
-              <input type="date" id="incident-date" name="incident_date" />
-            </div>
-            <div class="form-group float-group">
-              <label for="incident-type" id="label-incident-type">Type of Incident</label>
-              <select id="incident-type" name="incident_type">
-                <option value="" id="opt-inc-select">-- Select --</option>
-                <option value="Slip and fall" id="opt-inc-slip">Slip and fall</option>
-                <option value="Trip and fall" id="opt-inc-trip">Trip and fall</option>
-                <option value="Dog bite" id="opt-inc-dogbite">Dog bite</option>
-                <option value="Vehicle accident" id="opt-inc-vehicle">Vehicle accident</option>
-                <option value="Other premises hazard" id="opt-inc-hazard">Other premises hazard</option>
-                <option value="Other" id="opt-inc-other">Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group float-group">
-              <label for="incident-location" id="label-incident-location">Incident Location</label>
-              <input type="text" id="incident-location" name="incident_location" placeholder=" " />
-            </div>
-            <div class="form-group float-group">
-              <label for="incident-city" id="label-incident-city">City</label>
-              <input type="text" id="incident-city" name="incident_city" placeholder=" " />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="defendant-name" id="label-defendant-name">Business / Property Owner / Landlord / Defendant Name</label>
-            <input type="text" id="defendant-name" name="defendant_name" placeholder=" " />
-          </div>
-
-          <div class="form-group">
-            <label for="what-happened" id="label-what-happened">Please describe what happened.</label>
-            <textarea id="what-happened" name="what_happened" rows="4"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="injury-cause" id="label-injury-cause">What caused the fall or injury?</label>
-            <textarea id="injury-cause" name="injury_cause" rows="3"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="witnesses-present" id="label-witnesses-present">Were there any witnesses?</label>
-            <select name="witnesses_present" id="witnesses-present">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-witness">Yes</option>
-              <option value="No" id="opt-no-witness">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="incident-report-made" id="label-incident-report-made">Was an incident report made?</label>
-            <select name="incident_report_made" id="incident-report-made">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-report">Yes</option>
-              <option value="No" id="opt-no-report">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="pi-photos-taken" id="label-pi-photos-taken">Were photos or videos taken?</label>
-            <select name="pi_photos_videos_taken" id="pi-photos-taken">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-photos">Yes</option>
-              <option value="No" id="opt-no-photos">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="medical-treatment" id="label-medical-treatment">Have you received medical treatment?</label>
-            <select name="medical_treatment" id="medical-treatment">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes2">Yes</option>
-              <option value="No" id="opt-no2">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="treatment-location" id="label-treatment-location">If so, where did you treat?</label>
-            <input type="text" id="treatment-location" name="treatment_location" placeholder=" " />
-          </div>
-          <div class="form-group">
-            <label for="injuries-described" id="label-injuries-described">Please describe your injuries.</label>
-            <textarea id="injuries-described" name="injuries_described" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="still-treating" id="label-still-treating">Are you still treating?</label>
-            <select name="still_treating" id="still-treating">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-treating">Yes</option>
-              <option value="No" id="opt-no-treating">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="has-health-insurance" id="label-has-health-insurance">Do you have health insurance?</label>
-            <select name="has_health_insurance" id="has-health-insurance">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-insurance">Yes</option>
-              <option value="No" id="opt-no-insurance">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="spoken-to-adjuster" id="label-spoken-to-adjuster">Have you spoken to an insurance adjuster?</label>
-            <select name="spoken_to_adjuster" id="spoken-to-adjuster">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-adjuster">Yes</option>
-              <option value="No" id="opt-no-adjuster">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="other-attorney" id="label-other-attorney">Are you represented by another attorney for this matter?</label>
-            <select name="other_attorney_representation" id="other-attorney">
-              <option value="">-- Select --</option>
-              <option value="Yes" id="opt-yes-attorney">Yes</option>
-              <option value="No" id="opt-no-attorney">No</option>
-            </select>
-          </div>
-
-          <div class="form-group checkbox-group">
-            <p class="checkbox-group-label" id="label-pi-evidence">Do you have any of the following? (Select all that apply.)</p>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="pi_evidence_photos_videos" value="Yes" />
-              <span id="opt-pi-ev-photos">Photos or videos</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="pi_evidence_reports" value="Yes" />
-              <span id="opt-pi-ev-reports">Reports</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="pi_evidence_medical_records" value="Yes" />
-              <span id="opt-pi-ev-medical">Medical records</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="pi_evidence_bills" value="Yes" />
-              <span id="opt-pi-ev-bills">Bills</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="pi_evidence_witness_info" value="Yes" />
-              <span id="opt-pi-ev-witness">Witness information</span>
-            </label>
-            <label class="consent-label checkbox-row">
-              <input type="checkbox" name="pi_evidence_other" value="Yes" />
-              <span id="opt-pi-ev-other">Other</span>
-            </label>
-          </div>
-
-          <div class="form-group">
-            <label for="pi-description" id="label-pi-desc">Please describe your situation in your own words.</label>
-            <textarea id="pi-description" name="pi_description" rows="5"></textarea>
+            <label for="mold-photos" id="label-mold-photos">Upload pictures of the house and the mold, etc.</label>
+            <input type="file" id="mold-photos" name="mold_photos" accept="image/*" multiple />
           </div>
         </div>
 
@@ -512,8 +223,10 @@
           <h4>Quick Links</h4>
           <ul>
             <li><a href="about.html">About Caroline</a></li>
+            <li><a href="habitability.html">Habitability Law</a></li>
+            <li><a href="personal-injury.html">Personal Injury</a></li>
             <li><a href="practice-areas.html">Practice Areas</a></li>
-            <li><a href="intake.html">Request a Consultation</a></li>
+            <li><a href="intake.html">Start Habitability Intake</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="resources.html">Resources</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -541,37 +254,23 @@
     </div>
   </footer>
 
-  <script src="main.js?v=20260701-21" defer></script>
+  <script src="main.js?v=20260701-23" defer></script>
   <script>
-    function handleCaseType(val) {
-      const hab = document.getElementById('habitability-fields');
-      const pi  = document.getElementById('pi-fields');
-      hab.classList.toggle('visible', val === 'Mold / Habitability');
-      pi.classList.toggle('visible',  val === 'Personal Injury');
-    }
-
     const translations = {
       en: {
-        heading: 'Tell us about your case',
+        heading: 'Tell us about your habitability case',
         subheading: "Fill out the form below and we'll review your situation. All consultations are free and there is no obligation to proceed.",
         disclaimer: 'Submitting this form does not create an attorney-client relationship. The Law Office of Caroline Golian will use the information provided to evaluate your inquiry, conduct conflict checks, and determine whether our firm may be able to assist. Our firm may decline representation. Please do not submit urgent deadlines through this form.',
         'label-name': 'Full Name', 'label-phone': 'Phone Number',
         'label-email': 'Email Address', 'label-besttime': 'Best Time to Reach You',
-        'label-casetype': 'Case Type',
-        'opt-select': '-- Select a case type --', 'opt-hab': 'Mold / Habitability', 'opt-pi': 'Personal Injury',
-        'hab-section-title': 'Additional Information, Habitability',
-        'label-written-notice': 'Have you given written notice to your landlord about the issue?',
+        'hab-section-title': 'Additional Information',
+        'label-written-notice': 'Did you tell your landlord in writing (text, email, etc.)?',
         'opt-yes1': 'Yes', 'opt-no1': 'No',
-        'label-landlord-response': 'Did your landlord respond? If so, how?',
-        'label-mold-test': 'Have you had an air test or mold test done? If so, what were the results?',
-        'label-symptoms': 'Are you experiencing any symptoms? If so, please describe them.',
-        'label-hab-desc': 'Please describe your situation in your own words.',
-        'pi-section-title': 'Additional Information, Personal Injury',
-        'label-what-happened': 'Please describe what happened.',
-        'label-incident-date': 'Date of Incident',
-        'label-medical-treatment': 'Have you received medical treatment?',
-        'opt-yes2': 'Yes', 'opt-no2': 'No',
-        'label-pi-desc': 'Please describe your situation in your own words.',
+        'label-mold-test-done': 'Did you do a mold test?',
+        'opt-yes-test': 'Yes', 'opt-no-test': 'No',
+        'label-mold-test-result': 'Was it positive or negative?',
+        'opt-mold-positive': 'Positive', 'opt-mold-negative': 'Negative',
+        'label-mold-photos': 'Upload pictures of the house and the mold, etc.',
         'submit-btn': 'Submit',
         'submit-note': "We'll review your information and be in touch soon.",
         'consent-legal-text': 'I understand that submitting this form does not create an attorney-client relationship. I understand that the Law Office of Caroline Golian will use the information provided to evaluate my inquiry and may decline representation. Please review our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.',
@@ -579,24 +278,19 @@
         'form-inactive-notice': 'Online submission is being finalized. Please call or email our office directly using the contact information in the footer below.'
       },
       es: {
-        heading: 'Cuéntenos sobre su caso',
+        heading: 'Cuéntenos sobre su caso de habitabilidad',
         subheading: 'Complete el formulario a continuación y revisaremos su situación. Todas las consultas son gratuitas y sin ninguna obligación de continuar.',
         disclaimer: 'Enviar este formulario no crea una relación abogado-cliente. El Despacho Jurídico de Caroline Golian utilizará la información proporcionada para evaluar su consulta, realizar verificaciones de conflicto de intereses y determinar si nuestra firma puede ayudarle. Nuestra firma puede rechazar la representación. Por favor, no envíe información con plazos urgentes a través de este formulario.',
         'label-name': 'Nombre completo', 'label-phone': 'Número de teléfono',
         'label-email': 'Correo electrónico', 'label-besttime': 'Mejor hora para contactarle',
-        'label-casetype': 'Tipo de caso',
-        'opt-select': '-- Seleccione un tipo de caso --', 'opt-hab': 'Moho / Habitabilidad', 'opt-pi': 'Lesiones personales',
-        'hab-section-title': 'Información adicional, Habitabilidad',
-        'label-written-notice': '¿Ha enviado una notificación escrita a su arrendador sobre el problema?',
+        'hab-section-title': 'Información adicional',
+        'label-written-notice': '¿Le notificó a su arrendador por escrito (mensaje de texto, correo electrónico, etc.)?',
         'opt-yes1': 'Sí', 'opt-no1': 'No',
-        'label-symptoms': '¿Tiene algún síntoma? Por favor descríbalos.',
-        'label-hab-desc': 'Por favor describa su situación con sus propias palabras.',
-        'pi-section-title': 'Información adicional, Lesiones personales',
-        'label-what-happened': 'Por favor describa lo que ocurrió.',
-        'label-incident-date': 'Fecha del incidente',
-        'label-medical-treatment': '¿Ha recibido tratamiento médico?',
-        'opt-yes2': 'Sí', 'opt-no2': 'No',
-        'label-pi-desc': 'Por favor describa su situación con sus propias palabras.',
+        'label-mold-test-done': '¿Se realizó una prueba de moho?',
+        'opt-yes-test': 'Sí', 'opt-no-test': 'No',
+        'label-mold-test-result': '¿Fue positiva o negativa?',
+        'opt-mold-positive': 'Positiva', 'opt-mold-negative': 'Negativa',
+        'label-mold-photos': 'Suba fotos de la vivienda y del moho, etc.',
         'submit-btn': 'Enviar',
         'submit-note': 'Revisaremos su información y nos pondremos en contacto pronto.',
         'consent-legal-text': 'Entiendo que enviar este formulario no crea una relación abogado-cliente. Entiendo que el Despacho Jurídico de Caroline Golian utilizará la información proporcionada para evaluar mi consulta y que nuestra firma puede rechazar la representación. Por favor revise nuestra <a href="privacy-policy.html">Política de Privacidad</a> y nuestros <a href="terms.html">Términos de Uso</a>.',
@@ -604,11 +298,6 @@
         'form-inactive-notice': 'El envío en línea se está finalizando. Llame o envíe un correo electrónico directamente a nuestra oficina utilizando la información de contacto en el pie de página.'
       }
     };
-
-    // NOTE: the many new habitability/personal-injury field labels added in
-    // this revision are not yet translated into Spanish — they currently
-    // display in English regardless of the selected language toggle. This
-    // is a known, scoped gap (not a bug) pending a follow-up translation pass.
 
     function setLang(lang) {
       const t = translations[lang];

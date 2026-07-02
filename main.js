@@ -265,7 +265,6 @@
       'full-name':  { required: true, minLen: 2, message: 'Please enter your full name.' },
       'phone':      { required: true, pattern: /^[\d\s\-\+\(\)\.]{7,}$/, message: 'Please enter a valid phone number.' },
       'email':      { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Please enter a valid email address.' },
-      'case-type':  { required: true, message: 'Please select a case type.' },
     };
 
     function validateField(input) {
@@ -321,7 +320,7 @@
 
     /* ── FORM PROGRESS BAR ── */
     const progressBar = document.getElementById('form-progress-bar');
-    const requiredFields = ['full-name', 'phone', 'email', 'case-type'];
+    const requiredFields = ['full-name', 'phone', 'email'];
 
     function updateProgress() {
       if (!progressBar) return;
@@ -406,7 +405,7 @@
 
       /* Build the dynamic subject: "[Full Name] submitted a [Case Type] intake form" */
       const fullName = document.getElementById('full-name').value.trim();
-      const caseType = document.getElementById('case-type').value.trim();
+      const caseType = 'Mold / Habitability';
       const subjectEl = document.getElementById('email-subject');
       if (subjectEl) subjectEl.value = `${fullName} submitted a ${caseType} intake form`;
 
