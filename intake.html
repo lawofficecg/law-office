@@ -7,7 +7,7 @@
   <meta name="description" content="Tell us about your habitability or mold case. Submit our free intake form and we'll review your situation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20260701-27" />
+  <link rel="stylesheet" href="styles.css?v=20260701-29" />
   <link rel="canonical" href="https://lawofficecg.github.io/law-office/intake.html" />
 
   <!-- Open Graph / Social -->
@@ -32,7 +32,7 @@
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-logo">
-        <img src="logo.png?v=20260701-27" alt="Law Office of Caroline Golian logo" />
+        <img src="logo.png?v=20260701-29" alt="Law Office of Caroline Golian logo" />
         <span class="logo-text">
           <span class="logo-name">Law Office of Caroline Golian</span>
           <span class="logo-subtitle">Attorney at Law</span>
@@ -47,8 +47,8 @@
         <li class="nav-item-dropdown">
           <a href="practice-areas.html">Practice Areas<span class="dropdown-caret"></span></a>
           <ul class="nav-dropdown">
-            <li><a href="habitability.html">Habitability</a></li>
             <li><a href="personal-injury.html">Personal Injury</a></li>
+            <li><a href="habitability.html">Habitability</a></li>
           </ul>
         </li>
         <li><a href="index.html#testimonials">Testimonials</a></li>
@@ -119,22 +119,16 @@
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group float-group">
-            <label for="email" id="label-email">Email Address <span class="required-star" aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" placeholder=" " required aria-required="true" autocomplete="email" />
-          </div>
-          <div class="form-group float-group">
-            <label for="best-time" id="label-besttime">Best Time to Reach You</label>
-            <input type="text" id="best-time" name="best_time" placeholder=" " />
-          </div>
+        <div class="form-group float-group">
+          <label for="email" id="label-email">Email Address <span class="required-star" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" placeholder=" " required aria-required="true" autocomplete="email" />
         </div>
 
         <input type="hidden" name="case_type" value="Mold / Habitability" />
 
         <div class="form-group float-group">
-          <label for="preferred-language" id="label-preferred-language">Preferred Language</label>
-          <select id="preferred-language" name="preferred_language">
+          <label for="preferred-language" id="label-preferred-language">Preferred Language <span class="required-star" aria-hidden="true">*</span></label>
+          <select id="preferred-language" name="preferred_language" required aria-required="true">
             <option value="" id="opt-lang-select">-- Select --</option>
             <option value="English" id="opt-lang-en">English</option>
             <option value="Spanish" id="opt-lang-es">Spanish</option>
@@ -147,8 +141,8 @@
           <h4 class="conditional-fields-title" id="hab-section-title">Additional Information</h4>
 
           <div class="form-group">
-            <label for="written-notice" id="label-written-notice">Did you tell your landlord in writing (text, email, etc.)?</label>
-            <select name="written_notice" id="written-notice">
+            <label for="written-notice" id="label-written-notice">Did you tell your landlord in writing (text, email, etc.)? <span class="required-star" aria-hidden="true">*</span></label>
+            <select name="written_notice" id="written-notice" required aria-required="true">
               <option value="">-- Select --</option>
               <option value="Yes" id="opt-yes1">Yes</option>
               <option value="No" id="opt-no1">No</option>
@@ -156,15 +150,15 @@
           </div>
 
           <div class="form-group">
-            <label for="mold-test-done" id="label-mold-test-done">Did you do a mold test?</label>
-            <select name="mold_test_done" id="mold-test-done" onchange="document.getElementById('mold-test-result-wrap').style.display = this.value === 'Yes' ? 'block' : 'none';">
+            <label for="mold-test-done" id="label-mold-test-done">Did you do a mold test? <span class="required-star" aria-hidden="true">*</span></label>
+            <select name="mold_test_done" id="mold-test-done" required aria-required="true" onchange="document.getElementById('mold-test-result-wrap').style.display = this.value === 'Yes' ? 'block' : 'none';">
               <option value="">-- Select --</option>
               <option value="Yes" id="opt-yes-test">Yes</option>
               <option value="No" id="opt-no-test">No</option>
             </select>
           </div>
           <div class="form-group" id="mold-test-result-wrap" style="display:none;">
-            <label for="mold-test-result" id="label-mold-test-result">Was it positive or negative?</label>
+            <label for="mold-test-result" id="label-mold-test-result">Was it positive or negative? <span class="required-star" aria-hidden="true">*</span></label>
             <select name="mold_test_result" id="mold-test-result">
               <option value="">-- Select --</option>
               <option value="Positive" id="opt-mold-positive">Positive</option>
@@ -254,7 +248,7 @@
     </div>
   </footer>
 
-  <script src="main.js?v=20260701-27" defer></script>
+  <script src="main.js?v=20260701-29" defer></script>
   <script>
     const translations = {
       en: {
@@ -262,7 +256,7 @@
         subheading: "Fill out the form below and we'll review your situation. All consultations are free and there is no obligation to proceed.",
         disclaimer: 'Submitting this form does not create an attorney-client relationship. The Law Office of Caroline Golian will use the information provided to evaluate your inquiry, conduct conflict checks, and determine whether our firm may be able to assist. Our firm may decline representation. Please do not submit urgent deadlines through this form.',
         'label-name': 'Full Name', 'label-phone': 'Phone Number',
-        'label-email': 'Email Address', 'label-besttime': 'Best Time to Reach You',
+        'label-email': 'Email Address',
         'hab-section-title': 'Additional Information',
         'label-written-notice': 'Did you tell your landlord in writing (text, email, etc.)?',
         'opt-yes1': 'Yes', 'opt-no1': 'No',
@@ -282,7 +276,7 @@
         subheading: 'Complete el formulario a continuación y revisaremos su situación. Todas las consultas son gratuitas y sin ninguna obligación de continuar.',
         disclaimer: 'Enviar este formulario no crea una relación abogado-cliente. El Despacho Jurídico de Caroline Golian utilizará la información proporcionada para evaluar su consulta, realizar verificaciones de conflicto de intereses y determinar si nuestra firma puede ayudarle. Nuestra firma puede rechazar la representación. Por favor, no envíe información con plazos urgentes a través de este formulario.',
         'label-name': 'Nombre completo', 'label-phone': 'Número de teléfono',
-        'label-email': 'Correo electrónico', 'label-besttime': 'Mejor hora para contactarle',
+        'label-email': 'Correo electrónico',
         'hab-section-title': 'Información adicional',
         'label-written-notice': '¿Le notificó a su arrendador por escrito (mensaje de texto, correo electrónico, etc.)?',
         'opt-yes1': 'Sí', 'opt-no1': 'No',

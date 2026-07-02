@@ -262,9 +262,12 @@
   const intakeForm = document.getElementById('intake-form');
   if (intakeForm) {
     const validations = {
-      'full-name':  { required: true, minLen: 2, message: 'Please enter your full name.' },
-      'phone':      { required: true, pattern: /^[\d\s\-\+\(\)\.]{7,}$/, message: 'Please enter a valid phone number.' },
-      'email':      { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Please enter a valid email address.' },
+      'full-name':          { required: true, minLen: 2, message: 'Please enter your full name.' },
+      'phone':              { required: true, pattern: /^[\d\s\-\+\(\)\.]{7,}$/, message: 'Please enter a valid phone number.' },
+      'email':              { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Please enter a valid email address.' },
+      'preferred-language': { required: true, message: 'Please select a preferred language.' },
+      'written-notice':     { required: true, message: 'Please select an answer.' },
+      'mold-test-done':     { required: true, message: 'Please select an answer.' },
     };
 
     function validateField(input) {
@@ -320,7 +323,7 @@
 
     /* ── FORM PROGRESS BAR ── */
     const progressBar = document.getElementById('form-progress-bar');
-    const requiredFields = ['full-name', 'phone', 'email'];
+    const requiredFields = ['full-name', 'phone', 'email', 'preferred-language', 'written-notice', 'mold-test-done'];
 
     function updateProgress() {
       if (!progressBar) return;
@@ -365,6 +368,30 @@
         const input = document.getElementById(id);
         if (input && !validateField(input)) valid = false;
       });
+
+      /* "Was it positive or negative?" is only required when a mold test
+         was actually done — it's hidden otherwise, so it isn't part of
+         the static `validations` map above. */
+      const moldTestDone = document.getElementById('mold-test-done');
+      const moldTestResult = document.getElementById('mold-test-result');
+      if (moldTestDone && moldTestResult && moldTestDone.value === 'Yes' && !moldTestResult.value.trim()) {
+        valid = false;
+        const group = moldTestResult.closest('.form-group');
+        if (group) {
+          group.classList.add('field-error');
+          let msgEl = group.querySelector('.field-message');
+          if (!msgEl) {
+            msgEl = document.createElement('p');
+            msgEl.className = 'field-message';
+            msgEl.setAttribute('role', 'alert');
+            group.appendChild(msgEl);
+          }
+          msgEl.textContent = 'Please select an answer.';
+        }
+      } else if (moldTestResult) {
+        const group = moldTestResult.closest('.form-group');
+        if (group) group.classList.remove('field-error');
+      }
 
       /* Validate required consent checkbox */
       const consentLegal = document.getElementById('consent-legal');
