@@ -392,8 +392,7 @@ section    { padding: var(--section-v) 24px; }
 
 /* ── Practice Areas dropdown (Habitability / Personal Injury) ── */
 .nav-item-dropdown { position: relative; }
-.nav-item-dropdown > a::before {
-  content: '';
+.nav-item-dropdown > a .dropdown-caret {
   display: inline-block;
   width: 5px;
   height: 5px;
@@ -404,8 +403,8 @@ section    { padding: var(--section-v) 24px; }
   transform: rotate(45deg);
   transition: transform .2s;
 }
-.nav-item-dropdown:hover > a::before,
-.nav-item-dropdown:focus-within > a::before {
+.nav-item-dropdown:hover > a .dropdown-caret,
+.nav-item-dropdown:focus-within > a .dropdown-caret {
   transform: rotate(225deg);
   margin-bottom: -2px;
 }
@@ -932,6 +931,9 @@ section    { padding: var(--section-v) 24px; }
   background: var(--surface);
   padding: var(--section-v) 24px;
 }
+.practice-preview .container {
+  max-width: 1320px;
+}
 .practice-preview .section-label {
   font-size: clamp(0.85rem, 1.3vw, 1rem);
   letter-spacing: .2em;
@@ -943,7 +945,7 @@ section    { padding: var(--section-v) 24px; }
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 40px;
 }
 /* Offset the second card's icon breathe so the two don't pulse in lockstep */
 .cards-grid .practice-card:nth-child(2) .practice-card-icon { animation-delay: 1.6s; }
@@ -952,7 +954,7 @@ section    { padding: var(--section-v) 24px; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 44px 40px;
+  padding: 56px 48px;
   position: relative;
   overflow: hidden;
   transition: opacity .8s var(--ease-out), transform .4s var(--ease-spring), box-shadow .3s var(--ease-out);
@@ -1010,30 +1012,31 @@ section    { padding: var(--section-v) 24px; }
   fill: none; stroke: var(--surface); stroke-width: 1.5;
 }
 
-.practice-card h3 { margin-bottom: 14px; }
-.practice-card p  { color: var(--text-muted); font-size: clamp(0.88rem, 1.5vw, 0.95rem); margin-bottom: 28px; }
+.practice-card h3 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 18px; }
+.practice-card p  { color: var(--text-muted); font-size: clamp(1.05rem, 1.9vw, 1.2rem); margin-bottom: 28px; line-height: 1.65; }
 .practice-card p + p { margin-top: -14px; }
 .practice-card p.practice-card-handle-label {
   color: var(--text);
   font-weight: 700;
-  margin-bottom: 10px;
+  font-size: clamp(1.05rem, 1.9vw, 1.2rem);
+  margin-bottom: 14px;
 }
 .practice-card-list {
   list-style: none;
-  margin: 0 0 28px;
+  margin: 0 0 32px;
 }
 .practice-card-list li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 5px 0;
-  font-size: clamp(0.88rem, 1.5vw, 0.95rem);
+  gap: 12px;
+  padding: 7px 0;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
   color: var(--text-muted);
 }
 .practice-card-list li::before {
   content: '→';
   color: var(--accent);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-top: 3px;
   flex-shrink: 0;
 }
@@ -1947,7 +1950,7 @@ section    { padding: var(--section-v) 24px; }
      tapping "Practice Areas" would just navigate away. On mobile, render
      Habitability/Personal Injury as an always-visible indented sub-list
      instead of a hover flyout. */
-  .nav-item-dropdown > a::before { display: none; }
+  .nav-item-dropdown > a .dropdown-caret { display: none; }
   .nav-dropdown {
     position: static;
     opacity: 1;
