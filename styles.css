@@ -1981,7 +1981,11 @@ section    { padding: var(--section-v) 24px; }
   }
   .site-logo { justify-self: start; }
   .site-nav { justify-self: center; }
-  .site-nav li:last-child { display: none; }
+  /* Direct child only — a descendant selector here would also match the
+     last <li> inside the nested .nav-dropdown (Habitability/Personal
+     Injury submenu), silently hiding whichever of those two is listed
+     last. */
+  .site-nav > li:last-child { display: none; }
   .nav-cta-desktop { justify-self: end; }
 }
 
