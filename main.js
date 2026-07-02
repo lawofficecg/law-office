@@ -455,11 +455,24 @@
   const cursorRing = document.querySelector('.cursor-ring');
   if (cursorDot && cursorRing && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     let mx = 0, my = 0, rx = 0, ry = 0;
+    let hasMoved = false;
+
+    /* Both cursor elements default to their CSS position (0, 0) until the
+       first real mousemove — without this they render as a circle stuck
+       in the top-left corner of the page on load. */
+    cursorDot.style.opacity = '0';
+    cursorRing.style.opacity = '0';
 
     document.addEventListener('mousemove', (e) => {
       mx = e.clientX; my = e.clientY;
       cursorDot.style.left = mx + 'px';
       cursorDot.style.top  = my + 'px';
+      if (!hasMoved) {
+        hasMoved = true;
+        rx = mx; ry = my;
+        cursorDot.style.opacity = '';
+        cursorRing.style.opacity = '';
+      }
     });
 
     (function lerpRing() {
